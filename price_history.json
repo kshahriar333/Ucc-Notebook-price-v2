@@ -116,10 +116,10 @@
     "retailers": {}
   },
   "PRESTIGE": {
-    "name": "MSI Prestige 13 AI+ Evo A2VMG Intel Core ultra 7 258V Intel Arc Graphics 140V 32GB LPDDR5x RAM 1TB NVMe GEN4 SSD 13inch OLED Laptop",
+    "name": "MSI Prestige 14 AI+ Evo C2VMG Intel Core ultra 7 258V Intel Arc Graphics 140v 32GB LPDDR5x RAM 1TB NVMe GEN4 SSD 14inch QHD+ 120Hz Laptop",
     "sku": "PRESTIGE",
-    "url": "https://www.ucc.com.bd/msi-prestige-13-ai-evo-a2vmg-intel-core-ultra-7-258v-intel-arc-graphics-oled-laptop",
-    "ucc": 216900,
+    "url": "https://www.ucc.com.bd/msi-prestige-14-ai-evo-c2vmg-intel-core-ultra-7-258v-intel-arc-graphics-oled-laptop",
+    "ucc": 221900,
     "retailers": {}
   },
   "RAIDER": {
@@ -158,10 +158,24 @@
     "retailers": {}
   },
   "VECTOR": {
-    "name": "MSI Vector 16 HX AI A2XWHG Intel Core Ultra 9 275HX RTX 5070 TI 12GB Graphics 32GB(16*2) 6400MHz DDR5 RAM 1TB NVME Gen4 SSD 16 Inch QHD+ 240Hz Gaming Laptop",
+    "name": "MSI Vector 16 HX AI A2XWIG Intel Core Ultra 9 275HX RTX 5080 16GB Graphics 16GB 6400MHz DDR5 RAM 1TB NVME Gen4 SSD 16 Inch QHD+ 240Hz Gaming Laptop",
     "sku": "VECTOR",
-    "url": "https://www.ucc.com.bd/msi-vector-16-hx-ai-a2xwhg-intel-core-ultra-9-275hx-rtx-5070ti-gaming-laptop",
-    "ucc": 349900,
+    "url": "https://www.ucc.com.bd/msi-vector-16-hx-ai-a2xwig-intel-core-ultra-9-275hx-rtx-5080-gaming-laptop",
+    "ucc": 519900,
+    "retailers": {}
+  },
+  "UN35MSI02B": {
+    "name": "Acer Aspire 15 AS15-42-R5 Ryzen 5 7430U 16GB (8*2) DDR4 3200MHz 512GB NVMe SSD 15.6 Inch FHD IPS Backlit 55Whr Pure Silver",
+    "sku": "UN.35MSI.02B",
+    "url": "https://www.ucc.com.bd/acer-aspire-15-as15-42-r5-ryzen-5-7430u-16gb-82-ddr4-3200mhz-512gb-nvme-ssd-156-inch-fhd-ips-backlit-55whr-pure-silver",
+    "ucc": 77500,
+    "retailers": {}
+  },
+  "MACBOOK": {
+    "name": "Apple MacBook Neo Silver 13-inch A18 Pro 8GB Unified Memory 256GB SSD",
+    "sku": "MACBOOK",
+    "url": "https://www.ucc.com.bd/apple-macbook-neo-13-inch-a18-pro-8gb-unified-memory-256gb-ssd-silver",
+    "ucc": 97000,
     "retailers": {}
   }
 }
