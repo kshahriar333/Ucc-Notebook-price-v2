@@ -84,13 +84,13 @@ def extract_specs(name, text):
     ram = extract_first([
         r"\bRAM\s*[:\-]?\s*(\d{1,2})\s*GB\b",
         r"\bMemory\s*[:\-]?\s*(\d{1,2})\s*GB\b",
-        r"\b(\d{1,2})\s*GB\s*(?:DDR[345X]\s*)?(?:RAM|Memory)\b",
-        r"\b(\d{1,2})\s*GB\s*DDR[345X]\b",
+        r"\b(\d{1,2})\s*GB\s*(?:LPDDR[345X]\s*)?(?:RAM|Memory)\b",
+        r"\b(\d{1,2})\s*GB\s*(?:LPDDR[345X]|DDR[345X])\b",
     ], combined)
-    ddr = extract_first([r"\b(DDR[345X])\b"], combined)
+    ddr = extract_first([r"\b((?:LPDDR[345X]|DDR[345X]))\b"], combined)
     ssd = extract_first([
         r"\b(\d+(?:\.\d+)?\s*TB)\b(?=.{0,60}\bSSD\b)",
-        r"\b(\d{3,4})\s*GB\b(?=.{0,60}\bSSD\b)(?![\s\S]{0,35}\b(?:RAM|DDR[345X])\b)",
+        r"\b(\d{3,4})\s*GB\b(?=.{0,60}\bSSD\b)(?![\s\S]{0,35}\b(?:RAM|LPDDR[345X]|DDR[345X])\b)",
         r"\bSSD\)?\s*[|:=-]?\s*(\d+(?:\.\d+)?\s*(?:TB|GB))\b",
         r"\b(?:Storage(?:\s+Capacity)?|Solid-State\s+Drive)\s*[|:=-]?\s*(\d+(?:\.\d+)?\s*(?:TB|GB))\b",
         r"\bSSD\b.{0,40}?\b(\d{3,4})\s*GB\b",
