@@ -89,9 +89,11 @@ def extract_page_price(soup):
 
 def extract_specs(name, page_text):
     text = clean(f"{name} {page_text}")
+    # Prefer the value explicitly attached to the SKU/Part No label.
+    # Product descriptions can mention older/different part numbers earlier.
     sku = first_match([
+        r"(?:SKU|Part\s*(?:No|Number)|MPN|Product\s*Code)\s*[:#\-]?\s*([A-Z0-9][A-Z0-9._-]{4,})",
         r"\b([A-Z]{2}\.[A-Z0-9]{2,12}\.[A-Z0-9]{2,12})\b",
-        r"(?:Part\s*(?:No|Number)|SKU|Product\s*Code)\s*[:#\-]?\s*([A-Z0-9][A-Z0-9._-]{4,})",
     ], text)
 
     cpu = first_match([

@@ -78,10 +78,11 @@ def extract_first(patterns, text, flags=re.I):
 
 
 def extract_sku(text):
+    # Labelled part numbers take priority over incidental codes in descriptions.
     return extract_first([
-        r"\b([A-Z]{2}\.[A-Z0-9]{2,12}\.[A-Z0-9]{2,12})\b",
         r"(?:Part\s*(?:No|Number)|MPN|SKU|Product\s*Code)\s*[:#\-]?\s*"
         r"([A-Z0-9][A-Z0-9._-]{4,})",
+        r"\b([A-Z]{2}\.[A-Z0-9]{2,12}\.[A-Z0-9]{2,12})\b",
     ], text)
 
 

@@ -108,14 +108,21 @@ def main():
     ]
 
     for retailer, result in retailer_results.items():
+        print(f"{retailer}: {result.get('status')}")
         report_lines.extend(["", f"{retailer}: {result.get('status')}"])
         if not result.get("results"):
             for error in result.get("errors", []):
+                print(f"  ERROR: {error}")
                 report_lines.append(f"Note: {error}")
             continue
 
         candidate = result["results"][0]
         match = compare_products(product, candidate)
+        print(
+            f"  SKU={candidate.get('sku')} price={money(candidate.get('price'))} "
+            f"stock={candidate.get('stock_status', 'unknown')} "
+            f"match={match['status']} checks={match['checks']}"
+        )
         report_lines.extend([
             f"Product: {candidate.get('name')}",
             f"SKU: {candidate.get('sku') or 'Not detected'}",
