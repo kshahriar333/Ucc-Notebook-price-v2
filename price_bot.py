@@ -1,4 +1,4 @@
-"""UCC full-catalogue laptop price monitor with verified price-change alerts."""
+"""Compare every retailer's current laptop price directly against UCC base price."""
 import json
 import os
 import re
@@ -14,6 +14,7 @@ from retailer_fetcher import search_all_retailers
 HISTORY_FILE = Path("price_history.json")
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+RETAILERS = ("Ryans", "Star Tech", "Techland")
 
 
 def load_history():
@@ -34,7 +35,7 @@ def save_history(history):
 
 
 def money(value):
-    return f"৳{int(value):,}" if value is not None else "Not detected"
+    return f"৳{int(value):,}" if value is not None else "N/A"
 
 
 def product_key(product):
@@ -47,11 +48,8 @@ def product_key(product):
 
 def send_telegram(message):
     if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
-        raise RuntimeError(
-            "Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID GitHub Secret."
-        )
+        raise RuntimeError("Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID GitHub Secret.")
     endpoint = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    # Split long catalogue alerts into Telegram-safe chunks.
     chunks, current = [], ""
     for line in message.splitlines():
         if len(current) + len(line) + 1 > 3800:
@@ -77,160 +75,148 @@ def send_telegram(message):
 
 def scan_one(product):
     try:
-        retailers = search_all_retailers(product)
-        return product, retailers, None
+        return product, search_all_retailers(product), None
     except Exception as exc:
         return product, {}, f"{type(exc).__name__}: {str(exc)[:180]}"
 
 
 def main():
-    print("Starting full UCC laptop catalogue scan...")
+    print("Starting UCC-base laptop price comparison...")
     products = get_all_laptops()
     if len(products) < 10:
         raise RuntimeError(
-            f"Only {len(products)} UCC laptops parsed; refusing to overwrite history "
-            "with an incomplete catalogue."
+            f"Only {len(products)} UCC laptops parsed; refusing an incomplete comparison."
         )
 
     history = load_history()
-    alerts = []
-    baseline_count = 0
-    new_product_count = 0
-    verified_counts = {"Ryans": 0, "Star Tech": 0, "Techland": 0}
-    unverified_counts = {"Ryans": 0, "Star Tech": 0, "Techland": 0}
-    current_keys = set()
+    current_history = {}
+    differences = []
+    matched_counts = {retailer: 0 for retailer in RETAILERS}
+    higher_counts = {retailer: 0 for retailer in RETAILERS}
+    lower_counts = {retailer: 0 for retailer in RETAILERS}
+    unavailable_counts = {retailer: 0 for retailer in RETAILERS}
+    all_equal_products = 0
 
-    print(f"Scanning competitor prices for {len(products)} UCC laptops...")
+    print(f"Comparing {len(products)} UCC base prices against each retailer...")
     with ThreadPoolExecutor(max_workers=4) as executor:
         futures = [executor.submit(scan_one, product) for product in products]
         scan_results = [future.result() for future in as_completed(futures)]
 
     for product, retailer_results, scan_error in scan_results:
         key = product_key(product)
-        current_keys.add(key)
-        previous = history.get(key, {})
+        ucc_price = product.get("price")
         current = {
             "name": product.get("name"),
             "sku": product.get("sku"),
             "url": product.get("url"),
-            "ucc": product.get("price"),
+            "ucc_base_price": ucc_price,
             "retailers": {},
         }
-
-        if not previous:
-            baseline_count += 1
-            new_product_count += 1
-
-        old_ucc = previous.get("ucc")
-        new_ucc = current["ucc"]
-        if old_ucc is not None and old_ucc != new_ucc:
-            direction = "INCREASED" if new_ucc > old_ucc else "DECREASED"
-            alerts.append(
-                f"UCC {direction}: {product.get('name')} "
-                f"({product.get('sku') or key}) | "
-                f"{money(old_ucc)} → {money(new_ucc)}"
-            )
-
+        product_differences = []
         if scan_error:
-            print(f"Competitor scan error for {key}: {scan_error}")
+            print(f"Retailer scan error for {key}: {scan_error}")
 
-        for retailer, result in retailer_results.items():
+        for retailer in RETAILERS:
+            result = retailer_results.get(retailer) or {}
             candidates = result.get("results") or []
-            if not candidates:
-                unverified_counts[retailer] += 1
-                errors = result.get("errors") or []
-                print(f"{retailer} {key}: {result.get('status')} | {'; '.join(errors[:2])}")
-                continue
-
-            candidate = candidates[0]
-            match = candidate.get("match") or {}
-            price = candidate.get("price")
-            stock = str(candidate.get("stock_status") or "").upper()
-            allowed = (
-                match.get("price_comparison_allowed") is True
-                and price is not None
-                and "OUT OF STOCK" not in stock
-                and "DISCONTINUED" not in stock
+            candidate = next(
+                (
+                    item for item in candidates
+                    if (item.get("match") or {}).get("price_comparison_allowed") is True
+                    and item.get("price") is not None
+                    and "OUT OF STOCK" not in str(item.get("stock_status") or "").upper()
+                    and "DISCONTINUED" not in str(item.get("stock_status") or "").upper()
+                ),
+                None,
             )
-            if not allowed:
-                unverified_counts[retailer] += 1
+            if candidate is None or ucc_price is None:
+                unavailable_counts[retailer] += 1
+                errors = result.get("errors") or []
                 print(
                     f"{retailer} {key}: not compared | "
-                    f"{match.get('status', 'UNVERIFIED')} | stock={stock}"
+                    f"{(result.get('status') or 'NO RESULT')} | "
+                    f"{'; '.join(errors[:1])}"
                 )
                 continue
 
-            verified_counts[retailer] += 1
-            current["retailers"][retailer] = price
-            old_price = (previous.get("retailers") or {}).get(retailer)
-            # UCC is the reference/base price. Alert only when a verified
-            # competitor price changes, and state its difference from UCC.
-            if old_price is not None and old_price != price:
-                movement = "INCREASED" if price > old_price else "DECREASED"
-                ucc_price = current.get("ucc")
-                if ucc_price is not None:
-                    delta = price - ucc_price
-                    relation = (
-                        f"{money(abs(delta))} {'above' if delta > 0 else 'below' if delta < 0 else 'same as'} UCC"
-                    )
-                else:
-                    relation = "UCC base price unavailable"
-                alerts.append(
-                    f"{retailer.upper()} PRICE {movement}: {product.get('name')} "
-                    f"({product.get('sku') or key}) | "
-                    f"New: {money(price)} | UCC base: {money(ucc_price)} | {relation}"
+            retailer_price = candidate["price"]
+            delta = retailer_price - ucc_price
+            current["retailers"][retailer] = retailer_price
+            matched_counts[retailer] += 1
+            if delta > 0:
+                higher_counts[retailer] += 1
+                product_differences.append(
+                    f"{retailer}: {money(retailer_price)} "
+                    f"({money(delta)} বেশি UCC-এর চেয়ে)"
                 )
-            print(
-                f"{retailer} {key}: {money(price)} | "
-                f"{match.get('status')} | SKU match={match.get('sku_match')}"
+            elif delta < 0:
+                lower_counts[retailer] += 1
+                product_differences.append(
+                    f"{retailer}: {money(retailer_price)} "
+                    f"({money(abs(delta))} কম UCC-এর চেয়ে)"
+                )
+            else:
+                print(f"{retailer} {key}: MATCH / SAME PRICE {money(ucc_price)}")
+
+        if len(current["retailers"]) == len(RETAILERS) and not product_differences:
+            all_equal_products += 1
+
+        if product_differences:
+            differences.append(
+                f"PRODUCT: {product.get('name')} | SKU: {product.get('sku') or key}\n"
+                f"UCC BASE: {money(ucc_price)}\n  " + "\n  ".join(product_differences)
             )
 
-        # Preserve the last known verified competitor price if a retailer is
-        # temporarily unavailable or a configuration cannot be verified.
-        merged = dict(previous.get("retailers") or {})
-        merged.update(current["retailers"])
-        current["retailers"] = merged
-        history[key] = current
+        # History is diagnostic only. UCC price changes are never alerts.
+        current_history[key] = current
 
-    if not current_keys:
-        raise RuntimeError("No product keys were collected; history was not updated.")
+    # Retain older records for products temporarily absent from the current crawl.
+    merged_history = dict(history)
+    merged_history.update(current_history)
+    save_history(merged_history)
 
-    save_history(history)
+    total_comparisons = sum(matched_counts.values())
+    total_possible = len(products) * len(RETAILERS)
+    fully_synced = (
+        total_comparisons == total_possible
+        and not differences
+        and all_equal_products == len(products)
+    )
+
     summary = [
-        "UCC FULL LAPTOP CATALOGUE SCAN",
-        "==============================",
-        f"UCC laptops parsed: {len(products)}",
-        f"New products added to history: {new_product_count}",
-        f"Verified competitor matches: Ryans {verified_counts['Ryans']}, "
-        f"Star Tech {verified_counts['Star Tech']}, Techland {verified_counts['Techland']}",
-        f"Unverified/not found: Ryans {unverified_counts['Ryans']}, "
-        f"Star Tech {unverified_counts['Star Tech']}, Techland {unverified_counts['Techland']}",
-        "Price alerts are generated only for verified configuration matches.",
-        "Repository: https://github.com/kshahriar333/Ucc-Notebook-price-v2",
+        "UCC LAPTOP PRICE SYNC REPORT",
+        "============================",
+        f"UCC products scanned: {len(products)}",
+        f"Retailer comparisons verified: {total_comparisons}/{total_possible}",
+        f"All three retailers equal UCC: {all_equal_products}/{len(products)}",
+        "",
     ]
-    print("\n".join(summary))
-    print(f"Price changes detected: {len(alerts)}")
-
-    if alerts:
-        message = "\n".join(summary)
-        if baseline_count:
-            message += (
-                f"\nNewly tracked laptops added to the baseline: {baseline_count}."
-            )
-        message += "\n\nPRICE CHANGES\n" + "\n".join(alerts)
-        send_telegram(message)
-        print("Telegram price-change alert sent.")
-    elif baseline_count:
-        message = "\n".join(summary) + (
-            f"\n\nInitial baseline saved for {baseline_count} newly tracked laptops. "
-            "Future verified price changes will trigger alerts."
+    for retailer in RETAILERS:
+        summary.append(
+            f"{retailer}: matched {matched_counts[retailer]}/{len(products)} | "
+            f"higher {higher_counts[retailer]} | lower {lower_counts[retailer]} | "
+            f"unmatched/unverified {unavailable_counts[retailer]}"
         )
-        send_telegram(message)
-        print("Telegram initial catalogue baseline sent.")
-    else:
-        print("No verified price movement. No Telegram price-change alert sent.")
 
-    print("Full catalogue scan completed.")
+    if fully_synced:
+        message = "\n".join(summary) + "\n\nALL OK — ALL MATCH. All tracked retailer prices are synced with UCC."
+    elif differences:
+        message = "\n".join(summary) + "\nPRICE DIFFERENCES AGAINST UCC BASE\n\n" + "\n\n".join(differences)
+        if total_comparisons < total_possible:
+            message += (
+                "\n\nNOTE: Some products could not be verified. "
+                "They are not reported as matched; the report is partial."
+            )
+    else:
+        message = "\n".join(summary) + (
+            "\nNo verified price differences found, but some retailer matches are missing. "
+            "This is not an ALL MATCH result."
+        )
+
+    print(message)
+    send_telegram(message)
+    print("Telegram UCC-base sync report sent successfully.")
+    print("UCC price movements are not tracked or alerted.")
 
 
 if __name__ == "__main__":
