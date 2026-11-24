@@ -1,104 +1,171 @@
-"""Entry point for the UCC Acer notebook price monitor."""
+"""UCC Acer price-change notifier.
+
+First successful scan stores a baseline. Later scans send Telegram alerts only
+when UCC or a verified competitor selling price changes. History is persisted
+in price_history.json by the GitHub Actions workflow.
+"""
+import json
 import os
+from pathlib import Path
 import requests
 
-from ucc_reader import get_acer_products
+from ucc_reader import read_product
 from retailer_fetcher import search_all_retailers
 from match_engine import compare_products
 
+UCC_PRODUCT_URL = (
+    "https://www.ucc.com.bd/"
+    "acer-aspire-15-as15-42-r5-ryzen-5-7430u-16gb-82-ddr4-3200mhz-"
+    "512gb-nvme-ssd-156-inch-fhd-ips-backlit-55whr-pure-silver"
+)
+HISTORY_FILE = Path("price_history.json")
 TELEGRAM_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 
+def load_history():
+    if not HISTORY_FILE.exists():
+        return {}
+    try:
+        return json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def save_history(history):
+    HISTORY_FILE.write_text(
+        json.dumps(history, ensure_ascii=False, indent=2),
+        encoding="utf-8",
+    )
+
+
 def money(value):
-    return f"৳{int(value):,}" if isinstance(value, (int, float)) else "Not detected"
+    return f"৳{int(value):,}" if value is not None else "Not detected"
 
 
 def send_telegram(message):
     if not TELEGRAM_TOKEN or not TELEGRAM_CHAT_ID:
-        raise RuntimeError("Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID GitHub Secret.")
-    endpoint = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    # Split messages below Telegram's 4096-character limit.
-    chunks, current = [], ""
-    for line in message.splitlines():
-        if len(current) + len(line) + 1 > 3800:
-            chunks.append(current)
-            current = ""
-        current += line + "\n"
-    if current:
-        chunks.append(current)
-    for chunk in chunks:
-        response = requests.post(
-            endpoint,
-            data={"chat_id": TELEGRAM_CHAT_ID, "text": chunk},
-            timeout=20,
+        raise RuntimeError(
+            "Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID GitHub Secret."
         )
-        response.raise_for_status()
-        payload = response.json()
-        if not payload.get("ok"):
-            raise RuntimeError(f"Telegram API rejected message: {payload}")
-
-
-def build_report(product, retailer_results, index, total):
-    lines = [
-        f"UCC ACER PRICE MONITOR ({index}/{total})",
-        "=" * 34,
-        f"Product: {product.get('name') or 'Unknown'}",
-        f"SKU: {product.get('sku') or 'Not detected'}",
-        f"Model: {product.get('model') or 'Not detected'}",
-        f"CPU: {product.get('processor') or 'Not detected'}",
-        f"RAM: {product.get('ram') or 'Not detected'}",
-        f"DDR: {product.get('ddr') or 'Not detected'}",
-        f"SSD: {product.get('ssd') or 'Not detected'}",
-        f"UCC price: {money(product.get('price'))}",
-        f"UCC link: {product.get('url')}",
-    ]
-    for retailer, result in retailer_results.items():
-        lines.extend(["", f"--- {retailer}: {result.get('status')} ---"])
-        for error in result.get("errors", []):
-            lines.append(f"Search note: {error}")
-        candidates = result.get("results", [])
-        if not candidates:
-            lines.append("No product page retrieved; no price comparison.")
-            continue
-        for candidate in candidates:
-            match = compare_products(product, candidate)
-            lines.extend([
-                f"Product: {candidate.get('name') or 'Unknown'}",
-                f"Match: {match['status']}",
-                "Spec check: " + ", ".join(
-                    f"{key}={value}" for key, value in match["checks"].items()
-                ),
-            ])
-            if match["price_comparison_allowed"]:
-                lines.append(f"Competitor price: {money(candidate.get('price'))}")
-                if candidate.get("price") is not None and product.get("price") is not None:
-                    difference = int(candidate["price"]) - int(product["price"])
-                    lines.append(f"Difference (competitor - UCC): {money(difference)}")
-            else:
-                lines.append("Price comparison: SKIPPED (specs mismatch or not fully verified)")
-            lines.append(f"Product link: {candidate.get('url')}")
-    return "\n".join(lines)
+    endpoint = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
+    # Keep messages safely below Telegram's message length limit.
+    response = requests.post(
+        endpoint,
+        data={"chat_id": TELEGRAM_CHAT_ID, "text": message[:3900]},
+        timeout=25,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    if not payload.get("ok"):
+        raise RuntimeError(f"Telegram API error: {payload}")
 
 
 def main():
-    print("Starting UCC Acer category scan...")
-    products = get_acer_products()
-    print(f"Discovered {len(products)} Acer product pages.")
-    if not products:
-        raise RuntimeError("No Acer products found.")
+    print("Reading the fixed UCC product page...")
+    product = read_product(UCC_PRODUCT_URL)
+    if not product.get("price"):
+        raise RuntimeError("UCC selling price was not detected; history not changed.")
+    if not product.get("sku"):
+        raise RuntimeError("UCC SKU was not detected; history not changed.")
 
-    successful = 0
-    for index, product in enumerate(products, 1):
-        print(f"[{index}/{len(products)}] {product.get('name')} | SKU={product.get('sku')}")
-        try:
-            results = search_all_retailers(product)
-            report = build_report(product, results, index, len(products))
-            send_telegram(report)
-            successful += 1
-        except Exception as exc:
-            print(f"Product processing/report failed for {product.get('url')}: {exc!r}")
-    print(f"Finished. Telegram reports sent: {successful}/{len(products)}")
+    print(
+        f"UCC product: {product.get('name')} | SKU={product.get('sku')} "
+        f"| Price={money(product.get('price'))}"
+    )
+    retailer_results = search_all_retailers(product)
+    history = load_history()
+    sku = product["sku"].upper()
+    previous = history.get(sku)
+    current = {
+        "ucc": product.get("price"),
+        "retailers": {},
+    }
+
+    alerts = []
+    if previous is None:
+        alerts.append(
+            "INITIAL BASELINE SAVED\n"
+            "This is the first successful scan. Future price movements "
+            "will trigger alerts."
+        )
+    else:
+        old_ucc = previous.get("ucc")
+        new_ucc = current["ucc"]
+        if old_ucc is not None and old_ucc != new_ucc:
+            direction = "INCREASED" if new_ucc > old_ucc else "DECREASED"
+            alerts.append(
+                f"UCC PRICE {direction}: {money(old_ucc)} → {money(new_ucc)}"
+            )
+
+    report_lines = [
+        "UCC ACER PRICE CHANGE MONITOR",
+        "============================",
+        f"Product: {product.get('name')}",
+        f"SKU: {sku}",
+        f"UCC price: {money(product.get('price'))}",
+        f"UCC link: {UCC_PRODUCT_URL}",
+    ]
+
+    for retailer, result in retailer_results.items():
+        report_lines.extend(["", f"{retailer}: {result.get('status')}"])
+        if not result.get("results"):
+            for error in result.get("errors", []):
+                report_lines.append(f"Note: {error}")
+            continue
+
+        candidate = result["results"][0]
+        match = compare_products(product, candidate)
+        report_lines.extend([
+            f"Product: {candidate.get('name')}",
+            f"SKU: {candidate.get('sku') or 'Not detected'}",
+            f"Price: {money(candidate.get('price'))}",
+            f"Spec match: {match['status']}",
+            "Checks: " + ", ".join(
+                f"{key}={value}" for key, value in match["checks"].items()
+            ),
+            f"Link: {candidate.get('url')}",
+        ])
+
+        # Never alert/compare a competitor price until all required specs match.
+        if not match["price_comparison_allowed"]:
+            report_lines.append("Price movement tracking: NOT ENABLED (specs unverified).")
+            continue
+
+        new_price = candidate.get("price")
+        if new_price is None:
+            report_lines.append("Price movement tracking: waiting for a readable price.")
+            continue
+
+        current["retailers"][retailer] = new_price
+        old_price = (
+            previous.get("retailers", {}).get(retailer)
+            if previous else None
+        )
+        if old_price is not None and old_price != new_price:
+            direction = "INCREASED" if new_price > old_price else "DECREASED"
+            alerts.append(
+                f"{retailer.upper()} PRICE {direction}: "
+                f"{money(old_price)} → {money(new_price)}"
+            )
+
+    # Store only successful, verified current prices. Keep previous values if a
+    # retailer is temporarily unavailable or its specs cannot be verified.
+    if previous:
+        merged = dict(previous.get("retailers", {}))
+        merged.update(current["retailers"])
+        current["retailers"] = merged
+    history[sku] = current
+    save_history(history)
+
+    if alerts:
+        message = "\n\n".join(alerts) + "\n\n" + "\n".join(report_lines)
+        send_telegram(message)
+        print("Telegram alert sent.")
+    else:
+        print("No verified price movement. No Telegram alert sent.")
+
+    print("Scan completed.")
 
 
 if __name__ == "__main__":
