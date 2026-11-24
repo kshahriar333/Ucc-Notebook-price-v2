@@ -92,7 +92,7 @@ def value(product, key):
                 if re.search(r"\d{3,4}", str(direct)) else None
             )
         if key == "ddr":
-            match = re.search(r"DDR[345X]", str(direct), re.I)
+            match = re.search(r"(?:LPDDR[345X]|DDR[345X])", str(direct), re.I)
             return match.group(0).upper() if match else normalize(direct)
     text = product_text(product)
     if key == "model":
@@ -104,7 +104,7 @@ def value(product, key):
     if key == "ssd":
         return extract_ssd_gb(text)
     if key == "ddr":
-        match = re.search(r"\bDDR[345X]\b", text, re.I)
+        match = re.search(r"\b(?:LPDDR[345X]|DDR[345X])\b", text, re.I)
         return match.group(0).upper() if match else None
     return None
 
