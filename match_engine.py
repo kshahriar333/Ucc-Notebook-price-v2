@@ -1,4 +1,4 @@
-"""Conservative laptop matching: price is compared only after full spec verification."""
+"""Conservative laptop matching: compare prices only after core specs match."""
 import re
 
 
@@ -8,6 +8,7 @@ def normalize(value):
 
 def extract_cpu(text):
     patterns = [
+        r"\bRyzen\s+AI\s+[579]\s+\d{3,4}[A-Z]{0,3}\b",
         r"\bRyzen\s+[3579]\s+\d{4,5}[A-Z]{0,3}\b",
         r"\bCore\s+Ultra\s+[3579]\s+\d{3}[A-Z]{0,3}\b",
         r"\bCore\s+i[3579]\s*[- ]?\s*\d{4,5}[A-Z]{0,3}\b",
@@ -22,11 +23,17 @@ def extract_cpu(text):
 
 
 def extract_model(text):
-    match = re.search(
-        r"\b(?:AS|AN|A\d{3}|TL|TMP|SF|PH)\s?[A-Z0-9]{1,8}-[A-Z0-9]{1,8}\b",
-        str(text or ""), re.I
-    )
-    return normalize(match.group(0)) if match else None
+    text = str(text or "")
+    patterns = [
+        r"\b(?:AS|AN|TL|TMP|PHN|PH|A\d{3})\s?[A-Z0-9]{1,10}(?:-[A-Z0-9]{1,10}){0,2}\b",
+        r"\b([A-Z]\d[A-Z]{2,7}(?:-[A-Z0-9]{2,8})?)\b",
+        r"\b(B\d{2}[A-Z]{2,6}|A\d[A-Z]{3,6}|C\d[A-Z]{3,6}|F\d[A-Z]{2,5})\b",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, text, re.I)
+        if match:
+            return normalize(match.group(0))
+    return None
 
 
 def extract_ram(text):
@@ -117,7 +124,6 @@ def compare_products(ucc, competitor):
 
     mismatches = [key for key, result in checks.items() if result == "MISMATCH"]
     unknowns = [key for key, result in checks.items() if result == "UNKNOWN"]
-    # Do not silently ignore missing DDR if UCC specifies it. A missing competitor DDR is unknown.
     price_allowed = not mismatches and not unknowns
     if mismatches:
         status = "CONFIGURATION MISMATCH"
