@@ -2,5 +2,11 @@
   "UN.35MSI.01C": {
     "ucc": 77500,
     "retailers": {}
+  },
+  "UN.35MSI.02B": {
+    "ucc": 77500,
+    "retailers": {
+      "Ryans": 77500
+    }
   }
 }
