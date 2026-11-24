@@ -1,13 +1,11 @@
-"""Direct-URL retailer price reader for UCC Acer notebook monitoring.
-
-This version deliberately uses verified product-detail URLs instead of generic
-search pages. Add a retailer URL to DIRECT_PRODUCT_URLS for each new UCC SKU.
-It never treats search/category/navigation pages as product pages and never
-compares a price when required specifications are missing or different.
-"""
+"""SKU-first retailer discovery and conservative product-page extraction."""
 import re
+from urllib.parse import urlparse, parse_qs, unquote
+
 import requests
 from bs4 import BeautifulSoup
+
+from match_engine import compare_products
 
 HEADERS = {
     "User-Agent": (
@@ -18,31 +16,18 @@ HEADERS = {
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
     "Accept-Language": "en-US,en;q=0.9",
 }
-TIMEOUT = (12, 25)
-
-# UCC page's visible SKU is UN.35MSI.02B. All three supplied pages show
-# the same part number/configuration (Ryans and Techland SKU; Star Tech MPN).
-DIRECT_PRODUCT_URLS = {
-    "UN.35MSI.02B": {
-        "Ryans": (
-            "https://www.ryans.com/"
-            "acer-aspire-15-as15-42-amd-ryzen-5-7430u-15.6-inch-fhd-laptop"
-        ),
-        "Star Tech": (
-            "https://www.startech.com.bd/"
-            "acer-aspire-15-as15-42-r5-ryzen-5-15-inch-laptop"
-        ),
-        "Techland": (
-            "https://www.techlandbd.com/"
-            "acer-aspire-15-as15-42-ryzen-5-7430u-156-inch-fhd-ips-laptop"
-        ),
-    }
-}
-
+TIMEOUT = (10, 20)
 RETAILER_DOMAINS = {
     "Ryans": "ryans.com",
     "Star Tech": "startech.com.bd",
     "Techland": "techlandbd.com",
+}
+DIRECT_PRODUCT_URLS = {
+    "UN.35MSI.02B": {
+        "Ryans": "https://www.ryans.com/acer-aspire-15-as15-42-amd-ryzen-5-7430u-15.6-inch-fhd-laptop",
+        "Star Tech": "https://www.startech.com.bd/acer-aspire-15-as15-42-r5-ryzen-5-15-inch-laptop",
+        "Techland": "https://www.techlandbd.com/acer-aspire-15-as15-42-ryzen-5-7430u-156-inch-fhd-ips-laptop",
+    }
 }
 
 
@@ -55,13 +40,11 @@ def normalize(value):
 
 
 def extract_price(text):
-    text = str(text or "")
-    patterns = (
+    for pattern in (
         r"(?:৳|Tk\.?|BDT)\s*([\d,]+)",
         r"([\d,]+)\s*(?:৳|Tk\.?|BDT)",
-    )
-    for pattern in patterns:
-        match = re.search(pattern, text, re.I)
+    ):
+        match = re.search(pattern, str(text or ""), re.I)
         if match:
             amount = int(match.group(1).replace(",", ""))
             if 5000 <= amount <= 2_000_000:
@@ -69,19 +52,17 @@ def extract_price(text):
     return None
 
 
-def extract_first(patterns, text, flags=re.I):
+def extract_first(patterns, text):
     for pattern in patterns:
-        match = re.search(pattern, text or "", flags)
+        match = re.search(pattern, text or "", re.I)
         if match:
             return clean(match.group(1))
     return None
 
 
 def extract_sku(text):
-    # Labelled part numbers take priority over incidental codes in descriptions.
     return extract_first([
-        r"(?:Part\s*(?:No|Number)|MPN|SKU)\s*[:#\-]?\s*"
-        r"([A-Z0-9][A-Z0-9._-]{4,})",
+        r"(?:Part\s*(?:No|Number)|MPN|SKU)\s*[:#\-]?\s*([A-Z0-9][A-Z0-9._-]{3,})",
         r"\b([A-Z]{2}\.[A-Z0-9]{2,12}\.[A-Z0-9]{2,12})\b",
     ], text)
 
@@ -89,12 +70,16 @@ def extract_sku(text):
 def extract_specs(name, text):
     combined = clean(f"{name} {text}")
     model = extract_first([
-        r"\b((?:AS|AN|A\d{3}|TL|TMP|SF|PH)\s?[A-Z0-9]{1,8}-[A-Z0-9]{1,8})\b"
+        r"\b((?:AS|AN|TL|TMP|PHN|PH|A\d{3})\s?[A-Z0-9]{1,10}(?:-[A-Z0-9]{1,10}){0,2})\b",
+        r"\b([A-Z]\d[A-Z]{2,7}(?:-[A-Z0-9]{2,8})?)\b",
     ], combined)
     cpu = extract_first([
+        r"\b(Ryzen\s+AI\s+[579]\s+\d{3,4}[A-Z]{0,3})\b",
         r"\b(Ryzen\s+[3579]\s+\d{4,5}[A-Z]{0,3})\b",
         r"\b(Core\s+Ultra\s+[3579]\s+\d{3}[A-Z]{0,3})\b",
         r"\b(Core\s+i[3579]\s*[- ]?\s*\d{4,5}[A-Z]{0,3})\b",
+        r"\b(Core\s+[3579]\s+\d{3,5}[A-Z]{0,3})\b",
+        r"\b(Processor\s+N\d{3})\b",
     ], combined)
     ram = extract_first([
         r"\bRAM\s*[:\-]?\s*(\d{1,2})\s*GB\b",
@@ -110,11 +95,9 @@ def extract_specs(name, text):
         r"\b(?:Storage(?:\s+Capacity)?|Solid-State\s+Drive)\s*[|:=-]?\s*(\d+(?:\.\d+)?\s*(?:TB|GB))\b",
         r"\bSSD\b.{0,40}?\b(\d{3,4})\s*GB\b",
     ], combined)
-    if model:
-        model = re.sub(r"\s+", "", model).upper()
     return {
         "sku": extract_sku(text),
-        "model": model,
+        "model": re.sub(r"\s+", "", model).upper() if model else None,
         "processor": cpu,
         "ram": f"{ram}GB" if ram else None,
         "ddr": ddr.upper() if ddr else None,
@@ -122,51 +105,38 @@ def extract_specs(name, text):
     }
 
 
-def parse_price_from_soup(soup, page_text, allow_fallback=True):
-    # Prefer the labelled current selling price before generic price classes.
-    labelled_patterns = (
-        r"(?:Discount|Special)\s*Price\s*(?:৳|Tk\.?|BDT)\s*[\d,]+",
-    )
-    for pattern in labelled_patterns:
-        match = re.search(pattern, page_text or "", re.I)
-        if match:
-            price = extract_price(match.group(0))
-            if price:
-                return price
-
-    selectors = [
+def parse_price_from_soup(soup, page_text, retailer):
+    # Do not accept savings, EMI or FAQ prices as current selling prices.
+    for selector in (
         '[itemprop="price"]',
         'meta[property="product:price:amount"]',
         'meta[property="og:price:amount"]',
         ".price-new",
         ".product-price",
         ".special-price",
-    ]
-    for selector in selectors:
+    ):
         for tag in soup.select(selector):
             raw = tag.get("content") or tag.get_text(" ", strip=True)
             price = extract_price(raw)
             if price:
                 return price
-
-    # Generic .price elements can be "Save ৳7,500", so avoid them.
-    if allow_fallback:
-        main = soup.select_one(
-            "#content, main, .product-info, .product-details, "
-            ".product-summary, .product-page"
-        )
-        if main:
-            return extract_price(main.get_text(" ", strip=True))
+    main = soup.select_one(
+        "#content, main, .product-info, .product-details, "
+        ".product-summary, .product-page"
+    )
+    if main:
+        text = main.get_text(" ", strip=True)
+        # Strip common savings labels before considering a fallback amount.
+        text = re.sub(r"(?:Save|You Save)\s*(?:৳|Tk\.?|BDT)?\s*[\d,]+", "", text, flags=re.I)
+        return extract_price(text)
     return None
+
 
 def parse_product_page(retailer, url):
     expected_domain = RETAILER_DOMAINS[retailer]
-    session = requests.Session()
-    session.headers.update(HEADERS)
-    response = session.get(url, timeout=TIMEOUT)
+    response = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     response.raise_for_status()
-
-    final_host = response.url.split("/")[2].lower().removeprefix("www.")
+    final_host = urlparse(response.url).netloc.lower().removeprefix("www.")
     if final_host != expected_domain:
         raise ValueError(f"Unexpected redirect host: {final_host}")
 
@@ -175,19 +145,17 @@ def parse_product_page(retailer, url):
     name = clean(heading.get_text(" ", strip=True) if heading else "")
     if not name:
         raise ValueError("Product page has no H1 title.")
-
     page_text = clean(soup.get_text(" ", strip=True))
     unavailable = bool(re.search(
         r"\b(out\s+of\s+stock|discontinued|not\s+available)\b",
-        page_text,
-        re.I,
+        page_text, re.I
     ))
     stock_status = "OUT OF STOCK / DISCONTINUED" if unavailable else "CHECK PAGE"
+
     if retailer == "Star Tech":
         status_match = re.search(
             r"\bStatus\s*[:|]?\s*(In\s+Stock|Out\s+Of\s+Stock|Discontinued)\b",
-            page_text,
-            re.I,
+            page_text, re.I
         )
         if not status_match or status_match.group(1).lower() != "in stock":
             unavailable = True
@@ -195,16 +163,12 @@ def parse_product_page(retailer, url):
         else:
             unavailable = False
             stock_status = "IN STOCK"
-    price = None if unavailable else parse_price_from_soup(
-        soup,
-        page_text,
-        allow_fallback=True,
-    )
+    elif unavailable:
+        stock_status = "OUT OF STOCK / DISCONTINUED"
+    else:
+        stock_status = "STOCK NOT CONFIRMED"
 
-    bad_titles = ("login", "cart", "offer", "pc builder", "category", "search")
-    if any(term in name.lower() for term in bad_titles):
-        raise ValueError(f"Not a product-detail page: {name}")
-
+    price = None if unavailable else parse_price_from_soup(soup, page_text, retailer)
     item = {
         "retailer": retailer,
         "name": name,
@@ -214,39 +178,115 @@ def parse_product_page(retailer, url):
         "page_text": page_text,
     }
     item.update(extract_specs(name, page_text))
-    if price is None and not unavailable:
-        item["price_note"] = "No reliable current selling price found on the page."
-    elif price is None and unavailable:
-        item["price_note"] = "Page is marked unavailable; FAQ or EMI amounts are not treated as selling price."
+    if price is None:
+        item["price_note"] = "No reliable current selling price or confirmed availability."
     return item
+
+
+def unwrap_search_url(href):
+    parsed = urlparse(href)
+    if parsed.path == "/url" and parsed.netloc.endswith("google.com"):
+        query = parse_qs(parsed.query)
+        return unquote((query.get("q") or query.get("url") or [""])[0])
+    return href
+
+
+def search_result_urls(domain, query):
+    urls = []
+    session = requests.Session()
+    session.headers.update(HEADERS)
+    # Search exact SKU/part number first. Search result pages are only used to
+    # discover product links; all prices/specifications come from retailer pages.
+    search_targets = [
+        ("https://www.google.com/search", {"q": f"site:{domain} \"{query}\"", "num": "8"}),
+        ("https://www.bing.com/search", {"q": f"site:{domain} \"{query}\"", "count": "8"}),
+    ]
+    for endpoint, params in search_targets:
+        try:
+            response = session.get(endpoint, params=params, timeout=TIMEOUT)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text, "html.parser")
+            for anchor in soup.select("a[href]"):
+                href = unwrap_search_url(anchor.get("href", ""))
+                parsed = urlparse(href)
+                host = parsed.netloc.lower().removeprefix("www.")
+                path = parsed.path.lower().strip("/")
+                if host != domain or not path:
+                    continue
+                if any(term in path for term in (
+                    "search", "category", "brand", "account", "checkout",
+                    "compare", "wishlist", "login",
+                )):
+                    continue
+                clean_url = f"https://{domain}/{path}"
+                if clean_url not in urls:
+                    urls.append(clean_url)
+            if urls:
+                break
+        except requests.RequestException as exc:
+            print(f"Search provider warning for {domain}: {type(exc).__name__}")
+    return urls[:4]
+
 
 def search_one(product, retailer_name):
     sku = clean(product.get("sku")).upper()
-    retailer_urls = DIRECT_PRODUCT_URLS.get(sku, {})
-    url = retailer_urls.get(retailer_name)
+    domain = RETAILER_DOMAINS[retailer_name]
+    direct_url = DIRECT_PRODUCT_URLS.get(sku, {}).get(retailer_name)
+    queries = []
+    if sku:
+        queries.append(sku)
+    # Use model + CPU only if exact SKU search returns no usable candidate.
+    fallback = " ".join(str(product.get(key) or "") for key in ("model", "processor"))
+    if not fallback.strip():
+        fallback = product.get("name", "")
+    if fallback.strip():
+        queries.append(fallback.strip())
 
-    if not url:
-        return {
-            "status": "NO VERIFIED DIRECT URL CONFIGURED",
-            "results": [],
-            "errors": [
-                f"No verified {retailer_name} product URL is configured for SKU {sku or 'UNKNOWN'}."
-            ],
-        }
+    candidate_urls = []
+    if direct_url:
+        candidate_urls.append(direct_url)
+    results, errors = [], []
+    for query in queries:
+        found = search_result_urls(domain, query) if not candidate_urls else []
+        for url in found:
+            if url not in candidate_urls:
+                candidate_urls.append(url)
+        for url in candidate_urls:
+            if any(item.get("url") == url for item in results):
+                continue
+            try:
+                candidate = parse_product_page(retailer_name, url)
+                match = compare_products(product, candidate)
+                candidate["match"] = match
+                results.append(candidate)
+            except Exception as exc:
+                errors.append(f"{url}: {type(exc).__name__}: {str(exc)[:130]}")
+        # Prefer exact SKU + fully matching specs; if SKU not indexed, only
+        # a fully verified specification match can be used for price tracking.
+        verified = [
+            item for item in results
+            if item["match"]["price_comparison_allowed"]
+        ]
+        if verified:
+            break
+        candidate_urls = []
 
-    try:
-        item = parse_product_page(retailer_name, url)
+    results.sort(key=lambda item: (
+        not item["match"]["sku_match"],
+        not item["match"]["price_comparison_allowed"],
+        item.get("price") is None,
+    ))
+    if results:
         return {
-            "status": "OK - VERIFIED DIRECT PRODUCT URL",
-            "results": [item],
-            "errors": [],
+            "status": "PRODUCT PAGE FOUND",
+            "results": results[:1],
+            "errors": errors[:3],
         }
-    except Exception as exc:
-        return {
-            "status": "DIRECT PRODUCT PAGE ERROR",
-            "results": [],
-            "errors": [f"{type(exc).__name__}: {str(exc)[:220]}"],
-        }
+    return {
+        "status": "NO VERIFIED PRODUCT FOUND",
+        "results": [],
+        "errors": errors[:3] or [f"No indexed product page found for {sku or product.get('name')}."],
+    }
 
 
 def search_all_retailers(product):
