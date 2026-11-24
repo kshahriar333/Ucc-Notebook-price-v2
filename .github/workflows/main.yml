@@ -2,6 +2,15 @@ name: UCC Acer Price Change Monitor
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "price_bot.py"
+      - "retailer_fetcher.py"
+      - "ucc_reader.py"
+      - "match_engine.py"
+      - ".github/workflows/main.yml"
   schedule:
     - cron: "0 */6 * * *"
 
