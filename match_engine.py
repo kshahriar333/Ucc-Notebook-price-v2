@@ -57,6 +57,14 @@ def extract_ssd_gb(text):
             value = float(match.group(1))
             detected_unit = unit or match.group(2).upper()
             return int(value * 1024) if detected_unit == "TB" else int(value)
+    # Some retailer tables place the capacity on the opposite side of the SSD label.
+    for pattern in (
+        r"\b(\d{3,4})\s*GB\b(?=.{0,60}\bSSD\b)",
+        r"\bSSD\b.{0,40}?\b(\d{3,4})\s*GB\b",
+    ):
+        match = re.search(pattern, text, re.I)
+        if match:
+            return int(match.group(1))
     return None
 
 

@@ -121,8 +121,10 @@ def extract_specs(name, page_text):
 
     ssd = first_match([
         r"\b(\d+(?:\.\d+)?\s*(?:TB|GB))(?:\s+\w+){0,4}\s+SSD\b",
-        r"\bSSD\)?\s*[:\-]?\s*(\d+(?:\.\d+)?\s*(?:TB|GB))\b",
-        r"\b(?:Storage(?:\s+Capacity)?|Solid-State\s+Drive)\s*[:\-]?\s*(\d+(?:\.\d+)?\s*(?:TB|GB))\b",
+        r"\bSSD\)?\s*[|:=-]?\s*(\d+(?:\.\d+)?\s*(?:TB|GB))\b",
+        r"\b(?:Storage(?:\s+Capacity)?|Solid-State\s+Drive)\s*[|:=-]?\s*(\d+(?:\.\d+)?\s*(?:TB|GB))\b",
+        r"\b(\d{3,4})\s*GB\b(?=.{0,60}\bSSD\b)",
+        r"\bSSD\b.{0,40}?\b(\d{3,4})\s*GB\b",
     ], text)
     if ssd:
         ssd = re.sub(r"\s+", "", ssd.upper())

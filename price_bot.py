@@ -123,7 +123,8 @@ def main():
         print(
             f"  SKU={candidate.get('sku')} price={money(candidate.get('price'))} "
             f"stock={candidate.get('stock_status', 'unknown')} "
-            f"match={match['status']} checks={match['checks']}"
+            f"match={match['status']} checks={match['checks']} "
+            f"extracted_ssd={candidate.get('ssd')}"
         )
         report_lines.extend([
             f"Product: {candidate.get('name')}",
