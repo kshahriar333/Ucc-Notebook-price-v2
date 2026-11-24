@@ -163,12 +163,22 @@ def main():
             verified_counts[retailer] += 1
             current["retailers"][retailer] = price
             old_price = (previous.get("retailers") or {}).get(retailer)
+            # UCC is the reference/base price. Alert only when a verified
+            # competitor price changes, and state its difference from UCC.
             if old_price is not None and old_price != price:
-                direction = "INCREASED" if price > old_price else "DECREASED"
+                movement = "INCREASED" if price > old_price else "DECREASED"
+                ucc_price = current.get("ucc")
+                if ucc_price is not None:
+                    delta = price - ucc_price
+                    relation = (
+                        f"{money(abs(delta))} {'above' if delta > 0 else 'below' if delta < 0 else 'same as'} UCC"
+                    )
+                else:
+                    relation = "UCC base price unavailable"
                 alerts.append(
-                    f"{retailer.upper()} {direction}: {product.get('name')} "
+                    f"{retailer.upper()} PRICE {movement}: {product.get('name')} "
                     f"({product.get('sku') or key}) | "
-                    f"{money(old_price)} → {money(price)}"
+                    f"New: {money(price)} | UCC base: {money(ucc_price)} | {relation}"
                 )
             print(
                 f"{retailer} {key}: {money(price)} | "
