@@ -120,8 +120,7 @@ def extract_specs(name, page_text):
     ddr = first_match([r"\b(DDR[345X])\b"], text)
 
     ssd = first_match([
-        r"\b(\d+(?:\.\d+)?\s*TB)\s*(?:NVMe\s*)?(?:PCIe\s*)?SSD\b",
-        r"\b(\d{3,4}\s*GB)\s*(?:NVMe\s*)?(?:PCIe\s*)?SSD\b",
+        r"\b(\d+(?:\.\d+)?\s*(?:TB|GB))(?:\s+\w+){0,4}\s+SSD\b",
         r"\bSSD\s*[:\-]?\s*(\d+(?:\.\d+)?\s*(?:TB|GB))\b",
     ], text)
     if ssd:

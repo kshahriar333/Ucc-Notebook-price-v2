@@ -45,10 +45,10 @@ def extract_ram(text):
 
 def extract_ssd_gb(text):
     text = str(text or "")
-    match = re.search(r"\b(\d+(?:\.\d+)?)\s*TB\s*(?:NVMe\s*)?(?:PCIe\s*)?SSD\b", text, re.I)
+    match = re.search(r"\b(\d+(?:\.\d+)?)\s*TB(?:\s+\w+){0,4}\s+SSD\b", text, re.I)
     if match:
         return int(float(match.group(1)) * 1024)
-    match = re.search(r"\b(\d{3,4})\s*GB\s*(?:NVMe\s*)?(?:PCIe\s*)?SSD\b", text, re.I)
+    match = re.search(r"\b(\d{3,4})\s*GB(?:\s+\w+){0,4}\s+SSD\b", text, re.I)
     if match:
         return int(match.group(1))
     match = re.search(r"\bSSD\s*[:\-]?\s*(\d+(?:\.\d+)?)\s*(TB|GB)\b", text, re.I)

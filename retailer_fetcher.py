@@ -80,7 +80,7 @@ def extract_first(patterns, text, flags=re.I):
 def extract_sku(text):
     # Labelled part numbers take priority over incidental codes in descriptions.
     return extract_first([
-        r"(?:Part\s*(?:No|Number)|MPN|SKU|Product\s*Code)\s*[:#\-]?\s*"
+        r"(?:Part\s*(?:No|Number)|MPN|SKU)\s*[:#\-]?\s*"
         r"([A-Z0-9][A-Z0-9._-]{4,})",
         r"\b([A-Z]{2}\.[A-Z0-9]{2,12}\.[A-Z0-9]{2,12})\b",
     ], text)
@@ -104,8 +104,7 @@ def extract_specs(name, text):
     ], combined)
     ddr = extract_first([r"\b(DDR[345X])\b"], combined)
     ssd = extract_first([
-        r"\b(\d+(?:\.\d+)?\s*TB)\s*(?:NVMe\s*)?(?:PCIe\s*)?SSD\b",
-        r"\b(\d{3,4}\s*GB)\s*(?:NVMe\s*)?(?:PCIe\s*)?SSD\b",
+        r"\b(\d+(?:\.\d+)?\s*(?:TB|GB))(?:\s+\w+){0,4}\s+SSD\b",
         r"\bSSD\s*[:\-]?\s*(\d+(?:\.\d+)?\s*(?:TB|GB))\b",
     ], combined)
     if model:
@@ -121,7 +120,17 @@ def extract_specs(name, text):
 
 
 def parse_price_from_soup(soup, page_text, allow_fallback=True):
-    # Prefer product-specific selling-price fields. Do not use EMI values.
+    # Prefer the labelled current selling price before generic price classes.
+    labelled_patterns = (
+        r"(?:Discount|Special)\s*Price\s*(?:৳|Tk\.?|BDT)\s*[\d,]+",
+    )
+    for pattern in labelled_patterns:
+        match = re.search(pattern, page_text or "", re.I)
+        if match:
+            price = extract_price(match.group(0))
+            if price:
+                return price
+
     selectors = [
         '[itemprop="price"]',
         'meta[property="product:price:amount"]',
@@ -129,7 +138,6 @@ def parse_price_from_soup(soup, page_text, allow_fallback=True):
         ".price-new",
         ".product-price",
         ".special-price",
-        ".price",
     ]
     for selector in selectors:
         for tag in soup.select(selector):
@@ -138,8 +146,7 @@ def parse_price_from_soup(soup, page_text, allow_fallback=True):
             if price:
                 return price
 
-    # Broad page-text fallback can accidentally read FAQ or EMI amounts.
-    # Use it only when the product is not marked unavailable.
+    # Generic .price elements can be "Save ৳7,500", so avoid them.
     if allow_fallback:
         main = soup.select_one(
             "#content, main, .product-info, .product-details, "
@@ -168,14 +175,18 @@ def parse_product_page(retailer, url):
 
     page_text = clean(soup.get_text(" ", strip=True))
     unavailable = bool(re.search(
-        r"\b(out of stock|discontinued|not available)\b",
+        r"\b(out\s+of\s+stock|discontinued|not\s+available)\b",
         page_text,
         re.I,
     ))
-    price = parse_price_from_soup(
+    # Star Tech's current page can show an FAQ price while the item is
+    # unavailable. Only monitor it when the page clearly says In Stock.
+    if retailer == "Star Tech" and not re.search(r"\bIn\s+Stock\b", page_text, re.I):
+        unavailable = True
+    price = None if unavailable else parse_price_from_soup(
         soup,
         page_text,
-        allow_fallback=not unavailable,
+        allow_fallback=True,
     )
 
     bad_titles = ("login", "cart", "offer", "pc builder", "category", "search")
