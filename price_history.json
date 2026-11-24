@@ -9,5 +9,159 @@
       "Ryans": 77500,
       "Star Tech": 77000
     }
+  },
+  "UN34RSI01X": {
+    "name": "Acer Aspire 3 A324-53 (UN.34RSI.01X) Intel Core 3 100U 8GB DDR4 RAM 256GB Gen4 NVMe 14 Inch FHD IPS Display Steel Gray Laptop",
+    "sku": "UN.34RSI.01X",
+    "url": "https://www.ucc.com.bd/acer-aspire-3-a324-53-core-3-100u-un34rsi01x-laptop",
+    "ucc": 67900,
+    "retailers": {}
+  },
+  "UN35MSI027": {
+    "name": "Acer Aspire 15 AS15-42-R3 Ryzen 3 7330U 8GB DDR4 3200MHz 512GB NVMe SSD 15 Inch FHD IPS 55Whr Pure Silver Laptop",
+    "sku": "UN.35MSI.027",
+    "url": "https://www.ucc.com.bd/acer-aspire-15-as15-42-r3-UN-35MSI-00U-ryzen-3-7330u-8gb-ddr4-3200mhz-512gb-nvme-ssd-15-inch-fhd-ips-55whr-pure-silver-laptop",
+    "ucc": 64500,
+    "retailers": {}
+  },
+  "UN37GSI007": {
+    "name": "Acer Aspire 3 A325-42 V2 (UN.37GSI.007) AMD Ryzen 3 5300U 8GB DDR4 RAM 256GB NVMe SSD 15.6 Inch FHD IPS Display Steel Gray Laptop",
+    "sku": "UN.37GSI.007",
+    "url": "https://www.ucc.com.bd/acer-aspire-3-a325-42-ryzen-3-5300u-un37gsi007-laptop",
+    "ucc": 59000,
+    "retailers": {}
+  },
+  "UN35MSI026": {
+    "name": "Acer Aspire 15 AS15-42-R7 Ryzen 7 7730U 8GB DDR4 3200MHz 512GB NVMe SSD 15 Inch FHD IPS Backlit Pure Silver Laptop",
+    "sku": "UN.35MSI.026",
+    "url": "https://www.ucc.com.bd/Acer-Aspire-15-AS15-42-R7-Ryzen-7-7730U-8GB-DDR4-3200MHz-512GB-NVMe-SSD-15.6-Inch-FHD-IPS-Backlit-Pure-Silver-Laptop",
+    "ucc": 85000,
+    "retailers": {}
+  },
+  "UN34YSI025": {
+    "name": "Acer Aspire 3 A325-53-i3 (UN.34YSI.025) Intel 13th Gen Core i3-1305U 8GB DDR4 RAM 512GB Gen4 NVMe 15.6 Inch FHD IPS Display Pure Silver Laptop",
+    "sku": "UN.34YSI.025",
+    "url": "https://www.ucc.com.bd/acer-aspire-3-a325-53-i3-1305u-un34ysi025-laptop",
+    "ucc": 71900,
+    "retailers": {}
+  },
+  "UN34YSI024": {
+    "name": "Acer Aspire 3 A325-53-i5 (UN.34YSI.024) Intel 13th Gen Core i5-1334U 8GB DDR4 RAM 512GB Gen4 NVMe 15.6 Inch FHD IPS Display Pure Silver Laptop",
+    "sku": "UN.34YSI.024",
+    "url": "https://www.ucc.com.bd/acer-aspire-3-a325-53-i5-1334u-un34ysi024-laptop",
+    "ucc": 81900,
+    "retailers": {}
+  },
+  "UN34GSI033": {
+    "name": "Acer Travellite TL14-52M Intel 13th Gen Core i5-1335U 8GB DDR4 RAM 512GB Gen4 NVMe 14 Inch FHD IPS Display Military Grade Laptop",
+    "sku": "UN.34GSI.033",
+    "url": "https://www.ucc.com.bd/acer-travellite-tl14-52m-intel-13th-gen-core-i5-1335u-intel-iris-xe-graphics-business-laptop",
+    "ucc": 88000,
+    "retailers": {}
+  },
+  "A71579G": {
+    "name": "Acer Aspire 7 A715-79G Intel Core 5 210H 16GB DDR4 512 PCIe NVMe RTX 3050 4GB Graphics FHD IPS 144Hz Flame Black Gaming Laptop",
+    "sku": "A715-79G",
+    "url": "https://www.ucc.com.bd/acer-aspire-7-a715-79g-intel-core-5-210h-16gb-ddr4-512-pcie-nvme-rtx-3050-4gb-graphics-fhd-ips-144hz-flame-black-gaming-laptop",
+    "ucc": 109900,
+    "retailers": {}
+  },
+  "MACBOOKNEO512BLUSH": {
+    "name": "Apple MacBook Neo 13 Inch A18 Pro 8GB 512GB SSD Laptop - Blush",
+    "sku": "MACBOOK-NEO-512-BLUSH",
+    "url": "https://www.ucc.com.bd/apple-macbook-neo-13-inch-a18-pro-8gb-512gb-laptop-blush",
+    "ucc": 109000,
+    "retailers": {}
+  },
+  "MACBOOKNEO512SILVER": {
+    "name": "Apple MacBook Neo 13 Inch A18 Pro 8GB 512GB SSD Laptop - Silver",
+    "sku": "MACBOOK-NEO-512-SILVER",
+    "url": "https://www.ucc.com.bd/apple-macbook-neo-13-inch-a18-pro-8gb-512gb-laptop-silver",
+    "ucc": 109000,
+    "retailers": {}
+  },
+  "CYBORG": {
+    "name": "MSI Cyborg 15 B2RWEKG Intel Core 5 210H RTX 5050 GDDR7 8GB Graphics 16GB (8*2) DDR5 RAM 512GB NVMe SSD15.6 FHD 144Hz Gaming Laptop",
+    "sku": "CYBORG",
+    "url": "https://www.ucc.com.bd/msi-cyborg-15-b2rwekg-intel-core-5-210h-rtx-5050-gddr7-8gb-graphics-16gb-82-ddr5-ram-512gb-nvme-ssd156-fhd-144hz-gaming-laptop",
+    "ucc": 169900,
+    "retailers": {}
+  },
+  "CREATOR": {
+    "name": "MSI Creator A16 AI+ A3HVFG Ryzen AI 9 365 RTX 4060 GDDR6 8GB Graphics 32GB LPDDR5x 1TB NVMe SSD 16inch QHD+ OLED 240Hz Gaming Laptop",
+    "sku": "CREATOR",
+    "url": "https://www.ucc.com.bd/msi-creator-a16-ai-a3hvfg-ryzen-ai-9-365-rtx-4060-6gb-graphics-qhd-oled-240hz-gaming-laptop",
+    "ucc": 299900,
+    "retailers": {}
+  },
+  "KATANA": {
+    "name": "MSI Katana 15 HX B14WGK Intel Core i7 14th Gen-14650HX RTX 5070 8GB Graphics 16GB DDR5 RAM 15.6 Inch QHD 165Hz Gaming Laptop",
+    "sku": "KATANA",
+    "url": "https://www.ucc.com.bd/MSI-Katana-15-HX-B14WGK-Intel-Core-i7-14th-Gen-14650HX-RTX-5070-8GB-Graphics-16GB-DDR5-RAM-15.6-Inch-QHD-165Hz-Gaming-Laptop",
+    "ucc": 233900,
+    "retailers": {}
+  },
+  "MODERN": {
+    "name": "MSI Modern 15 F1MG Intel Core 7 150U Intel Graphics 8GB 3200MHz RAM 1TB Gen4 NVMe SSD 15.6 Inch FHD IPS urban silver Laptop",
+    "sku": "MODERN",
+    "url": "https://www.ucc.com.bd/msi-modern-15-f1mg-intel-core-7-150u-intel-graphics-urban-silver-laptop",
+    "ucc": 105900,
+    "retailers": {}
+  },
+  "MODERN14": {
+    "name": "MSI Modern 14 H D2RMG Intel Core 7 240H Intel Graphics 16 GB (8*2) 3200MHz RAM 512GB Gen4 NVMe SSD 14 Inch FHD+ IPS Platinum Black Laptop",
+    "sku": "MODERN14",
+    "url": "https://www.ucc.com.bd/msi-modern-14-h-d2rmg-intel-core-7-240h-intel-graphics-16-gb-3200mhz-ram-512gb-gen4-nvme-ssd-14-inch-fhd-ips-platinum-black-laptop",
+    "ucc": 113900,
+    "retailers": {}
+  },
+  "PRESTIGE": {
+    "name": "MSI Prestige 13 AI+ Evo A2VMG Intel Core ultra 7 258V Intel Arc Graphics 140V 32GB LPDDR5x RAM 1TB NVMe GEN4 SSD 13inch OLED Laptop",
+    "sku": "PRESTIGE",
+    "url": "https://www.ucc.com.bd/msi-prestige-13-ai-evo-a2vmg-intel-core-ultra-7-258v-intel-arc-graphics-oled-laptop",
+    "ucc": 216900,
+    "retailers": {}
+  },
+  "RAIDER": {
+    "name": "MSI Raider 18 HX AI A2XWIG Intel Core Ultra 9 285HX RTX 5080 16GB Graphics 64GB(32*2) 6400MHz DDR5 RAM 4TB(2*2) NVME SSD 18 Inch UHD+ 120Hz Gaming Laptop",
+    "sku": "RAIDER",
+    "url": "https://www.ucc.com.bd/msi-raider-18-hx-ai-a2xwig-intel-core-ultra-9-285hx-rtx-5080-gaming-laptop",
+    "ucc": 629900,
+    "retailers": {}
+  },
+  "URL:msi-thin-15-b13ve-intel-core-i5-13420h-rtx-4050-6gb144hz-gaming-laptop": {
+    "name": "MSI Thin 15 B13VE Intel Core i5 13420H RTX 4050 6GB Graphics 8GB DDR4 RAM 15.6 Inch FHD 144Hz Gaming LAPTOP",
+    "sku": null,
+    "url": "https://www.ucc.com.bd/msi-thin-15-b13ve-intel-core-i5-13420h-rtx-4050-6gb144hz-gaming-laptop",
+    "ucc": 127900,
+    "retailers": {}
+  },
+  "URL:msi-thin-15-b13uc-intel-core-i5-13420h-rtx-3050-gaming-laptop": {
+    "name": "MSI Thin 15 B13UC Intel Core i5 13420H RTX 3050 4GB GDDR6 8GB DDR4 RAM 512GB Gen4 NVMe SSD 15.6 Inch FHD 144Hz Gaming LAPTOP",
+    "sku": null,
+    "url": "https://www.ucc.com.bd/msi-thin-15-b13uc-intel-core-i5-13420h-rtx-3050-gaming-laptop",
+    "ucc": 92900,
+    "retailers": {}
+  },
+  "URL:msi-thin-a15-b7uc-675bd-amd-ryzen-7-7735hs-rtx-3050-4gb-gddr6-28gb-16-gb-ddr5-ram-1-tb-gen4-nvme-ssd-156-inch-fhd-144hz-gaming-laptop": {
+    "name": "MSI Thin A15 B7UC-675BD AMD Ryzen 7 7735HS RTX 3050 4GB GDDR6 (2*8GB) 16 GB DDR5 RAM 1TB GEN4 NVME SSD 15.6 INCH FHD 144Hz Gaming Laptop",
+    "sku": null,
+    "url": "https://www.ucc.com.bd/msi-thin-a15-b7uc-675bd-amd-ryzen-7-7735hs-rtx-3050-4gb-gddr6-28gb-16-gb-ddr5-ram-1-tb-gen4-nvme-ssd-156-inch-fhd-144hz-gaming-laptop",
+    "ucc": 129900,
+    "retailers": {}
+  },
+  "STEALTH": {
+    "name": "MSI Stealth A16 AI+ A3XVGG Ryzen AI 9 HX 370 RTX 4070 8GB GDDR6 32GB LPDDR5x 2TB NVMe SSD 16inch QHD+ OLED 240Hz Gaming Laptop",
+    "sku": "STEALTH",
+    "url": "https://www.ucc.com.bd/msi-stealth-a16-ai-a3xvgg-ryzen-ai-9-hx-370-rtx-4070-8gb-gddr6-gaming-laptop",
+    "ucc": 378900,
+    "retailers": {}
+  },
+  "VECTOR": {
+    "name": "MSI Vector 16 HX AI A2XWHG Intel Core Ultra 9 275HX RTX 5070 TI 12GB Graphics 32GB(16*2) 6400MHz DDR5 RAM 1TB NVME Gen4 SSD 16 Inch QHD+ 240Hz Gaming Laptop",
+    "sku": "VECTOR",
+    "url": "https://www.ucc.com.bd/msi-vector-16-hx-ai-a2xwhg-intel-core-ultra-9-275hx-rtx-5070ti-gaming-laptop",
+    "ucc": 349900,
+    "retailers": {}
   }
 }
