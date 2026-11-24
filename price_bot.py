@@ -71,7 +71,9 @@ def main():
 
     print(
         f"UCC product: {product.get('name')} | SKU={product.get('sku')} "
-        f"| Price={money(product.get('price'))}"
+        f"| Price={money(product.get('price'))} | Specs="
+        f"model={product.get('model')} cpu={product.get('processor')} "
+        f"ram={product.get('ram')} ddr={product.get('ddr')} ssd={product.get('ssd')}"
     )
     retailer_results = search_all_retailers(product)
     history = load_history()

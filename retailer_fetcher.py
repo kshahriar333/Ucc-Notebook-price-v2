@@ -105,7 +105,8 @@ def extract_specs(name, text):
     ddr = extract_first([r"\b(DDR[345X])\b"], combined)
     ssd = extract_first([
         r"\b(\d+(?:\.\d+)?\s*(?:TB|GB))(?:\s+\w+){0,4}\s+SSD\b",
-        r"\bSSD\s*[:\-]?\s*(\d+(?:\.\d+)?\s*(?:TB|GB))\b",
+        r"\bSSD\)?\s*[:\-]?\s*(\d+(?:\.\d+)?\s*(?:TB|GB))\b",
+        r"\b(?:Storage(?:\s+Capacity)?|Solid-State\s+Drive)\s*[:\-]?\s*(\d+(?:\.\d+)?\s*(?:TB|GB))\b",
     ], combined)
     if model:
         model = re.sub(r"\s+", "", model).upper()
@@ -179,10 +180,19 @@ def parse_product_page(retailer, url):
         page_text,
         re.I,
     ))
-    # Star Tech's current page can show an FAQ price while the item is
-    # unavailable. Only monitor it when the page clearly says In Stock.
-    if retailer == "Star Tech" and not re.search(r"\bIn\s+Stock\b", page_text, re.I):
-        unavailable = True
+    stock_status = "OUT OF STOCK / DISCONTINUED" if unavailable else "CHECK PAGE"
+    if retailer == "Star Tech":
+        status_match = re.search(
+            r"\bStatus\s*[:|]?\s*(In\s+Stock|Out\s+Of\s+Stock|Discontinued)\b",
+            page_text,
+            re.I,
+        )
+        if not status_match or status_match.group(1).lower() != "in stock":
+            unavailable = True
+            stock_status = "OUT OF STOCK / STATUS NOT CONFIRMED"
+        else:
+            unavailable = False
+            stock_status = "IN STOCK"
     price = None if unavailable else parse_price_from_soup(
         soup,
         page_text,
@@ -197,7 +207,7 @@ def parse_product_page(retailer, url):
         "retailer": retailer,
         "name": name,
         "price": price,
-        "stock_status": "OUT OF STOCK / DISCONTINUED" if unavailable else "CHECK PAGE",
+        "stock_status": stock_status,
         "url": url,
         "page_text": page_text,
     }

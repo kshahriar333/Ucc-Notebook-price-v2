@@ -45,16 +45,18 @@ def extract_ram(text):
 
 def extract_ssd_gb(text):
     text = str(text or "")
-    match = re.search(r"\b(\d+(?:\.\d+)?)\s*TB(?:\s+\w+){0,4}\s+SSD\b", text, re.I)
-    if match:
-        return int(float(match.group(1)) * 1024)
-    match = re.search(r"\b(\d{3,4})\s*GB(?:\s+\w+){0,4}\s+SSD\b", text, re.I)
-    if match:
-        return int(match.group(1))
-    match = re.search(r"\bSSD\s*[:\-]?\s*(\d+(?:\.\d+)?)\s*(TB|GB)\b", text, re.I)
-    if match:
-        value = float(match.group(1))
-        return int(value * 1024) if match.group(2).upper() == "TB" else int(value)
+    patterns = [
+        (r"\b(\d+(?:\.\d+)?)\s*TB(?:\s+\w+){0,4}\s+SSD\b", "TB"),
+        (r"\b(\d{3,4})\s*GB(?:\s+\w+){0,4}\s+SSD\b", "GB"),
+        (r"\bSSD\)?\s*[:\-]?\s*(\d+(?:\.\d+)?)\s*(TB|GB)\b", None),
+        (r"\b(?:Storage(?:\s+Capacity)?|Solid-State\s+Drive)\s*[:\-]?\s*(\d{3,4})\s*GB\b", "GB"),
+    ]
+    for pattern, unit in patterns:
+        match = re.search(pattern, text, re.I)
+        if match:
+            value = float(match.group(1))
+            detected_unit = unit or match.group(2).upper()
+            return int(value * 1024) if detected_unit == "TB" else int(value)
     return None
 
 
