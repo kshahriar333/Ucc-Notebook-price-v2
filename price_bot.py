@@ -201,21 +201,22 @@ def main():
     print("\n".join(summary))
     print(f"Price changes detected: {len(alerts)}")
 
-    if baseline_count and not any(
-        history.get(key, {}).get("previous_baseline_notice")
-        for key in current_keys
-    ):
-        # First all-catalogue baseline notice. No historical comparison is
-        # possible for newly enrolled products.
+    if alerts:
+        message = "\n".join(summary)
+        if baseline_count:
+            message += (
+                f"\nNewly tracked laptops added to the baseline: {baseline_count}."
+            )
+        message += "\n\nPRICE CHANGES\n" + "\n".join(alerts)
+        send_telegram(message)
+        print("Telegram price-change alert sent.")
+    elif baseline_count:
         message = "\n".join(summary) + (
             f"\n\nInitial baseline saved for {baseline_count} newly tracked laptops. "
             "Future verified price changes will trigger alerts."
         )
         send_telegram(message)
-    elif alerts:
-        message = "\n".join(summary) + "\n\nPRICE CHANGES\n" + "\n".join(alerts)
-        send_telegram(message)
-        print("Telegram price-change alert sent.")
+        print("Telegram initial catalogue baseline sent.")
     else:
         print("No verified price movement. No Telegram price-change alert sent.")
 
