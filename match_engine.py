@@ -1,4 +1,4 @@
-"""Conservative laptop matching: compare prices only after core specs match."""
+"""Conservative SKU-first matching for UCC laptop price comparison."""
 import re
 
 
@@ -61,9 +61,9 @@ def extract_ssd_gb(text):
     for pattern, unit in patterns:
         match = re.search(pattern, text, re.I)
         if match:
-            value = float(match.group(1))
+            amount = float(match.group(1))
             detected_unit = unit or match.group(2).upper()
-            return int(value * 1024) if detected_unit == "TB" else int(value)
+            return int(amount * 1024) if detected_unit == "TB" else int(amount)
     return None
 
 
@@ -124,15 +124,28 @@ def compare_products(ucc, competitor):
 
     mismatches = [key for key, result in checks.items() if result == "MISMATCH"]
     unknowns = [key for key, result in checks.items() if result == "UNKNOWN"]
-    price_allowed = not mismatches and not unknowns
-    if mismatches:
-        status = "CONFIGURATION MISMATCH"
-    elif unknowns:
-        status = "UNVERIFIED - MISSING SPECS"
-    elif exact_sku:
-        status = "EXACT SKU + SPEC MATCH"
+    matched = [key for key, result in checks.items() if result == "MATCH"]
+
+    # Exact identical part number is the primary identity. It can tolerate
+    # missing page specs, but never a detected contradiction.
+    if exact_sku:
+        price_allowed = not mismatches
+        status = "EXACT SKU MATCH" if price_allowed else "SKU MATCH BUT SPEC CONFLICT"
     else:
-        status = "SPECIFICATION MATCH (SKU DIFFERENT/NOT FOUND)"
+        # Without an exact SKU, require model + CPU + at least one memory/
+        # storage spec to agree; unknown fields are tolerated, conflicts are not.
+        enough_evidence = (
+            checks["model"] == "MATCH"
+            and checks["processor"] == "MATCH"
+            and any(checks[key] == "MATCH" for key in ("ram", "ddr", "ssd"))
+        )
+        price_allowed = enough_evidence and not mismatches
+        if mismatches:
+            status = "CONFIGURATION MISMATCH"
+        elif price_allowed:
+            status = "SPECIFICATION MATCH"
+        else:
+            status = "UNVERIFIED - INSUFFICIENT SPECS"
 
     return {
         "status": status,
@@ -141,4 +154,5 @@ def compare_products(ucc, competitor):
         "price_comparison_allowed": price_allowed,
         "mismatches": mismatches,
         "unknowns": unknowns,
+        "matched_specs": matched,
     }
