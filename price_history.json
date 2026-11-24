@@ -95,10 +95,10 @@
     "retailers": {}
   },
   "KATANA": {
-    "name": "MSI Katana 15 HX B14WGK Intel Core i7 14th Gen-14650HX RTX 5070 8GB Graphics 16GB DDR5 RAM 15.6 Inch QHD 165Hz Gaming Laptop",
+    "name": "MSI Katana 15 HX B14WFK Intel Core i7 14th Gen-14650HX RTX 5060 8GB Graphics 16GB DDR5 RAM 15.6 Inch QHD 165Hz Gaming Laptop",
     "sku": "KATANA",
-    "url": "https://www.ucc.com.bd/MSI-Katana-15-HX-B14WGK-Intel-Core-i7-14th-Gen-14650HX-RTX-5070-8GB-Graphics-16GB-DDR5-RAM-15.6-Inch-QHD-165Hz-Gaming-Laptop",
-    "ucc": 233900,
+    "url": "https://www.ucc.com.bd/MSI-Katana-15-HX-B14WFK-Intel-Core-i7-14th-Gen-14650HX-RTX-5060-8GB-Graphics-16GB-DDR5-RAM-15.6-Inch-QHD-165Hz-Gaming-Laptop",
+    "ucc": 197900,
     "retailers": {}
   },
   "MODERN": {
@@ -158,10 +158,10 @@
     "retailers": {}
   },
   "VECTOR": {
-    "name": "MSI Vector 16 HX AI A2XWIG Intel Core Ultra 9 275HX RTX 5080 16GB Graphics 16GB 6400MHz DDR5 RAM 1TB NVME Gen4 SSD 16 Inch QHD+ 240Hz Gaming Laptop",
+    "name": "MSI Vector 16 HX AI A2XWHG Intel Core Ultra 9 275HX RTX 5070 TI 12GB Graphics 32GB(16*2) 6400MHz DDR5 RAM 1TB NVME Gen4 SSD 16 Inch QHD+ 240Hz Gaming Laptop",
     "sku": "VECTOR",
-    "url": "https://www.ucc.com.bd/msi-vector-16-hx-ai-a2xwig-intel-core-ultra-9-275hx-rtx-5080-gaming-laptop",
-    "ucc": 519900,
+    "url": "https://www.ucc.com.bd/msi-vector-16-hx-ai-a2xwhg-intel-core-ultra-9-275hx-rtx-5070ti-gaming-laptop",
+    "ucc": 349900,
     "retailers": {}
   },
   "UN35MSI02B": {
