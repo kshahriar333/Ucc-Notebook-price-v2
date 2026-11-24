@@ -1,6 +1,6 @@
 """SKU-first retailer discovery and conservative product-page extraction."""
 import re
-from urllib.parse import urlparse, parse_qs, unquote
+from urllib.parse import urlparse, parse_qs, unquote, urljoin
 
 import requests
 from bs4 import BeautifulSoup
@@ -192,40 +192,130 @@ def unwrap_search_url(href):
 
 
 def search_result_urls(domain, query):
-    urls = []
+    """Use each retailer's own search form; never depend on blocked public search engines."""
+    base = f"https://{domain}/"
     session = requests.Session()
     session.headers.update(HEADERS)
-    # Search exact SKU/part number first. Search result pages are only used to
-    # discover product links; all prices/specifications come from retailer pages.
-    search_targets = [
-        ("https://www.google.com/search", {"q": f"site:{domain} \"{query}\"", "num": "8"}),
-        ("https://www.bing.com/search", {"q": f"site:{domain} \"{query}\"", "count": "8"}),
-    ]
-    for endpoint, params in search_targets:
-        try:
-            response = session.get(endpoint, params=params, timeout=TIMEOUT)
-            response.raise_for_status()
-            soup = BeautifulSoup(response.text, "html.parser")
-            for anchor in soup.select("a[href]"):
-                href = unwrap_search_url(anchor.get("href", ""))
-                parsed = urlparse(href)
-                host = parsed.netloc.lower().removeprefix("www.")
-                path = parsed.path.lower().strip("/")
-                if host != domain or not path:
+    urls = []
+
+    def collect_links(response):
+        soup = BeautifulSoup(response.text, "html.parser")
+        anchors = []
+        for selector in (
+            ".product-thumb a[href]", ".product-item a[href]",
+            ".product-card a[href]", ".product-layout a[href]",
+            "[class*='product'] a[href]",
+        ):
+            anchors.extend(soup.select(selector))
+        if not anchors:
+            anchors = soup.select("a[href]")
+
+        for anchor in anchors:
+            href = urljoin(response.url, anchor.get("href", ""))
+            parsed = urlparse(href)
+            host = parsed.netloc.lower().removeprefix("www.")
+            path = parsed.path.lower().strip("/")
+            if host != domain or not path:
+                continue
+            if any(term in path for term in (
+                "search", "category", "brand", "account", "checkout",
+                "compare", "wishlist", "login", "cart",
+            )):
+                continue
+            candidate = f"https://{domain}/{path}"
+            if candidate not in urls:
+                urls.append(candidate)
+
+    try:
+        home = session.get(base, timeout=TIMEOUT)
+        home.raise_for_status()
+        soup = BeautifulSoup(home.text, "html.parser")
+        forms = soup.find_all("form")
+        ranked_forms = []
+
+        for form in forms:
+            fields = {}
+            score = 0
+            search_field = None
+            for item in form.select("input[name], select[name]"):
+                name = item.get("name", "").strip()
+                if not name:
                     continue
-                if any(term in path for term in (
-                    "search", "category", "brand", "account", "checkout",
-                    "compare", "wishlist", "login",
-                )):
+                value = item.get("value", "")
+                if item.name == "input":
+                    field_type = (item.get("type") or "").lower()
+                    descriptor = " ".join((
+                        name, item.get("placeholder", ""),
+                        item.get("aria-label", ""),
+                        item.get("title", ""),
+                    )).lower()
+                    if field_type == "search":
+                        score += 10
+                        search_field = name
+                    if any(word in descriptor for word in ("search", "keyword", "query")):
+                        score += 8
+                        search_field = name
+                    if field_type == "hidden":
+                        fields[name] = value
+                if item.name == "select":
                     continue
-                clean_url = f"https://{domain}/{path}"
-                if clean_url not in urls:
-                    urls.append(clean_url)
-            if urls:
-                break
-        except requests.RequestException as exc:
-            print(f"Search provider warning for {domain}: {type(exc).__name__}")
-    return urls[:4]
+            action = urljoin(home.url, form.get("action") or home.url)
+            if urlparse(action).netloc.lower().removeprefix("www.") != domain:
+                continue
+            if "search" in urlparse(action).path.lower():
+                score += 5
+            if search_field:
+                fields[search_field] = query
+            if score >= 8 and search_field:
+                ranked_forms.append((score, form, action, fields))
+
+        ranked_forms.sort(key=lambda row: row[0], reverse=True)
+        for _, form, action, fields in ranked_forms[:2]:
+            try:
+                if (form.get("method") or "get").lower() == "post":
+                    response = session.post(action, data=fields, timeout=TIMEOUT)
+                else:
+                    response = session.get(action, params=fields, timeout=TIMEOUT)
+                response.raise_for_status()
+                collect_links(response)
+                if urls:
+                    break
+            except requests.RequestException as exc:
+                print(f"Native search warning for {domain}: {type(exc).__name__}")
+
+    except requests.RequestException as exc:
+        print(f"Homepage access warning for {domain}: {type(exc).__name__}")
+
+    # Some storefronts use a JavaScript search box without a normal HTML form.
+    # Try a small set of common GET search routes only if the native form gave no links.
+    if not urls:
+        variants = {
+            "ryans.com": [
+                ("/search", {"keyword": query}),
+                ("/search", {"q": query}),
+                ("/search", {"search": query}),
+            ],
+            "startech.com.bd": [
+                ("/index.php", {"route": "product/search", "search": query}),
+                ("/search", {"search": query}),
+            ],
+            "techlandbd.com": [
+                ("/", {"s": query}),
+                ("/search", {"search": query}),
+                ("/search", {"query": query}),
+                ("/search", {"q": query}),
+            ],
+        }
+        for path, params in variants.get(domain, []):
+            try:
+                response = session.get(urljoin(base, path), params=params, timeout=TIMEOUT)
+                response.raise_for_status()
+                collect_links(response)
+                if urls:
+                    break
+            except requests.RequestException as exc:
+                print(f"Search route warning for {domain}: {type(exc).__name__}")
+    return urls[:5]
 
 
 def search_one(product, retailer_name):
