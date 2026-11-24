@@ -48,9 +48,8 @@ def discover_all_product_urls(max_pages=10):
 
         page_urls = set()
         for card in cards:
-            card_text = " ".join(card.stripped_strings).lower()
-            if "laptop" not in card_text and "notebook" not in card_text:
-                continue
+            # The source page is already the dedicated UCC laptop category;
+            # include every product card, including MacBook names that omit "laptop".
             for anchor in card.select("a[href]"):
                 href = urljoin(url, anchor.get("href", ""))
                 parsed = urlparse(href)
