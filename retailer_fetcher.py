@@ -119,8 +119,8 @@ def extract_specs(name, text):
     }
 
 
-def parse_price_from_soup(soup, page_text):
-    # Prefer explicit product-price elements, not EMI/installment values.
+def parse_price_from_soup(soup, page_text, allow_fallback=True):
+    # Prefer product-specific selling-price fields. Do not use EMI values.
     selectors = [
         '[itemprop="price"]',
         'meta[property="product:price:amount"]',
@@ -137,15 +137,16 @@ def parse_price_from_soup(soup, page_text):
             if price:
                 return price
 
-    # Fallback: find a currency amount in the main product area only.
-    main = soup.select_one(
-        "#content, main, .product-info, .product-details, "
-        ".product-summary, .product-page"
-    )
-    if main:
-        return extract_price(main.get_text(" ", strip=True))
+    # Broad page-text fallback can accidentally read FAQ or EMI amounts.
+    # Use it only when the product is not marked unavailable.
+    if allow_fallback:
+        main = soup.select_one(
+            "#content, main, .product-info, .product-details, "
+            ".product-summary, .product-page"
+        )
+        if main:
+            return extract_price(main.get_text(" ", strip=True))
     return None
-
 
 def parse_product_page(retailer, url):
     expected_domain = RETAILER_DOMAINS[retailer]
@@ -165,11 +166,17 @@ def parse_product_page(retailer, url):
         raise ValueError("Product page has no H1 title.")
 
     page_text = clean(soup.get_text(" ", strip=True))
-    price = parse_price_from_soup(soup, page_text)
-    if price is None:
-        raise ValueError("Could not safely detect the product's selling price.")
+    unavailable = bool(re.search(
+        r"\b(out of stock|discontinued|not available)\b",
+        page_text,
+        re.I,
+    ))
+    price = parse_price_from_soup(
+        soup,
+        page_text,
+        allow_fallback=not unavailable,
+    )
 
-    # Reject generic pages even if they happen to contain a price.
     bad_titles = ("login", "cart", "offer", "pc builder", "category", "search")
     if any(term in name.lower() for term in bad_titles):
         raise ValueError(f"Not a product-detail page: {name}")
@@ -178,12 +185,16 @@ def parse_product_page(retailer, url):
         "retailer": retailer,
         "name": name,
         "price": price,
+        "stock_status": "OUT OF STOCK / DISCONTINUED" if unavailable else "CHECK PAGE",
         "url": url,
         "page_text": page_text,
     }
     item.update(extract_specs(name, page_text))
+    if price is None and not unavailable:
+        item["price_note"] = "No reliable current selling price found on the page."
+    elif price is None and unavailable:
+        item["price_note"] = "Page is marked unavailable; FAQ or EMI amounts are not treated as selling price."
     return item
-
 
 def search_one(product, retailer_name):
     sku = clean(product.get("sku")).upper()

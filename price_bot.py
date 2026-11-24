@@ -120,12 +120,16 @@ def main():
             f"Product: {candidate.get('name')}",
             f"SKU: {candidate.get('sku') or 'Not detected'}",
             f"Price: {money(candidate.get('price'))}",
+            f"Availability: {candidate.get('stock_status', 'Not reported')}",
             f"Spec match: {match['status']}",
             "Checks: " + ", ".join(
                 f"{key}={value}" for key, value in match["checks"].items()
             ),
             f"Link: {candidate.get('url')}",
         ])
+
+        if candidate.get("price_note"):
+            report_lines.append(f"Price note: {candidate['price_note']}")
 
         # Never alert/compare a competitor price until all required specs match.
         if not match["price_comparison_allowed"]:
