@@ -11,8 +11,8 @@ from bs4 import BeautifulSoup
 
 from ucc_reader import read_product
 
-# This is the general laptop category (Acer + MSI + Apple), not Acer-only.
-CATEGORY_URL = "https://www.ucc.com.bd/laptops?limit=100"
+# Use the site's normal page size. UCC may ignore a large ?limit= value.
+CATEGORY_URL = "https://www.ucc.com.bd/laptops"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -25,6 +25,7 @@ CARD_SELECTORS = (
     ".product-thumb", ".product-layout", ".product-item",
     ".product-card", ".product-grid .item", ".product-list .item",
     "[class*='product-item']", "[class*='product-thumb']",
+    "[class*='product-layout']", "[class*='product-card']",
 )
 EXCLUDED_PATH_PARTS = (
     "account", "checkout", "compare", "wishlist", "search", "category",
@@ -36,11 +37,7 @@ def build_session():
     session = requests.Session()
     session.headers.update(HEADERS)
     retry = Retry(
-        total=5,
-        connect=5,
-        read=5,
-        status=5,
-        backoff_factor=1.5,
+        total=5, connect=5, read=5, status=5, backoff_factor=1.5,
         status_forcelist=(429, 500, 502, 503, 504),
         allowed_methods=frozenset(("GET",)),
         respect_retry_after_header=True,
@@ -54,8 +51,9 @@ def build_session():
 def category_page_url(page):
     parsed = urlparse(CATEGORY_URL)
     query = parse_qs(parsed.query)
+    query.pop("limit", None)
     if page <= 1:
-        query.pop("page", None)
+        query["page"] = ["1"]
     else:
         query["page"] = [str(page)]
     return urlunparse(parsed._replace(query=urlencode(query, doseq=True)))
@@ -71,42 +69,40 @@ def product_url_from_anchor(anchor, base_url):
     path = parsed.path.strip("/").lower()
     if host != "ucc.com.bd" or not path:
         return None
-    if any(part in path for part in EXCLUDED_PATH_PARTS):
+    if parsed.query or any(part in path for part in EXCLUDED_PATH_PARTS):
         return None
-    if path in {"laptops", "gaming-laptops", "content-creation-laptops",
-                "business-productivity-laptops"}:
+    if path in {
+        "laptops", "gaming-laptops", "content-creation-laptops",
+        "business-productivity-laptops", "acer", "msi", "apple",
+    }:
         return None
-    # UCC product detail pages use one SEO slug path, unlike category routes.
-    if path.count("/") > 1 or len(path) < 12:
+    # Accept common SEO product slugs, including nested product routes.
+    if len(path) < 5 or path.count("/") > 2:
         return None
     return urlunparse(parsed._replace(query="", fragment=""))
 
 
+def is_laptop_context(anchor):
+    bits = [
+        anchor.get_text(" ", strip=True),
+        anchor.get("title", ""),
+        anchor.get("href", ""),
+    ]
+    parent = anchor.find_parent(class_=re.compile(r"product|item|card", re.I))
+    if parent:
+        bits.append(parent.get_text(" ", strip=True))
+        bits.append(" ".join(str(x) for x in parent.get("class", [])))
+    context = " ".join(bits).lower()
+    return bool(re.search(
+        r"laptop|notebook|macbook|aspire|nitro|predator|travelmate|travellite|"
+        r"swift|vector|katana|creator|cyborg|modern|prestige|thin|venture|"
+        r"helios|stealth|summit|raider|gaming|\bmsi\b|\bacer\b|\bapple\b",
+        context,
+    ))
+
+
 def parse_category_page(html, page_url):
     soup = BeautifulSoup(html, "html.parser")
-    cards = []
-    for selector in CARD_SELECTORS:
-        found = soup.select(selector)
-        if len(found) >= 3:
-            cards = found
-            break
-    page_urls = set()
-    if cards:
-        for card in cards:
-            for anchor in card.select("a[href]"):
-                url = product_url_from_anchor(anchor, page_url)
-                if url:
-                    page_urls.add(url)
-
-    # Fallback: collect product-detail links from listing sections only.
-    if not page_urls:
-        listing = soup.select_one("#content, .product-list, .product-grid, main")
-        if listing:
-            for anchor in listing.select("a[href]"):
-                url = product_url_from_anchor(anchor, page_url)
-                if url:
-                    page_urls.add(url)
-
     text = soup.get_text(" ", strip=True)
     count_match = re.search(r"Showing\s+(\d+)\s+to\s+(\d+)\s+of\s+(\d+)", text, re.I)
     expected_total = int(count_match.group(3)) if count_match else None
@@ -115,53 +111,64 @@ def parse_category_page(html, page_url):
         if count_match else None
     )
 
-    # Some UCC cards have a different wrapper and were absent from the first
-    # card selector. If the card count is short, supplement only from the
-    # listing region and only with laptop-looking product slugs/text.
-    if expected_on_page and len(page_urls) < expected_on_page:
-        listing = soup.select_one("#content, .product-list, .product-grid, main")
-        if listing:
-            for anchor in listing.select("a[href]"):
-                url = product_url_from_anchor(anchor, page_url)
-                if not url or url in page_urls:
-                    continue
-                parent = anchor.find_parent(class_=re.compile(r"product|item|card", re.I))
-                context = clean = " ".join((anchor.get_text(" ", strip=True), anchor.get("title", ""),
-                                             anchor.get("href", ""))).lower()
-                if parent:
-                    context += " " + parent.get_text(" ", strip=True).lower()
-                if not re.search(
-                    r"laptop|notebook|macbook|aspire|nitro|predator|travelmate|travellite|"
-                    r"swift|vector|katana|creator|cyborg|modern|prestige|thin|venture|"
-                    r"helios|stealth|summit|raider|gaming",
-                    context,
-                ):
-                    continue
-                page_urls.add(url)
-                if len(page_urls) >= expected_on_page:
-                    break
+    listing = soup.select_one("#content, .product-list, .product-grid, main") or soup
+    candidates = []
+    seen_anchors = set()
+    for selector in CARD_SELECTORS:
+        for card in listing.select(selector):
+            for anchor in card.select("a[href]"):
+                marker = id(anchor)
+                if marker not in seen_anchors:
+                    seen_anchors.add(marker)
+                    candidates.append((anchor, "card:" + selector))
 
-    page_links = []
+    # If the card wrappers changed, inspect every anchor in the listing region.
+    if not candidates or (expected_on_page and len(candidates) < expected_on_page):
+        for anchor in listing.select("a[href]"):
+            marker = id(anchor)
+            if marker not in seen_anchors:
+                seen_anchors.add(marker)
+                candidates.append((anchor, "listing-fallback"))
+
+    page_urls = set()
+    rejected = []
+    for anchor, source in candidates:
+        url = product_url_from_anchor(anchor, page_url)
+        if not url:
+            continue
+        if is_laptop_context(anchor):
+            page_urls.add(url)
+        elif source.startswith("card:"):
+            # Product card wrapper itself is strong evidence of a product link.
+            page_urls.add(url)
+        else:
+            rejected.append((url, anchor.get_text(" ", strip=True)[:90]))
+
+    page_links = set()
     for anchor in soup.select(".pagination a[href], ul.pagination a[href], a[href*='page=']"):
         href = urljoin(page_url, anchor.get("href", ""))
-        parsed = urlparse(href)
-        q = parse_qs(parsed.query)
+        q = parse_qs(urlparse(href).query)
         if "page" in q and q["page"][0].isdigit():
-            page_links.append(int(q["page"][0]))
-    return page_urls, expected_total, page_links
+            page_links.add(int(q["page"][0]))
+
+    print(
+        f"UCC page diagnostics: expected_on_page={expected_on_page}, "
+        f"candidate_anchors={len(candidates)}, product_urls={len(page_urls)}, "
+        f"rejected_non_laptop={len(rejected)}, pagination={sorted(page_links)}"
+    )
+    for url, label in rejected[:8]:
+        print(f"UCC ignored listing link: {label!r} -> {url}")
+    return page_urls, expected_total, sorted(page_links)
 
 
 def discover_all_product_urls(max_pages=MAX_PAGES):
     session = build_session()
     product_urls = set()
     expected_total = None
-    pages_to_visit = [1]
     visited_pages = set()
 
-    while pages_to_visit and len(visited_pages) < max_pages:
-        page = pages_to_visit.pop(0)
-        if page in visited_pages:
-            continue
+    # Standard pagination avoids the site's inconsistent handling of ?limit=100.
+    for page in range(1, max_pages + 1):
         visited_pages.add(page)
         url = category_page_url(page)
         last_error = None
@@ -169,7 +176,9 @@ def discover_all_product_urls(max_pages=MAX_PAGES):
             try:
                 response = session.get(url, timeout=TIMEOUT)
                 response.raise_for_status()
-                page_urls, page_expected, page_links = parse_category_page(response.text, response.url)
+                page_urls, page_expected, page_links = parse_category_page(
+                    response.text, response.url
+                )
                 break
             except requests.RequestException as exc:
                 last_error = exc
@@ -187,22 +196,22 @@ def discover_all_product_urls(max_pages=MAX_PAGES):
             f"({len(new_urls)} new); discovered total {len(product_urls)}"
         )
 
-        # Use actual pagination links when available; otherwise try sequential pages.
-        for linked_page in page_links:
-            if linked_page not in visited_pages and linked_page not in pages_to_visit:
-                pages_to_visit.append(linked_page)
-        if not page_links and page_urls and len(page_urls) >= 10:
-            next_page = page + 1
-            if next_page not in visited_pages and next_page not in pages_to_visit:
-                pages_to_visit.append(next_page)
-
-        if page > 1 and not new_urls and not page_links:
+        # Stop only after an actually empty page or a page that adds no products.
+        if not page_urls or (page > 1 and not new_urls):
             break
 
-    print(f"UCC category reports {expected_total} products; discovered {len(product_urls)} unique product URLs.")
+        # Follow any non-sequential pagination links on the next iterations if needed.
+        future_pages = [p for p in page_links if p > page and p not in visited_pages]
+        if future_pages and min(future_pages) > page + 1:
+            print(f"UCC pagination also advertises pages: {sorted(page_links)}")
+
+    print(
+        f"UCC category reports {expected_total} products; "
+        f"discovered {len(product_urls)} unique product URLs across {len(visited_pages)} page(s)."
+    )
     if len(product_urls) < 10:
         raise RuntimeError(f"Only {len(product_urls)} UCC laptop product URLs found; refusing partial scan.")
-    if expected_total and len(product_urls) < expected_total:
+    if expected_total and len(product_urls) != expected_total:
         raise RuntimeError(
             f"Incomplete UCC catalogue: expected {expected_total} products but found "
             f"{len(product_urls)}. No partial price report will be sent."
