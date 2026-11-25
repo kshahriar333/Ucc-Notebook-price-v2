@@ -64,7 +64,14 @@
     "sku": "A715-79G",
     "url": "https://www.ucc.com.bd/acer-aspire-7-a715-79g-intel-core-5-210h-16gb-ddr4-512-pcie-nvme-rtx-3050-4gb-graphics-fhd-ips-144hz-flame-black-gaming-laptop",
     "ucc_base_price": 109900,
-    "retailers": {}
+    "retailers": {
+      "Star Tech": {
+        "price": 108500,
+        "url": "https://www.startech.com.bd/acer-aspire-7-a715-79g-core-5-laptop",
+        "name": "Acer Aspire 7 A715-79G Core 5 210H RTX 3050 4GB 15.6\" FHD Gaming Laptop",
+        "match_status": "SPECIFICATION MATCH"
+      }
+    }
   },
   "MACBOOKNEO512BLUSH": {
     "name": "Apple MacBook Neo 13 Inch A18 Pro 8GB 512GB SSD Laptop - Blush",
@@ -179,6 +186,27 @@
     "sku": "MACBOOK",
     "url": "https://www.ucc.com.bd/apple-macbook-neo-13-inch-a18-pro-8gb-unified-memory-256gb-ssd-silver",
     "ucc_base_price": 97000,
+    "retailers": {}
+  },
+  "URL:acer-nitro-5-pro-an5p16-74g2-core-i7-14650hx-rtx-5050-gaming-laptop": {
+    "name": "Acer Nitro 5 Pro AN5P16-74G2 Core i7-14650HX RTX 5050 8GB 16GB DDR5 1TB SSD 16-inch WUXGA 165Hz Gaming Laptop",
+    "sku": null,
+    "url": "https://www.ucc.com.bd/acer-nitro-5-pro-an5p16-74g2-core-i7-14650hx-rtx-5050-gaming-laptop",
+    "ucc_base_price": 204900,
+    "retailers": {
+      "Star Tech": {
+        "price": 204900,
+        "url": "https://www.startech.com.bd/acer-nitro-5-pro-an5p16-74g2-core-i7-laptop",
+        "name": "Acer Nitro 5 Pro AN5P16-74G2 Core i7 14th Gen RTX 5050 8GB Graphics 16” FHD+ Gaming Laptop",
+        "match_status": "SPECIFICATION MATCH"
+      }
+    }
+  },
+  "UNU7PSI009": {
+    "name": "Acer Nitro 5 AN516-74G1 Core i5-14450HX RTX 5050 8GB 16GB DDR5 1TB SSD 16-inch WUXGA 165Hz Gaming Laptop",
+    "sku": "UN.U7PSI.009",
+    "url": "https://www.ucc.com.bd/acer-nitro-5-an516-74g1-core-i5-14450hx-rtx-5050-gaming-laptop",
+    "ucc_base_price": 189900,
     "retailers": {}
   }
 }
