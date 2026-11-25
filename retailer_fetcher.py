@@ -73,6 +73,8 @@ def extract_specs(name, text):
         r"\b([A-Z]{2}\.[A-Z0-9]{2,12}\.[A-Z0-9]{2,12})\b",
     ], text)
     model = first_match([
+        r"\b(MacBook\s+(?:Air|Pro|Neo)\s+\d{1,2}(?:\.\d)?\s*-?\s*inch)\b",
+        r"\b(MacBook\s+(?:Air|Pro|Neo))\b",
         r"\b((?:AS|AN|TL|TMP|PHN|PH|A\d{3})\s?[A-Z0-9]{1,10}(?:-[A-Z0-9]{1,10}){0,2})\b",
         r"\b([A-Z]\d[A-Z]{2,7}(?:-[A-Z0-9]{2,8})?)\b",
     ], combined)
@@ -83,12 +85,16 @@ def extract_specs(name, text):
         r"\b(Core\s+i[3579]\s*[- ]?\s*\d{4,5}[A-Z]{0,3})\b",
         r"\b(Core\s+[3579]\s+\d{3,5}[A-Z]{0,3})\b",
         r"\b(Processor\s+N\d{3})\b",
+        r"\b(Apple\s+M[1-5](?:\s+Pro|\s+Max|\s+Ultra)?)\b",
+        r"\b(A18\s+Pro|A18|A17\s+Pro)\b",
+        r"\b(Snapdragon\s+X\s+(?:Elite|Plus))\b",
     ], combined)
     ram = first_match([
         r"\bRAM\s*[:\-]?\s*(\d{1,2})\s*GB\b",
         r"\bMemory\s*[:\-]?\s*(\d{1,2})\s*GB\b",
         r"\b(\d{1,2})\s*GB\s*(?:LPDDR[345X]\s*)?(?:RAM|Memory)\b",
         r"\b(\d{1,2})\s*GB\s*(?:LPDDR[345X]|DDR[345X])\b",
+        r"\b(\d{1,2})\s*GB\s+Unified\s+Memory\b",
     ], combined)
     ddr = first_match([r"\b((?:LPDDR[345X]|DDR[345X]))\b"], combined)
     ssd = first_match([
@@ -382,9 +388,13 @@ def _candidate_score(ucc_product, candidate):
     candidate_sku = normalize(candidate.get("sku"))
     if ucc_sku and candidate_sku and ucc_sku == candidate_sku:
         return 1000
-    ucc_model = normalize(ucc_product.get("model") or "")
+    ucc_specs = extract_specs(
+        str(ucc_product.get("name") or ""),
+        str(ucc_product.get("page_text") or ""),
+    )
+    ucc_model = normalize(ucc_product.get("model") or ucc_specs.get("model") or "")
     candidate_model = normalize(candidate.get("model") or "")
-    ucc_cpu = normalize(ucc_product.get("processor") or "")
+    ucc_cpu = normalize(ucc_product.get("processor") or ucc_specs.get("processor") or "")
     candidate_cpu = normalize(candidate.get("processor") or "")
     if not ucc_model or not candidate_model or ucc_model != candidate_model:
         return 0
