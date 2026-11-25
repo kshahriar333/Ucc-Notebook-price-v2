@@ -186,12 +186,24 @@ def identity_from_dict(data):
 
 def find_verified_match(session, site, reference, index):
     ref_identity = identity_from_dict(reference["identity"])
+    # Pass 1: exact SKU match always wins, regardless of category ordering.
+    ref_sku = norm(ref_identity.sku)
+    if ref_sku:
+        for record in index.get(site, []):
+            candidate = identity_from_dict(record["identity"])
+            if candidate.sku and norm(candidate.sku) == ref_sku:
+                print(f"    {site}: EXACT_SKU -> {record['url']}")
+                return record["url"], "EXACT_SKU"
+    # Pass 2: only when at least one side lacks a SKU, require the full spec
+    # fingerprint. Conflicting SKUs are explicitly excluded.
     for record in index.get(site, []):
         candidate = identity_from_dict(record["identity"])
+        if ref_identity.sku and candidate.sku:
+            continue
         decision = compare_laptops(ref_identity, candidate)
-        if decision["matched"]:
-            print(f"    {site}: {decision['method']} -> {record['url']}")
-            return record["url"], decision["method"]
+        if decision["matched"] and decision["method"] == "SPEC_MATCH":
+            print(f"    {site}: SPEC_MATCH -> {record['url']}")
+            return record["url"], "SPEC_MATCH"
     return "", "NO_MATCH"
 
 
