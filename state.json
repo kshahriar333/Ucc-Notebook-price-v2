@@ -1,1 +1,6108 @@
-{}
+{
+  "A715-79G": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 109900,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    }
+  },
+  "Creator": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 299900,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    }
+  },
+  "Cyborg": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "alerted": false,
+      "fails": 0,
+      "price": 38000,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 101900,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    }
+  },
+  "Katana": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "alerted": false,
+      "fails": 0,
+      "price": 38000,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 197900,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    }
+  },
+  "MACBOOK-NEO-512-BLUSH": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 109000,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    }
+  },
+  "MACBOOK-NEO-512-SILVER": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 109000,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    }
+  },
+  "MODERN14": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 113900,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    }
+  },
+  "MacBook": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "alerted": false,
+      "fails": 0,
+      "price": 30000,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 97000,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    }
+  },
+  "Modern": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "alerted": false,
+      "fails": 0,
+      "price": 38000,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 60500,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    }
+  },
+  "NH.QX9SI.001": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 279900,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    }
+  },
+  "Prestige": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 216900,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    }
+  },
+  "Raider": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 629900,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    }
+  },
+  "Stealth": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "alerted": false,
+      "fails": 0,
+      "price": 38000,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 378900,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    }
+  },
+  "UN.34GSI.033": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 88000,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    }
+  },
+  "UN.34RSI.01X": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 67900,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    }
+  },
+  "UN.34YSI.024": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 279900,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    }
+  },
+  "UN.34YSI.025": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 71900,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    }
+  },
+  "UN.35MSI.026": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 85000,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    }
+  },
+  "UN.35MSI.027": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 64500,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    }
+  },
+  "UN.35MSI.02B": {
+    "Ryans": {
+      "alerted": false,
+      "fails": 0,
+      "price": 77500,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    },
+    "Star Tech": {
+      "alerted": false,
+      "fails": 0,
+      "price": 77500,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    },
+    "Techland": {
+      "alerted": false,
+      "fails": 0,
+      "price": 77500,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 77500,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    }
+  },
+  "UN.37GSI.007": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 59000,
+      "sku_status": "VERIFIED",
+      "status": "OK"
+    }
+  },
+  "Vector": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 349900,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/A620-Motherboards": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 9000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/B760-Motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 10000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/General-pre-pc-build": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/Thermaltake-gaming-chair": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 38000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/X670-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 90000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/Z790-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 160000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/Z890-moptherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 38500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/Zotac-graphics-cards": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 375900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/a320-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/about-us": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/access-control-devices": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 5000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/access-points": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 10500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/accessories": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 18500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/aio-liquid-cooling": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 41900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/air-cooling": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 8700,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/all-in-one-pc": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 88900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/amd-graphics-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 145900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/amd-motherboards": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 7500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/amd-processor": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 8000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/arc-a380-series": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/athlon": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/b-transcend": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 230000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/b450-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 10000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/b460-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/b510-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 19200,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/b520-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 8000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/b550-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 25000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/b560-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/b650-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 10000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/b660-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/b840-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 25500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/b850-motherboards": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 43500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/b860-motherboards": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 37500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/batteries": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 115000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/batteries-and-reusable-energy-sources": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 115000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/body-camera": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 20000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/business-monitors": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 89500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/card-reader": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/casing-chassis": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 28000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/cc-camera": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/chassis-fan": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 11000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/computer-accessories-mouse": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/computer-components": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 230000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/content-creation-laptops": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 279900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/content-creation-productivity": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/cooling-system": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 41900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/core-i3": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/core-i5": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/core-i7": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/core-i9": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 50000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/custom-cooling-coolant": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/custom-cooling-kit": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 13000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/custom-liquid-cooling": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 40000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/custom-liquid-cooling-system": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/data-center": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/ddr3-desktop-ram-price-in-bangladesh": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/ddr3-laptop-ram": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/ddr4-desktop-ram": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 14000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/ddr4-laptop-ram": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 10000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/ddr5-desktop-ram-price-in-bangladesh": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 10000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/ddr5-laptop-ram": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 6000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/desktop-hdd": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 27000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/desktop-pc": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 175000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/desktop-ram": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 37000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/dvd-writers": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/dvr": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 98000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/e-catalogue": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/embedded-dram-modules": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/embedded-solution": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/embedded-ssd-modules": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/enclosure": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/entertainment-monitors": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 114000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/external-storage": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 200000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/faq": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/flash-drive": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 9500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/flash-drive-transcend": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 6299,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/full-tower-chassis": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 25000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/game-pad": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/gaming-accessories": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 82900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/gaming-chair": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 5000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/gaming-console": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 89900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/gaming-keyboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 12000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/gaming-monitors": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 96900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/gaming-mouse": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 9500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/gaming-mouse-pad": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 5000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/gaming-pre-pc-builde": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/gaming-table": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 37000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/geforce-gt-700-series-graphics-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 9300,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/geforce-gtx-10-series-graphics-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 17200,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/geforce-gtx-16-series-graphics-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 22500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/geforce-rtx-20-series-graphics-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/geforce-rtx-30-series": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 40000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/geforce-rtx-40-series": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 170000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/geforce-rtx-50-series": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 64500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/gift-redemption": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/graphics-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 10000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/graphics-card-intel": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/h410-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 11000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/h610-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 9000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/h670-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 160000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/hard-disk-drives": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 27000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/headset": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 14000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/headset-accessories": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/hiksem-accessories": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/hiksem-flash-drive": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 5500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/hiksem-internal-ssd": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/hiksem-memory-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 15000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/hiksem-portable-ssd": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 36500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/hiksem-ssd-and-hdd-enclosure": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/hiksemi-ram": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/hub": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=account/account": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=account/login": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=account/order": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=account/register": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=account/wishlist": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=checkout/cart": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 57500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=product/category&path=749_1015_1021": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 13500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=product/category&path=749_1037_1047": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=product/category&path=749_1037_1050": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 295000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=product/category&path=749_1037_1054": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 109000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=product/category&path=749_752_1027": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 82900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=product/category&path=749_997_1033": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/index.php?route=product/compare": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/intel-graphics-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/intel-motherboards": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 7000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/intel-processor": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/internal-storage": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 230000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/ip-camera": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 5400,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/keyboard-mice-combo": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 5500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/keyboards": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 12000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/laptop-cooler": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 10500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/laptop-hdd": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/laptop-ram": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 12000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/latest-offer": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/macbook-air": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 229000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/memory-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 12000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/memory-card-storage-devices": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 15000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/mice": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 9500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/mice-accessories": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/mid-tower-chassis": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 28000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/mini-and-micro-tower-chassis": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 9300,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/mini-pc": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 175000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/monitors": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 7000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/motherboards": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 7000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/mouse-pad": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 5000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/msi": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 519900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/msi-portable-ssd": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/msi-thin-15-b13uc-intel-core-i5-13420h-rtx-3050-gaming-laptop": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 92900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/msi-thin-15-b13ve-intel-core-i5-13420h-rtx-4050-6gb144hz-gaming-laptop": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 127900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/msi-thin-a15-b7uc-675bd-amd-ryzen-7-7735hs-rtx-3050-4gb-gddr6-28gb-16-gb-ddr5-ram-1-tb-gen4-nvme-ssd-156-inch-fhd-144hz-gaming-laptop": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 129900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/nas-drives": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/network-switches": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 14500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/network-video-recorder": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/notebook-cooling": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/nvidia-graphics-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 7000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/odm-solutions": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/open-frame-chassis": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/optical-drives": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/pc-builder": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/pcie-m.2-ssds": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 50000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/pentium": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/portable-hdd": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 60000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/portable-monitors": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 12000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/portable-ssd": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 160000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/power-supply-unit": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 50000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/pre-pc-build": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/privacy": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/processors": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 8000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/professional-monitors": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 125000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/projector-devices": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 76950,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/projectors": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 76950,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/promise": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/ptz-camera": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 110000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/radeon-rx-6000-series-graphics-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 10000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/radeon-rx-7000-series-graphics-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 45000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/radeon-rx-9000-series-graphics-card": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 110900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/ram-memory-modules": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 35000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/rich-media": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/rma-service-center": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/routers-switches-networking": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 13500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/ryzen-3": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/ryzen-5": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/ryzen-7": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 20000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/ryzen-9": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/ryzen-threadripper": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/sapphire-graphics-cards": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 145900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/sata-iii-ssds": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 6400,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/sata-ssds": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 230000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/security-accessories": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/security-camera": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 40000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/security-surveillance": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 110000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/sleeve-cables": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 8300,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/solid-state-drives": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 49000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/storage-devices": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 230000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/store-locator": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/surveillance": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/team-portable-ssd": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 8000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/team-ram": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 9000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/team-ssd": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 10300,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/terms": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/thermal-grease-paste": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/thermaltake-cables": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 8300,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/thermaltake-chassis-casing": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 28000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/thermaltake-cpu-air-cooler": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 8700,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/thermaltake-custom-liquid-cooler": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 40000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/thermaltake-liquid-cooler": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 41900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/thermaltake-monitor": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 59900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/thermaltake-pegboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 5400,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/thermaltake-ram-memory-modules": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 5000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/thermaltake-simulator": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 82900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/thermaltake-thermal-paste": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/toto-link": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 13500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/toto-link-access-point": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 8000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/toto-link-network-switch": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 14500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/touch-monitors": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 260000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/transcend-card-readers-dvd-writers-accessories": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/transcend-embedded-solution": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/uniview-batteries-and-reusable-energy": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/uniview-monitors": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 114000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/uniview-solar-and-energy-storage": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/uniview-ups": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 7800,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/unv-commercial-display": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/vga-enclosure": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 7500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/viewsonic-commercial-display": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 260000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/where-to-buy": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/wired-headset": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 8000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/wired-keyboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 12000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/wired-mouse": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/wireless-headset": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/wireless-keyboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 11000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/wireless-mouse": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 6000,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/wireless-routers": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 13500,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/wireless-usb-adapter": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/x570-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/x870e-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "alerted": false,
+      "fails": 0,
+      "price": 109900,
+      "sku_status": "UNVERIFIED",
+      "status": "OK"
+    }
+  },
+  "https://www.ucc.com.bd/z590-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "https://www.ucc.com.bd/z690-motherboard": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_PRICE"
+    }
+  },
+  "label": {
+    "Ryans": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "Star Tech": {
+      "alerted": false,
+      "fails": 0,
+      "price": 30000,
+      "sku_status": "PRESENT",
+      "status": "OK"
+    },
+    "Techland": {
+      "fails": 1,
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
+    },
+    "UCC": {
+      "fails": 1,
+      "sku_status": "PRESENT",
+      "status": "NO_PRICE"
+    }
+  }
+}
