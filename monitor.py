@@ -43,6 +43,7 @@ PROBLEM_TEXT = {
     "NO_PRICE": "price not found on the page",
     "SKU_MISMATCH": "page shows a DIFFERENT SKU",
     "SKU_UNVERIFIED": "SKU could not be confirmed; price not compared",
+    "SPEC_MISMATCH": "specification fallback verification failed; price not compared",
     "NO_MATCH": "same-SKU product page not found",
 }
 
@@ -173,7 +174,7 @@ def price_from_selectors(soup):
     return None
 
 
-def check_site(site, url, expected_norm, session):
+def check_site(site, url, expected_norm, session, expected_identity=None, match_method=None):
     res = {"site": site, "url": url, "status": "OK", "price": None,
            "sku_found": None, "sku_status": "UNVERIFIED", "error": ""}
     try:
@@ -199,7 +200,21 @@ def check_site(site, url, expected_norm, session):
         else:
             res["sku_status"] = "PRESENT" if expected_norm in norm(text) else "UNVERIFIED"
 
-    if res["sku_status"] == "MISMATCH":
+    if match_method == "SPEC_MATCH" and expected_identity:
+        from spec_matcher import LaptopIdentity, extract_identity, compare_laptops
+        candidate = extract_identity(h1text, text)
+        reference = LaptopIdentity(**{k: expected_identity.get(k) for k in LaptopIdentity.__dataclass_fields__})
+        decision = compare_laptops(reference, candidate)
+        if not decision["matched"]:
+            res["status"] = "SPEC_MISMATCH"
+            res["error"] = "; ".join(decision.get("reasons", []))
+            price = None
+        else:
+            res["sku_status"] = "SPEC_MATCH"
+
+    if res["status"] == "SPEC_MISMATCH":
+        pass
+    elif res["sku_status"] == "MISMATCH":
         res["status"] = "SKU_MISMATCH"
         res["error"] = f"page SKU is {first}"
         price = None
@@ -266,7 +281,8 @@ def run(products, state, fetch_session, now, force_report=False, sleep=1.5):
                                  "price": None, "sku_found": None,
                                  "sku_status": "UNVERIFIED", "error": "SKU search found no verified product page"}
                 continue
-            res = check_site(site, page_url, expected, fetch_session)
+            res = check_site(site, page_url, expected, fetch_session,
+                             p.get("identity"), p.get("match_methods", {}).get(site))
             results[site] = res
             if site == "UCC" and not expected and res["sku_found"]:
                 expected, display_sku = norm(res["sku_found"]), res["sku_found"]
@@ -366,6 +382,24 @@ def main():
 
     with requests.Session() as session:
         messages, new_state = run(products, state, session, now, force_report=force)
+
+    # Send one guaranteed baseline summary after the first successful scan,
+    # even if an older state.json already exists from a previous monitor version.
+    meta = state.get("_meta", {}) if isinstance(state.get("_meta", {}), dict) else {}
+    if not meta.get("baseline_sent") or force:
+        rows = []
+        for product in products:
+            key = product.get("id")
+            entries = new_state.get(key, {})
+            rows.append(f"{product.get('name', key)} | SKU: {product.get('sku') or 'not listed'}")
+            rows.append(now_lines(product.get("urls", {}), entries))
+        summary = ("📊 UCC Acer Price Monitor baseline\\n"
+                   f"Products scanned: {len(products)}\\n\\n" + "\\n\\n".join(rows)
+                   + f"\\n\\n🕒 {now.strftime('%d %b %Y, %I:%M %p')}")
+        messages.insert(0, summary)
+        new_state["_meta"] = {"baseline_sent": True, "baseline_date": now.isoformat()}
+    else:
+        new_state["_meta"] = meta
 
     for m in messages:
         if dry:
