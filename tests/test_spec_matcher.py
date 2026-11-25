@@ -23,6 +23,10 @@ class Tests(unittest.TestCase):
   a=extract_identity("Acer Aspire 5 A515-58M Core i5-1335U 16GB DDR5 512GB SSD","")
   b=extract_identity("Acer Aspire 5 A515-58M Core i5-1335U 16GB DDR5 1TB SSD","")
   self.assertFalse(compare_laptops(a,b)["matched"])
+ def test_intel_core_5_model(self):
+  a=extract_identity("Acer Aspire 7 A715-79G Intel Core 5 210H 16GB DDR4 512GB SSD","")
+  b=extract_identity("Acer Aspire 7 A715-79G Core 5 210H 16GB DDR4 512GB SSD","")
+  self.assertTrue(compare_laptops(a,b)["matched"])
  def test_insufficient_data(self):
   a=extract_identity("Acer Aspire 5","")
   self.assertFalse(compare_laptops(a,a)["matched"])
