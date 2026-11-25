@@ -3,110 +3,280 @@
     "id": "UN35MSI026",
     "name": "Acer Aspire 15 AS15-42-R7 Ryzen 7 7730U 8GB DDR4 3200MHz 512GB NVMe SSD 15 Inch FHD IPS Backlit Pure Silver Laptop",
     "sku": "UN.35MSI.026",
+    "identity": {
+      "brand": "Acer",
+      "series": "ASPIRE 15",
+      "model": "AS15-42",
+      "processor": "RYZEN 7 7730U",
+      "ram_gb": 8,
+      "ram_type": "DDR4",
+      "storage_gb": 512,
+      "storage_type": "SSD",
+      "sku": "UN.35MSI.026"
+    },
     "urls": {
       "UCC": "https://www.ucc.com.bd/Acer-Aspire-15-AS15-42-R7-Ryzen-7-7730U-8GB-DDR4-3200MHz-512GB-NVMe-SSD-15.6-Inch-FHD-IPS-Backlit-Pure-Silver-Laptop",
       "Ryans": "https://www.ryans.com/acer-aspire-15-as15-42-amd-ryzen-7-7730u-15.6-inch-fhd-laptop",
       "Star Tech": "",
       "Techland": "https://www.techlandbd.com/acer-aspire-15-as15-42-r7-8gb-ram-laptop"
+    },
+    "match_methods": {
+      "UCC": "UCC_SOURCE",
+      "Ryans": "EXACT_SKU",
+      "Star Tech": "NO_MATCH",
+      "Techland": "EXACT_SKU"
     }
   },
   {
     "id": "UN34YSI024",
     "name": "Acer",
     "sku": "UN.34YSI.024",
+    "identity": {
+      "brand": "Acer",
+      "series": "ASPIRE 7",
+      "model": "AN516-74G1",
+      "processor": "CORE ULTRA 7 255HX",
+      "ram_gb": 16,
+      "ram_type": "DDR5",
+      "storage_gb": 512,
+      "storage_type": "SSD",
+      "sku": "UN.34YSI.024"
+    },
     "urls": {
       "UCC": "https://www.ucc.com.bd/acer",
       "Ryans": "https://www.ryans.com/acer-aspire-3-a325-53-i5-intel-core-i5-1334u-pure-silver-laptop",
       "Star Tech": "",
       "Techland": ""
+    },
+    "match_methods": {
+      "UCC": "UCC_SOURCE",
+      "Ryans": "EXACT_SKU",
+      "Star Tech": "NO_MATCH",
+      "Techland": "NO_MATCH"
     }
   },
   {
     "id": "UN35MSI027",
     "name": "Acer Aspire 15 AS15-42-R3 Ryzen 3 7330U 8GB DDR4 3200MHz 512GB NVMe SSD 15 Inch FHD IPS 55Whr Pure Silver Laptop",
     "sku": "UN.35MSI.027",
+    "identity": {
+      "brand": "Acer",
+      "series": "ASPIRE 15",
+      "model": "AS15-42",
+      "processor": "RYZEN 3 7330U",
+      "ram_gb": 8,
+      "ram_type": "DDR4",
+      "storage_gb": 512,
+      "storage_type": "SSD",
+      "sku": "UN.35MSI.027"
+    },
     "urls": {
       "UCC": "https://www.ucc.com.bd/acer-aspire-15-as15-42-r3-UN-35MSI-00U-ryzen-3-7330u-8gb-ddr4-3200mhz-512gb-nvme-ssd-15-inch-fhd-ips-55whr-pure-silver-laptop",
       "Ryans": "https://www.ryans.com/acer-aspire-15-as15-42-amd-ryzen-3-7330u-15.6-inch-fhd-laptop",
       "Star Tech": "",
       "Techland": "https://www.techlandbd.com/acer-aspire-15-as15-42-ryzen-3-7330u-laptop"
+    },
+    "match_methods": {
+      "UCC": "UCC_SOURCE",
+      "Ryans": "EXACT_SKU",
+      "Star Tech": "NO_MATCH",
+      "Techland": "EXACT_SKU"
     }
   },
   {
     "id": "UN35MSI02B",
     "name": "Acer Aspire 15 AS15-42-R5 Ryzen 5 7430U 16GB (8*2) DDR4 3200MHz 512GB NVMe SSD 15.6 Inch FHD IPS Backlit 55Whr Pure Silver",
     "sku": "UN.35MSI.02B",
+    "identity": {
+      "brand": "Acer",
+      "series": "ASPIRE 15",
+      "model": "AS15-42",
+      "processor": "RYZEN 5 7430U",
+      "ram_gb": null,
+      "ram_type": null,
+      "storage_gb": 512,
+      "storage_type": "SSD",
+      "sku": "UN.35MSI.02B"
+    },
     "urls": {
       "UCC": "https://www.ucc.com.bd/acer-aspire-15-as15-42-r5-ryzen-5-7430u-16gb-82-ddr4-3200mhz-512gb-nvme-ssd-156-inch-fhd-ips-backlit-55whr-pure-silver",
       "Ryans": "https://www.ryans.com/acer-aspire-15-as15-42-amd-ryzen-5-7430u-15.6-inch-fhd-laptop",
-      "Star Tech": "https://www.startech.com.bd/acer-aspire-15-as15-42-r5-ryzen-5-15-inch-laptop",
+      "Star Tech": "",
       "Techland": "https://www.techlandbd.com/acer-aspire-15-as15-42-ryzen-5-7430u-156-inch-fhd-ips-laptop"
+    },
+    "match_methods": {
+      "UCC": "UCC_SOURCE",
+      "Ryans": "EXACT_SKU",
+      "Star Tech": "NO_MATCH",
+      "Techland": "EXACT_SKU"
     }
   },
   {
     "id": "UN34RSI01X",
     "name": "Acer Aspire 3 A324-53 (UN.34RSI.01X) Intel Core 3 100U 8GB DDR4 RAM 256GB Gen4 NVMe 14 Inch FHD IPS Display Steel Gray Laptop",
     "sku": "UN.34RSI.01X",
+    "identity": {
+      "brand": "Acer",
+      "series": "ASPIRE 3",
+      "model": null,
+      "processor": "CORE 3 100U",
+      "ram_gb": 8,
+      "ram_type": "DDR4",
+      "storage_gb": null,
+      "storage_type": null,
+      "sku": "UN.34RSI.01X"
+    },
     "urls": {
       "UCC": "https://www.ucc.com.bd/acer-aspire-3-a324-53-core-3-100u-un34rsi01x-laptop",
       "Ryans": "https://www.ryans.com/acer-aspire-3-a324-53-c3-intel-core-3-100u-laptop",
       "Star Tech": "",
       "Techland": "https://www.techlandbd.com/acer-aspire-3-a324-53-intel-core-3-100u-8gb-ram-256gb-ssd-laptop"
+    },
+    "match_methods": {
+      "UCC": "UCC_SOURCE",
+      "Ryans": "EXACT_SKU",
+      "Star Tech": "NO_MATCH",
+      "Techland": "EXACT_SKU"
     }
   },
   {
     "id": "UN37GSI007",
     "name": "Acer Aspire 3 A325-42 V2 (UN.37GSI.007) AMD Ryzen 3 5300U 8GB DDR4 RAM 256GB NVMe SSD 15.6 Inch FHD IPS Display Steel Gray Laptop",
     "sku": "UN.37GSI.007",
+    "identity": {
+      "brand": "Acer",
+      "series": "ASPIRE 3",
+      "model": null,
+      "processor": "RYZEN 3 5300U",
+      "ram_gb": 8,
+      "ram_type": "DDR4",
+      "storage_gb": 256,
+      "storage_type": "SSD",
+      "sku": "UN.37GSI.007"
+    },
     "urls": {
       "UCC": "https://www.ucc.com.bd/acer-aspire-3-a325-42-ryzen-3-5300u-un37gsi007-laptop",
       "Ryans": "https://www.ryans.com/acer-aspire-3-a325-42-v2-amd-ryzen-3-5300u-laptop",
       "Star Tech": "",
       "Techland": "https://www.techlandbd.com/acer-aspire-3-a325-42-amd-ryzen-3-5300u-laptop"
+    },
+    "match_methods": {
+      "UCC": "UCC_SOURCE",
+      "Ryans": "EXACT_SKU",
+      "Star Tech": "NO_MATCH",
+      "Techland": "EXACT_SKU"
     }
   },
   {
     "id": "UN34YSI025",
     "name": "Acer Aspire 3 A325-53-i3 (UN.34YSI.025) Intel 13th Gen Core i3-1305U 8GB DDR4 RAM 512GB Gen4 NVMe 15.6 Inch FHD IPS Display Pure Silver Laptop",
     "sku": "UN.34YSI.025",
+    "identity": {
+      "brand": "Acer",
+      "series": "ASPIRE 3",
+      "model": null,
+      "processor": "CORE I3-1305U",
+      "ram_gb": 8,
+      "ram_type": "DDR4",
+      "storage_gb": null,
+      "storage_type": null,
+      "sku": "UN.34YSI.025"
+    },
     "urls": {
       "UCC": "https://www.ucc.com.bd/acer-aspire-3-a325-53-i3-1305u-un34ysi025-laptop",
       "Ryans": "https://www.ryans.com/acer-aspire-3-a325-53-i3-intel-core-i3-1305u-laptop",
       "Star Tech": "",
       "Techland": "https://www.techlandbd.com/acer-aspire-3-a325-53-i3-intel-13th-gen-core-i3-1305u-laptop"
+    },
+    "match_methods": {
+      "UCC": "UCC_SOURCE",
+      "Ryans": "EXACT_SKU",
+      "Star Tech": "NO_MATCH",
+      "Techland": "EXACT_SKU"
     }
   },
   {
     "id": "A71579G",
     "name": "Acer Aspire 7 A715-79G Intel Core 5 210H 16GB DDR4 512 PCIe NVMe RTX 3050 4GB Graphics FHD IPS 144Hz Flame Black Gaming Laptop",
     "sku": "A715-79G",
+    "identity": {
+      "brand": "Acer",
+      "series": "ASPIRE 7",
+      "model": "AX101 AND",
+      "processor": "CORE 5 210H",
+      "ram_gb": 16,
+      "ram_type": "DDR4",
+      "storage_gb": 1024,
+      "storage_type": "SSD",
+      "sku": "A715-79G"
+    },
     "urls": {
       "UCC": "https://www.ucc.com.bd/acer-aspire-7-a715-79g-intel-core-5-210h-16gb-ddr4-512-pcie-nvme-rtx-3050-4gb-graphics-fhd-ips-144hz-flame-black-gaming-laptop",
       "Ryans": "",
       "Star Tech": "",
       "Techland": ""
+    },
+    "match_methods": {
+      "UCC": "UCC_SOURCE",
+      "Ryans": "NO_MATCH",
+      "Star Tech": "NO_MATCH",
+      "Techland": "NO_MATCH"
     }
   },
   {
     "id": "UN34GSI033",
     "name": "Acer Travellite TL14-52M Intel 13th Gen Core i5-1335U 8GB DDR4 RAM 512GB Gen4 NVMe 14 Inch FHD IPS Display Military Grade Laptop",
     "sku": "UN.34GSI.033",
+    "identity": {
+      "brand": "Acer",
+      "series": null,
+      "model": "TL14-52M",
+      "processor": "CORE I5-1335U",
+      "ram_gb": 8,
+      "ram_type": "DDR4",
+      "storage_gb": null,
+      "storage_type": null,
+      "sku": "UN.34GSI.033"
+    },
     "urls": {
       "UCC": "https://www.ucc.com.bd/acer-travellite-tl14-52m-intel-13th-gen-core-i5-1335u-intel-iris-xe-graphics-business-laptop",
       "Ryans": "https://www.ryans.com/acer-travellite-tl14-52m-i5-13th-gen-intel-core-i5-1335u-laptop",
       "Star Tech": "",
       "Techland": "https://www.techlandbd.com/acer-travellite-tl14-52m-core-i5-13th-gen-14-fhd-laptop"
+    },
+    "match_methods": {
+      "UCC": "UCC_SOURCE",
+      "Ryans": "EXACT_SKU",
+      "Star Tech": "NO_MATCH",
+      "Techland": "EXACT_SKU"
     }
   },
   {
     "id": "NHQX9SI001",
     "name": "Acer Predator Helios Neo 16S AI Gaming Laptop – Intel Core Ultra 7 255HX, NVIDIA RTX 5060 8GB, 16GB RAM, 1TB SSD, 16\" WQXGA OLED, Windows 11, Abyssal Black, RGB Keyboard",
     "sku": "NH.QX9SI.001",
+    "identity": {
+      "brand": "Acer",
+      "series": null,
+      "model": "RJ45 LAN",
+      "processor": "CORE ULTRA 7 255HX",
+      "ram_gb": 16,
+      "ram_type": "DDR5",
+      "storage_gb": 1024,
+      "storage_type": "SSD",
+      "sku": "NH.QX9SI.001"
+    },
     "urls": {
       "UCC": "https://www.ucc.com.bd/index.php?route=product/product&product_id=5182",
       "Ryans": "https://www.ryans.com/acer-predator-helios-neo-16s-ai-phn16s-71-73wm-series-2-intel-core-ultra-7-255hx-gaming-laptop",
       "Star Tech": "",
       "Techland": "https://www.techlandbd.com/acer-predator-helios-neo-16s-ai-16gb-1tb-gaming-laptop"
+    },
+    "match_methods": {
+      "UCC": "UCC_SOURCE",
+      "Ryans": "EXACT_SKU",
+      "Star Tech": "NO_MATCH",
+      "Techland": "EXACT_SKU"
     }
   }
 ]

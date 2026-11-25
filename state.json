@@ -1,17 +1,20 @@
 {
   "A71579G": {
     "Ryans": {
-      "fails": 1,
+      "alerted": true,
+      "fails": 2,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
     "Star Tech": {
-      "fails": 1,
+      "alerted": true,
+      "fails": 2,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
     "Techland": {
-      "fails": 1,
+      "alerted": true,
+      "fails": 2,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -32,7 +35,8 @@
       "status": "OK"
     },
     "Star Tech": {
-      "fails": 1,
+      "alerted": true,
+      "fails": 2,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -60,7 +64,8 @@
       "status": "OK"
     },
     "Star Tech": {
-      "fails": 1,
+      "alerted": true,
+      "fails": 2,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -88,7 +93,8 @@
       "status": "OK"
     },
     "Star Tech": {
-      "fails": 1,
+      "alerted": true,
+      "fails": 2,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -116,12 +122,14 @@
       "status": "OK"
     },
     "Star Tech": {
-      "fails": 1,
+      "alerted": true,
+      "fails": 2,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
     "Techland": {
-      "fails": 1,
+      "alerted": true,
+      "fails": 2,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -142,7 +150,8 @@
       "status": "OK"
     },
     "Star Tech": {
-      "fails": 1,
+      "alerted": true,
+      "fails": 2,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -170,7 +179,8 @@
       "status": "OK"
     },
     "Star Tech": {
-      "fails": 1,
+      "alerted": true,
+      "fails": 2,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -198,7 +208,8 @@
       "status": "OK"
     },
     "Star Tech": {
-      "fails": 1,
+      "alerted": true,
+      "fails": 2,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -227,10 +238,10 @@
     },
     "Star Tech": {
       "alerted": false,
-      "fails": 0,
+      "fails": 1,
       "price": 77500,
-      "sku_status": "VERIFIED",
-      "status": "OK"
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
     },
     "Techland": {
       "alerted": false,
@@ -256,7 +267,8 @@
       "status": "OK"
     },
     "Star Tech": {
-      "fails": 1,
+      "alerted": true,
+      "fails": 2,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -274,5 +286,9 @@
       "sku_status": "VERIFIED",
       "status": "OK"
     }
+  },
+  "_meta": {
+    "baseline_date": "2026-11-25T22:11:17.490312+06:00",
+    "baseline_sent": true
   }
 }
