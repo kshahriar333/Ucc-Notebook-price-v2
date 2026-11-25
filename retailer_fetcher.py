@@ -18,6 +18,12 @@ RETAILER_DOMAINS = {
     "Star Tech": "startech.com.bd",
     "Techland": "techlandbd.com",
 }
+CATALOGUE_URLS = {
+    "Ryans": "https://www.ryans.com/category/laptop-all-laptop/",
+    "Star Tech": "https://www.startech.com.bd/laptop-notebook?limit=75&page=1&sort=pd.name",
+    "Techland": "https://www.techlandbd.com/shop-laptop-computer/",
+}
+_CATALOGUE_CACHE = {}
 DIRECT_PRODUCT_URLS = {
     "UN.35MSI.02B": {
         "Ryans": "https://www.ryans.com/acer-aspire-15-as15-42-amd-ryzen-5-7430u-15.6-inch-fhd-laptop",
@@ -238,51 +244,182 @@ def search_result_urls(retailer, query):
     return collect_product_links(retailer, response, query)
 
 
-def search_one(product, retailer):
-    sku = clean(product.get("sku")).upper()
-    direct = DIRECT_PRODUCT_URLS.get(sku, {}).get(retailer)
-    queries = []
-    if sku:
-        queries.append(sku)
-    fallback = " ".join(str(product.get(key) or "") for key in ("model", "processor"))
-    if not fallback.strip():
-        fallback = product.get("name", "")
-    if fallback.strip():
-        queries.append(clean(fallback))
 
-    results, errors = [], []
-    candidate_urls = [direct] if direct else []
-    for query in queries:
-        if not candidate_urls:
-            try:
-                candidate_urls = search_result_urls(retailer, query)
-            except requests.RequestException as exc:
-                errors.append(f"Search {query}: {type(exc).__name__}: {str(exc)[:100]}")
-                candidate_urls = []
-        for url in candidate_urls:
-            if any(item.get("url") == url for item in results):
-                continue
-            try:
-                item = parse_product_page(retailer, url)
-                item["match"] = compare_products(product, item)
-                results.append(item)
-            except Exception as exc:
-                errors.append(f"{url}: {type(exc).__name__}: {str(exc)[:110]}")
-        if any(item["match"]["price_comparison_allowed"] for item in results):
+
+def _catalogue_session():
+    session = requests.Session()
+    session.headers.update(HEADERS)
+    from requests.adapters import HTTPAdapter
+    from urllib3.util.retry import Retry
+    retry = Retry(total=3, connect=3, read=3, status=3, backoff_factor=1,
+                  status_forcelist=(429, 500, 502, 503, 504),
+                  allowed_methods=frozenset(("GET",)))
+    adapter = HTTPAdapter(max_retries=retry, pool_connections=8, pool_maxsize=8)
+    session.mount("https://", adapter)
+    return session
+
+
+def _is_product_url(retailer, url):
+    domain = RETAILER_DOMAINS[retailer]
+    parsed = urlparse(url)
+    if parsed.netloc.lower().removeprefix("www.") != domain:
+        return False
+    path = parsed.path.lower().strip("/")
+    if len(path) < 8 or path.count("/") > 1:
+        return False
+    rejected = (
+        "category", "search", "brand", "information", "offer", "account",
+        "checkout", "cart", "compare", "wishlist", "shop-laptop-computer",
+        "laptop-notebook", "laptop-all-laptop", "page", "blog", "news",
+    )
+    return not any(term in path for term in rejected)
+
+
+def _catalogue_page_url(retailer, page):
+    base = CATALOGUE_URLS[retailer]
+    if retailer == "Ryans":
+        return base if page == 1 else f"{base}?page={page}"
+    if retailer == "Star Tech":
+        return re.sub(r"([?&])page=\d+", rf"\g<1>page={page}", base)
+    if page == 1:
+        return base
+    separator = "&" if "?" in base else "?"
+    return f"{base}{separator}page={page}"
+
+
+def _load_retailer_catalogue(retailer):
+    if retailer in _CATALOGUE_CACHE:
+        return _CATALOGUE_CACHE[retailer]
+    session = _catalogue_session()
+    records = {}
+    expected = None
+    for page in range(1, 13):
+        url = _catalogue_page_url(retailer, page)
+        try:
+            response = session.get(url, timeout=(10, 25))
+            response.raise_for_status()
+        except requests.RequestException as exc:
+            print(f"{retailer} catalogue page {page} failed: {type(exc).__name__}: {exc}")
+            if page == 1:
+                raise
             break
-        candidate_urls = []
+        soup = BeautifulSoup(response.text, "html.parser")
+        page_text = clean(soup.get_text(" ", strip=True))
+        count = re.search(r"(?:Showing\s+\d+\s+to\s+\d+\s+of\s+|(\d+)\s+Products?\s+found)", page_text, re.I)
+        if count:
+            try:
+                expected = max(expected or 0, int(count.group(1) or count.group(2)))
+            except (TypeError, ValueError):
+                pass
 
-    results.sort(key=lambda item: (
-        not item["match"]["sku_match"],
-        not item["match"]["price_comparison_allowed"],
-        item.get("price") is None,
-    ))
-    if results:
-        return {"status": "PRODUCT PAGE FOUND", "results": results[:3], "errors": errors[:3]}
+        cards = []
+        for selector in (
+            ".product-item", ".product-card", ".product-layout", ".product-thumb",
+            ".product-box", ".item-product", ".product-grid-item", "li.product",
+            "[class*='product-card']", "[class*='product-item']",
+        ):
+            found = soup.select(selector)
+            if len(found) >= 3:
+                cards = found
+                break
+        anchors = []
+        if cards:
+            for card in cards:
+                anchors.extend(card.select("a[href]"))
+        else:
+            anchors = soup.select("main a[href], #content a[href], .products a[href]")
+
+        added = 0
+        for anchor in anchors:
+            href = urljoin(response.url, anchor.get("href", ""))
+            if not _is_product_url(retailer, href):
+                continue
+            card = anchor.find_parent(class_=re.compile(r"product|item|card", re.I))
+            if card is None:
+                card = anchor.parent
+            context = clean(card.get_text(" ", strip=True))
+            title = clean(anchor.get_text(" ", strip=True) or anchor.get("title", ""))
+            if len(title) < 8:
+                title = clean(anchor.get("title", "") or card.get("title", ""))
+            if not title:
+                # use the most informative text fragment, not generic Buy Now labels
+                title = context[:240]
+            price = extract_price(context)
+            stock = "OUT OF STOCK" if re.search(r"out\s+of\s+stock|unavailable", context, re.I) else "NOT CONFIRMED"
+            item = {"retailer": retailer, "name": title, "page_text": context,
+                    "url": href.split("#")[0], "price": price, "stock_status": stock}
+            item.update(extract_specs(title, context))
+            old = records.get(item["url"])
+            if old is None or len(item["page_text"]) > len(old["page_text"]):
+                records[item["url"]] = item
+                added += 1
+        print(f"{retailer} catalogue page {page}: {added} product cards; unique {len(records)}")
+        if added == 0 and page > 1:
+            break
+        # Stop when pagination says the whole catalogue has been collected.
+        if expected and len(records) >= expected:
+            break
+
+    if not records:
+        raise RuntimeError(f"No product cards extracted from {retailer} laptop catalogue.")
+    if expected and len(records) < expected:
+        print(f"{retailer} catalogue appears partial: expected {expected}, extracted {len(records)}")
+    _CATALOGUE_CACHE[retailer] = list(records.values())
+    return _CATALOGUE_CACHE[retailer]
+
+
+def _candidate_score(ucc_product, candidate):
+    ucc_sku = normalize(ucc_product.get("sku"))
+    candidate_sku = normalize(candidate.get("sku"))
+    if ucc_sku and candidate_sku and ucc_sku == candidate_sku:
+        return 1000
+    ucc_model = normalize(ucc_product.get("model") or "")
+    candidate_model = normalize(candidate.get("model") or "")
+    ucc_cpu = normalize(ucc_product.get("processor") or "")
+    candidate_cpu = normalize(candidate.get("processor") or "")
+    if not ucc_model or not candidate_model or ucc_model != candidate_model:
+        return 0
+    if not ucc_cpu or not candidate_cpu or ucc_cpu != candidate_cpu:
+        return 0
+    comparison = compare_products(ucc_product, candidate)
+    if not comparison.get("price_comparison_allowed"):
+        return 0
+    return 100 + len(comparison.get("matched_specs", []))
+
+
+def search_one(product, retailer):
+    errors, verified = [], []
+    try:
+        catalogue = _load_retailer_catalogue(retailer)
+        ranked = []
+        for candidate in catalogue:
+            score = _candidate_score(product, candidate)
+            if score > 0:
+                ranked.append((score, candidate))
+        ranked.sort(key=lambda row: row[0], reverse=True)
+
+        # Candidate list entries must match exact SKU or the full model+CPU
+        # with compatible available configuration data.
+        for score, candidate in ranked[:5]:
+            try:
+                detail = parse_product_page(retailer, candidate["url"])
+                detail["match"] = compare_products(product, detail)
+                if detail["match"]["price_comparison_allowed"] and detail.get("price") is not None:
+                    verified.append(detail)
+            except Exception as exc:
+                errors.append(f"{candidate['url']}: {type(exc).__name__}: {str(exc)[:100]}")
+        if verified:
+            verified.sort(key=lambda item: (not item["match"]["sku_match"], item["price"] is None))
+            return {"status": "VERIFIED CATALOGUE MATCH", "results": verified[:3], "errors": errors[:3]}
+    except Exception as exc:
+        errors.append(f"Catalogue: {type(exc).__name__}: {str(exc)[:140]}")
+
+    # Do not fall back to broad site search results that can redirect to
+    # unrelated landing pages. An unverified item must never become a price alert.
     return {
         "status": "NO VERIFIED PRODUCT FOUND",
         "results": [],
-        "errors": errors[:3] or [f"No matching product page found for {sku or product.get('name')}."],
+        "errors": errors[:3] or ["No exact SKU or fully verified model/configuration match."],
     }
 
 
