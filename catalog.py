@@ -152,6 +152,11 @@ def build_catalog():
                     if match: p["urls"][site]=match
             time.sleep(.5)
     if not products: raise RuntimeError("No UCC laptop products discovered; refusing to overwrite products.json.")
+    # Keep all retailer columns visible for every UCC product. An empty URL means
+    # no same-SKU page was verified; monitor.py will report it as NO_MATCH.
+    for product in products:
+        for site in ("UCC", "Ryans", "Star Tech", "Techland"):
+            product.setdefault("urls", {}).setdefault(site, "")
     with open("products.json","w",encoding="utf-8") as f:
         json.dump(products,f,ensure_ascii=False,indent=2)
     print("Saved products.json with",len(products),"UCC products.")

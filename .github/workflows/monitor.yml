@@ -1,0 +1,63 @@
+name: UCC All Laptop Price Monitor
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      send_report:
+        description: "Send a full report after the scan"
+        type: boolean
+        default: true
+
+concurrency:
+  group: ucc-all-laptop-price-monitor
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run offline regression tests
+        run: |
+          python -m py_compile monitor.py catalog.py
+          python tests/test_monitor.py
+
+      - name: Discover all UCC laptops and monitor exact-SKU prices
+        run: python monitor.py
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          FORCE_REPORT: ${{ github.event.inputs.send_report == 'true' && '1' || '' }}
+
+      - name: Save catalogue and price history
+        run: |
+          git config user.name "price-bot"
+          git config user.email "price-bot@users.noreply.github.com"
+          git add products.json state.json
+          if git diff --cached --quiet; then
+            echo "No catalogue or price-state changes."
+          else
+            git commit -m "Refresh UCC laptop catalogue and price history [skip ci]"
+            git push
+          fi

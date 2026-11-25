@@ -202,6 +202,7 @@ def check_site(site, url, expected_norm, session):
     if res["sku_status"] == "MISMATCH":
         res["status"] = "SKU_MISMATCH"
         res["error"] = f"page SKU is {first}"
+        price = None
     elif expected_norm and res["sku_status"] == "UNVERIFIED":
         res["status"] = "SKU_UNVERIFIED"
         res["error"] = "page did not expose the expected SKU"
