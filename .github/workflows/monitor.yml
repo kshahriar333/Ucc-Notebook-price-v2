@@ -38,6 +38,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Run offline regression tests
+        run: |
+          python -m py_compile monitor.py catalog.py
+          python tests/test_monitor.py
+
       - name: Discover all UCC laptops and monitor exact-SKU prices
         run: python monitor.py
         env:
