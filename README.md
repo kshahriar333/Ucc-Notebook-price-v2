@@ -1,37 +1,46 @@
 # UCC All-Laptop Price Monitor
 
-This package is designed to discover **all laptop product pages listed under UCC's `/laptops` category**, then search Ryans, Star Tech and Techland for the same manufacturer SKU / part number.
+This repository monitors the laptop products listed in the UCC **All Laptops** category and compares them with Ryans, Star Tech and Techland.
 
-## What it does
-- Re-discovers the UCC laptop catalogue on every scheduled run, including category pagination.
-- Reads each UCC product page and extracts its SKU / part number.
-- Searches each competitor by the exact SKU first.
-- Opens candidate product pages and accepts them only when the expected SKU is visibly confirmed (or the exact SKU is present on the page).
-- Does **not** guess a match from a similar product name when the SKU cannot be confirmed.
-- Tracks UCC and competitor prices in `state.json`.
-- Sends a Telegram message when a tracked price rises or falls, when a product is first added, when a site repeatedly fails, or when a site recovers.
-- Sends nothing when no tracked price changes.
-- Saves `products.json` and `state.json` to the repository after each run.
+## How it works
 
-## Setup
-1. Upload the complete contents of this ZIP into a GitHub repository (keep `.github/workflows/monitor.yml`).
-2. Add repository Actions secrets:
-   - `TELEGRAM_BOT_TOKEN`
-   - `TELEGRAM_CHAT_ID`
-3. In **Settings → Actions → General → Workflow permissions**, enable **Read and write permissions**.
-4. In **Actions**, run **UCC All Laptop Price Monitor** manually once. The first run establishes the baseline and sends the initial report.
-5. Later runs are scheduled every 6 hours.
+1. On every run, `catalog.py` crawls UCC's `https://www.ucc.com.bd/laptops` category and its pagination.
+2. It opens each discovered UCC product page and extracts the manufacturer SKU / part number.
+3. It searches each retailer using that exact SKU and accepts a competitor page only when the SKU is confirmed on the page.
+4. `monitor.py` reads prices from UCC and each verified competitor page, compares them with the previous saved prices, and sends Telegram alerts for price increases/decreases.
+5. The workflow saves the refreshed product catalogue and monitoring state to `products.json` and `state.json`.
 
-## Important matching behaviour
-- The known Acer Aspire 15 SKU `UN.35MSI.02B` has the exact three competitor URLs supplied by the user as a seed.
-- Other SKUs are discovered through each retailer's SKU search.
-- A product with no UCC SKU, or with no same-SKU competitor page found, is reported as unverified/not found. It is not treated as a price match.
-- Retailer anti-bot protection, HTML changes, or search indexing delays can prevent some matches. Check the GitHub Actions log for those cases. No scraper can guarantee that every retailer page will be accessible on every run.
+## Telegram alerts
 
-## Local test
+- First run: sends a **Monitoring started** baseline message for each discovered product.
+- Later runs: sends alerts only for verified price changes, repeated page failures, SKU mismatches, or page recovery.
+- No price movement: no message.
+- Missing competitor match: reported as **same-SKU product page not found**. It is never treated as a price match.
+- SKU not visible on a competitor page: its price is not compared.
+- All displayed prices are checked against UCC's current price in the report.
+
+## Schedule
+
+GitHub Actions runs every 6 hours. You can also start **UCC All Laptop Price Monitor** manually from the repository's Actions tab.
+
+## Required GitHub configuration
+
+Add these repository Actions secrets (never put their values in source files):
+
+- `TELEGRAM_BOT_TOKEN`
+- `TELEGRAM_CHAT_ID`
+
+Then open **Settings → Actions → General → Workflow permissions** and enable **Read and write permissions** so the workflow can save `products.json` and `state.json`.
+
+## Local run
+
 ```bash
 pip install -r requirements.txt
-python tests/test_monitor.py
 python monitor.py --dry-run
 ```
-`tests/test_monitor.py` is an offline test suite using sample pages. It does not prove that live retailer websites are currently accessible.
+
+The dry run still needs internet access to read UCC and retailer pages, but it does not send Telegram messages or overwrite the monitoring state.
+
+## Matching limitations
+
+The monitor prioritizes correctness over guessed matches. If a UCC listing has no readable SKU, a retailer search does not return a matching product, a competitor page hides the SKU, or a retailer blocks automated requests, that comparison remains unverified. Retailer page layouts and anti-bot protections can change, so check the GitHub Actions logs for coverage warnings. The system cannot guarantee every retailer listing will be accessible on every run.
