@@ -12,7 +12,7 @@ from bs4 import BeautifulSoup
 from ucc_reader import read_product
 
 # This is the general laptop category (Acer + MSI + Apple), not Acer-only.
-CATEGORY_URL = "https://www.ucc.com.bd/laptops"
+CATEGORY_URL = "https://www.ucc.com.bd/laptops?limit=100"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
     "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
@@ -77,7 +77,7 @@ def product_url_from_anchor(anchor, base_url):
                 "business-productivity-laptops"}:
         return None
     # UCC product detail pages use one SEO slug path, unlike category routes.
-    if "/" in path or len(path) < 12:
+    if path.count("/") > 1 or len(path) < 12:
         return None
     return urlunparse(parsed._replace(query="", fragment=""))
 
@@ -108,8 +108,39 @@ def parse_category_page(html, page_url):
                     page_urls.add(url)
 
     text = soup.get_text(" ", strip=True)
-    count_match = re.search(r"Showing\s+\d+\s+to\s+\d+\s+of\s+(\d+)", text, re.I)
-    expected_total = int(count_match.group(1)) if count_match else None
+    count_match = re.search(r"Showing\s+(\d+)\s+to\s+(\d+)\s+of\s+(\d+)", text, re.I)
+    expected_total = int(count_match.group(3)) if count_match else None
+    expected_on_page = (
+        int(count_match.group(2)) - int(count_match.group(1)) + 1
+        if count_match else None
+    )
+
+    # Some UCC cards have a different wrapper and were absent from the first
+    # card selector. If the card count is short, supplement only from the
+    # listing region and only with laptop-looking product slugs/text.
+    if expected_on_page and len(page_urls) < expected_on_page:
+        listing = soup.select_one("#content, .product-list, .product-grid, main")
+        if listing:
+            for anchor in listing.select("a[href]"):
+                url = product_url_from_anchor(anchor, page_url)
+                if not url or url in page_urls:
+                    continue
+                parent = anchor.find_parent(class_=re.compile(r"product|item|card", re.I))
+                context = clean = " ".join((anchor.get_text(" ", strip=True), anchor.get("title", ""),
+                                             anchor.get("href", ""))).lower()
+                if parent:
+                    context += " " + parent.get_text(" ", strip=True).lower()
+                if not re.search(
+                    r"laptop|notebook|macbook|aspire|nitro|predator|travelmate|travellite|"
+                    r"swift|vector|katana|creator|cyborg|modern|prestige|thin|venture|"
+                    r"helios|stealth|summit|raider|gaming",
+                    context,
+                ):
+                    continue
+                page_urls.add(url)
+                if len(page_urls) >= expected_on_page:
+                    break
+
     page_links = []
     for anchor in soup.select(".pagination a[href], ul.pagination a[href], a[href*='page=']"):
         href = urljoin(page_url, anchor.get("href", ""))
