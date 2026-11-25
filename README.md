@@ -1,46 +1,51 @@
-# UCC All-Laptop Price Monitor
+# UCC Acer Laptop Price Monitor
 
-This repository monitors the laptop products listed in the UCC **All Laptops** category and compares them with Ryans, Star Tech and Techland.
+This monitor is intentionally limited to **Acer laptops only**.
 
-## How it works
+## Product sources
 
-1. On every run, `catalog.py` crawls UCC's `https://www.ucc.com.bd/laptops` category and its pagination.
-2. It opens each discovered UCC product page and extracts the manufacturer SKU / part number.
-3. It searches each retailer using that exact SKU and accepts a competitor page only when the SKU is confirmed on the page.
-4. `monitor.py` reads prices from UCC and each verified competitor page, compares them with the previous saved prices, and sends Telegram alerts for price increases/decreases.
-5. The workflow saves the refreshed product catalogue and monitoring state to `products.json` and `state.json`.
+- UCC source category: https://www.ucc.com.bd/laptops
+  - The crawler opens the UCC laptop listing and keeps only product detail pages identified as Acer.
+  - Non-Acer products, including motherboard/model pages such as Z590 and Z690, are excluded.
+- Ryans Acer category: https://www.ryans.com/category/all-laptop-acer
+- Star Tech Acer category: https://www.startech.com.bd/acer-laptop
+- Techland Acer category: https://www.techlandbd.com/shop-laptop-computer/brand-laptops/shop-acer-laptop
 
-## Telegram alerts
+Competitor products are discovered only from the three Acer category pages above. The monitor does not search the retailers' general laptop catalogues.
 
-- First run: sends a **Monitoring started** baseline message for each discovered product.
-- Later runs: sends alerts only for verified price changes, repeated page failures, SKU mismatches, or page recovery.
-- No price movement: no message.
-- Missing competitor match: reported as **same-SKU product page not found**. It is never treated as a price match.
-- SKU not visible on a competitor page: its price is not compared.
-- All displayed prices are checked against UCC's current price in the report.
+## Matching and alerts
 
-## Schedule
+1. Read the UCC Acer product title, SKU/MPN/Part Number and current price.
+2. Build an index of Acer product pages from each supplied retailer category.
+3. Match by exact normalized SKU only. Similar model names are not enough.
+4. If the SKU is missing or does not match, do not compare the price.
+5. Save previous verified prices in `state.json`.
+6. Send Telegram alerts when a verified price changes, a monitored page repeatedly fails, or a page recovers.
 
-GitHub Actions runs every 6 hours. You can also start **UCC All Laptop Price Monitor** manually from the repository's Actions tab.
+The first successful run creates the baseline. Unmatched products are reported as not found/unverified; the system does not invent competitor prices.
 
-## Required GitHub configuration
+## Schedule and setup
 
-Add these repository Actions secrets (never put their values in source files):
+GitHub Actions runs every 6 hours and also runs after changes are pushed to `main`.
 
+Required repository Actions secrets:
 - `TELEGRAM_BOT_TOKEN`
 - `TELEGRAM_CHAT_ID`
 
-Then open **Settings → Actions → General → Workflow permissions** and enable **Read and write permissions** so the workflow can save `products.json` and `state.json`.
+Enable **Settings → Actions → General → Workflow permissions → Read and write permissions** so the workflow can save `products.json` and `state.json`.
 
-## Local run
+## Run locally
 
 ```bash
 pip install -r requirements.txt
+python -m py_compile monitor.py catalog.py
+python tests/test_monitor.py
+python tests/test_catalog.py
 python monitor.py --dry-run
 ```
 
-The dry run still needs internet access to read UCC and retailer pages, but it does not send Telegram messages or overwrite the monitoring state.
+The dry run accesses live pages but does not send Telegram messages or save monitoring state.
 
-## Matching limitations
+## Coverage notes
 
-The monitor prioritizes correctness over guessed matches. If a UCC listing has no readable SKU, a retailer search does not return a matching product, a competitor page hides the SKU, or a retailer blocks automated requests, that comparison remains unverified. Retailer page layouts and anti-bot protections can change, so check the GitHub Actions logs for coverage warnings. The system cannot guarantee every retailer listing will be accessible on every run.
+A product without a visible UCC SKU, a retailer listing without the same SKU, a blocked retailer page, or a changed site layout remains unverified. Check the Actions logs for exact counts and skipped pages. Retailer category structures and anti-bot protections can change; full coverage cannot be assumed until the live run reports its counts.
