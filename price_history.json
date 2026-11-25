@@ -109,10 +109,10 @@
     "retailers": {}
   },
   "MODERN": {
-    "name": "MSI Modern 15 F1MG Intel Core 7 150U Intel Graphics 8GB 3200MHz RAM 1TB Gen4 NVMe SSD 15.6 Inch FHD IPS urban silver Laptop",
+    "name": "MSI Modern 15 F1MG Intel Core 5 120U Intel Graphics 8GB 3200MHz RAM 512GB Gen4 NVMe SSD 15.6 Inch FHD IPS urban silver Laptop",
     "sku": "MODERN",
-    "url": "https://www.ucc.com.bd/msi-modern-15-f1mg-intel-core-7-150u-intel-graphics-urban-silver-laptop",
-    "ucc_base_price": 105900,
+    "url": "https://www.ucc.com.bd/msi-modern-15-f1mg-intel-core-5-120u-intel-graphics-urban-silver-laptop",
+    "ucc_base_price": 84900,
     "retailers": {}
   },
   "MODERN14": {
@@ -165,10 +165,10 @@
     "retailers": {}
   },
   "VECTOR": {
-    "name": "MSI Vector 16 HX AI A2XWIG Intel Core Ultra 9 275HX RTX 5080 16GB Graphics 16GB 6400MHz DDR5 RAM 1TB NVME Gen4 SSD 16 Inch QHD+ 240Hz Gaming Laptop",
+    "name": "MSI Vector 16 HX AI A2XWHG Intel Core Ultra 9 275HX RTX 5070 TI 12GB Graphics 32GB(16*2) 6400MHz DDR5 RAM 1TB NVME Gen4 SSD 16 Inch QHD+ 240Hz Gaming Laptop",
     "sku": "VECTOR",
-    "url": "https://www.ucc.com.bd/msi-vector-16-hx-ai-a2xwig-intel-core-ultra-9-275hx-rtx-5080-gaming-laptop",
-    "ucc_base_price": 519900,
+    "url": "https://www.ucc.com.bd/msi-vector-16-hx-ai-a2xwhg-intel-core-ultra-9-275hx-rtx-5070ti-gaming-laptop",
+    "ucc_base_price": 349900,
     "retailers": {}
   },
   "UN35MSI02B": {
