@@ -1,27 +1,37 @@
-# UCC Acer Notebook Price Monitor
+# UCC All-Laptop Price Monitor
+
+This package is designed to discover **all laptop product pages listed under UCC's `/laptops` category**, then search Ryans, Star Tech and Techland for the same manufacturer SKU / part number.
 
 ## What it does
-- Reads Acer laptop product links from the public UCC Acer category page.
-- Reads UCC SKU, model, processor, RAM, DDR type, SSD capacity and price when visible.
-- Searches public search pages on Ryans, Star Tech and Techland.
-- Searches in this order: exact UCC SKU, model, then product name.
-- Compares price only when model, processor, RAM, DDR and SSD are all detected and match.
-- Labels a same-spec product with a different SKU as `SPECIFICATION MATCH`, not exact SKU.
-- Reports missing/blocked retailer results instead of inventing prices.
+- Re-discovers the UCC laptop catalogue on every scheduled run, including category pagination.
+- Reads each UCC product page and extracts its SKU / part number.
+- Searches each competitor by the exact SKU first.
+- Opens candidate product pages and accepts them only when the expected SKU is visibly confirmed (or the exact SKU is present on the page).
+- Does **not** guess a match from a similar product name when the SKU cannot be confirmed.
+- Tracks UCC and competitor prices in `state.json`.
+- Sends a Telegram message when a tracked price rises or falls, when a product is first added, when a site repeatedly fails, or when a site recovers.
+- Sends nothing when no tracked price changes.
+- Saves `products.json` and `state.json` to the repository after each run.
 
-## GitHub setup
-1. Upload all files and folders in this ZIP to the root of your repository, replacing the old versions.
-2. In repository Settings -> Secrets and variables -> Actions, add:
+## Setup
+1. Upload the complete contents of this ZIP into a GitHub repository (keep `.github/workflows/monitor.yml`).
+2. Add repository Actions secrets:
    - `TELEGRAM_BOT_TOKEN`
    - `TELEGRAM_CHAT_ID`
-3. Open Actions -> UCC Acer Notebook Price Monitor -> Run workflow.
+3. In **Settings → Actions → General → Workflow permissions**, enable **Read and write permissions**.
+4. In **Actions**, run **UCC All Laptop Price Monitor** manually once. The first run establishes the baseline and sends the initial report.
+5. Later runs are scheduled every 6 hours.
 
-## Schedule
-The workflow runs every 6 hours. GitHub scheduled workflows may start later than the exact minute.
+## Important matching behaviour
+- The known Acer Aspire 15 SKU `UN.35MSI.02B` has the exact three competitor URLs supplied by the user as a seed.
+- Other SKUs are discovered through each retailer's SKU search.
+- A product with no UCC SKU, or with no same-SKU competitor page found, is reported as unverified/not found. It is not treated as a price match.
+- Retailer anti-bot protection, HTML changes, or search indexing delays can prevent some matches. Check the GitHub Actions log for those cases. No scraper can guarantee that every retailer page will be accessible on every run.
 
-## Important limitations
-- This uses public retailer website pages only. It does not bypass login, CAPTCHA, rate limits or anti-bot blocks.
-- Retailer HTML changes can break search result extraction.
-- Missing specifications are marked UNKNOWN; prices are not compared in that case.
-- The category crawler reports an error if it cannot discover any product pages. Always review the first Actions log after installation.
-- A website may show a product listing price that differs from its live checkout price.
+## Local test
+```bash
+pip install -r requirements.txt
+python tests/test_monitor.py
+python monitor.py --dry-run
+```
+`tests/test_monitor.py` is an offline test suite using sample pages. It does not prove that live retailer websites are currently accessible.
