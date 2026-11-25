@@ -118,8 +118,14 @@ def compare_products(ucc, competitor):
     unknowns = [key for key, result in checks.items() if result == "UNKNOWN"]
     matched = [key for key, result in checks.items() if result == "MATCH"]
 
-    # Exact manufacturer SKU/part number is the primary identity.
-    if exact_sku:
+    # SKU is the primary identifier, but an explicit spec conflict always wins.
+    # If SKU matches and no specification conflicts, unknown fields are tolerated.
+    # If SKU differs/is missing, require model + CPU + at least one memory/storage
+    # match, with no known mismatch.
+    if mismatches:
+        allowed = False
+        status = "CONFIGURATION MISMATCH"
+    elif exact_sku:
         allowed = True
         status = "EXACT SKU MATCH"
     else:
@@ -128,13 +134,8 @@ def compare_products(ucc, competitor):
             and checks["processor"] == "MATCH"
             and any(checks[key] == "MATCH" for key in ("ram", "ddr", "ssd"))
         )
-        allowed = enough_evidence and not mismatches
-        if mismatches:
-            status = "CONFIGURATION MISMATCH"
-        elif allowed:
-            status = "SPECIFICATION MATCH"
-        else:
-            status = "UNVERIFIED - INSUFFICIENT SPECS"
+        allowed = enough_evidence
+        status = "SPECIFICATION MATCH" if allowed else "UNVERIFIED - INSUFFICIENT SPECS"
 
     return {
         "status": status,
