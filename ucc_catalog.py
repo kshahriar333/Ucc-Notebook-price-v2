@@ -200,7 +200,7 @@ def get_all_laptops():
     products.sort(key=lambda item: (item.get("name") or "").lower())
     print(
         f"UCC catalogue: {len(urls)} links discovered; "
-        f"{len(products)} products parsed with price; {len(errors)} warnings."
+        f"{len(products)} products parsed; {len(errors)} warnings."
     )
     for error in errors[:20]:
         print("UCC catalogue warning:", error)
