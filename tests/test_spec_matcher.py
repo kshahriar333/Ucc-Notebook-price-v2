@@ -1,4 +1,7 @@
 import unittest
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from spec_matcher import extract_identity, compare_laptops
 
 class Tests(unittest.TestCase):
