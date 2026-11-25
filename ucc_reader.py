@@ -97,6 +97,7 @@ def extract_specs(name, page_text):
     ], text)
 
     cpu = first_match([
+        r"\b(Ryzen\s+AI\s+[579]\s+\d{3,4}[A-Z]{0,3})\b",
         r"\b(Ryzen\s+[3579]\s+\d{4,5}[A-Z]{0,3})\b",
         r"\b(Core\s+Ultra\s+[3579]\s+\d{3}[A-Z]{0,3})\b",
         r"\b(Core\s+i[3579]\s*[- ]?\s*\d{4,5}[A-Z]{0,3})\b",
@@ -117,7 +118,7 @@ def extract_specs(name, page_text):
         r"\b(\d{1,2})\s*GB\s*(?:DDR[345X]\s*)?(?:RAM|Memory)\b",
         r"\b(\d{1,2})\s*GB\s*DDR[345X]\b",
     ], text)
-    ddr = first_match([r"\b(DDR[345X])\b"], text)
+    ddr = first_match([r"\b((?:LPDDR[345X]|DDR[345X]))\b"], text)
 
     ssd = first_match([
         r"\b(\d+(?:\.\d+)?\s*TB)\b(?=.{0,60}\bSSD\b)",
