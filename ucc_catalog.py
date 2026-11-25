@@ -69,14 +69,16 @@ def product_url_from_anchor(anchor, base_url):
     path = parsed.path.strip("/").lower()
     if host != "ucc.com.bd" or not path:
         return None
-    if parsed.query or any(part in path for part in EXCLUDED_PATH_PARTS):
+    # Ignore query strings on product links; reject only known route segments,
+    # not product slugs that happen to contain words such as "brand".
+    segments = [part for part in path.split("/") if part]
+    if any(part in EXCLUDED_PATH_PARTS for part in segments):
         return None
     if path in {
         "laptops", "gaming-laptops", "content-creation-laptops",
         "business-productivity-laptops", "acer", "msi", "apple",
     }:
         return None
-    # Accept common SEO product slugs, including nested product routes.
     if len(path) < 5 or path.count("/") > 2:
         return None
     return urlunparse(parsed._replace(query="", fragment=""))
@@ -133,16 +135,18 @@ def parse_category_page(html, page_url):
     page_urls = set()
     rejected = []
     for anchor, source in candidates:
+        href = anchor.get("href", "").strip()
         url = product_url_from_anchor(anchor, page_url)
         if not url:
+            if href:
+                parsed_href = urlparse(urljoin(page_url, href))
+                if parsed_href.netloc.lower().removeprefix("www.") == "ucc.com.bd":
+                    rejected.append((href, "URL_FILTERED"))
             continue
-        if is_laptop_context(anchor):
-            page_urls.add(url)
-        elif source.startswith("card:"):
-            # Product card wrapper itself is strong evidence of a product link.
-            page_urls.add(url)
-        else:
-            rejected.append((url, anchor.get_text(" ", strip=True)[:90]))
+        # The category's main listing region contains product cards. Preserve
+        # all valid detail slugs from that region; text-based brand keywords
+        # are not reliable for image-only anchors or Apple/MSI cards.
+        page_urls.add(url)
 
     page_links = set()
     for anchor in soup.select(".pagination a[href], ul.pagination a[href], a[href*='page=']"):
@@ -154,10 +158,10 @@ def parse_category_page(html, page_url):
     print(
         f"UCC page diagnostics: expected_on_page={expected_on_page}, "
         f"candidate_anchors={len(candidates)}, product_urls={len(page_urls)}, "
-        f"rejected_non_laptop={len(rejected)}, pagination={sorted(page_links)}"
+        f"filtered_internal_links={len(rejected)}, pagination={sorted(page_links)}"
     )
-    for url, label in rejected[:8]:
-        print(f"UCC ignored listing link: {label!r} -> {url}")
+    for url, label in rejected[:15]:
+        print(f"UCC filtered internal link ({label}): {url}")
     return page_urls, expected_total, sorted(page_links)
 
 
