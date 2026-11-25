@@ -188,10 +188,12 @@ def get_all_laptops():
             url = futures[future]
             try:
                 product = future.result()
-                if product.get("name") and product.get("price") is not None:
+                if product.get("name"):
                     products.append(product)
+                    if product.get("price") is None:
+                        print(f"UCC product has no readable base price (will be marked unverified): {url}")
                 else:
-                    errors.append(f"{url}: missing product name or current price")
+                    errors.append(f"{url}: missing product name")
             except Exception as exc:
                 errors.append(f"{url}: {type(exc).__name__}: {str(exc)[:140]}")
 
