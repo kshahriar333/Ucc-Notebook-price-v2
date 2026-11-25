@@ -46,6 +46,7 @@ jobs:
           python -m py_compile monitor.py catalog.py
           python tests/test_monitor.py
           python tests/test_catalog.py
+          python tests/test_spec_matcher.py
 
       - name: Discover all UCC laptops and monitor exact-SKU prices
         run: python monitor.py
