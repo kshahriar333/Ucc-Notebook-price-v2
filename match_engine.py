@@ -48,6 +48,10 @@ def extract_ram(text):
 
 
 def extract_ssd_gb(text):
+    direct = re.fullmatch(r"\s*(\d+(?:\.\d+)?)\s*(TB|GB)\s*", str(text or ""), re.I)
+    if direct:
+        amount = float(direct.group(1))
+        return int(amount * 1024) if direct.group(2).upper() == "TB" else int(amount)
     patterns = [
         (r"\b(\d+(?:\.\d+)?)\s*TB\b(?=.{0,60}\bSSD\b)", "TB"),
         (r"\bSSD\)?\s*[:|=-]?\s*(\d+(?:\.\d+)?)\s*(TB|GB)\b", None),
