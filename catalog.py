@@ -7,7 +7,8 @@ from urllib.parse import urljoin, urlparse, parse_qsl, urlencode, urlunparse
 import requests
 from bs4 import BeautifulSoup
 
-from monitor import HEADERS, norm, check_site, visible_text\nfrom spec_matcher import extract_identity as extract_laptop_identity, compare_laptops
+from monitor import HEADERS, norm, check_site, visible_text
+from spec_matcher import extract_identity as extract_laptop_identity, compare_laptops
 
 UCC_CATEGORY = "https://www.ucc.com.bd/laptops"
 COMPETITOR_CATEGORIES = {
