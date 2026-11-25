@@ -17,12 +17,12 @@ Competitor products are discovered only from the three Acer category pages above
 
 1. Read the UCC Acer product title, SKU/MPN/Part Number and current price.
 2. Build an index of Acer product pages from each supplied retailer category.
-3. Match by exact normalized SKU only. Similar model names are not enough.
-4. If the SKU is missing or does not match, do not compare the price.
+3. Match by exact normalized SKU / Part Number first. If a SKU is missing on either side, use a strict Acer specification fallback: series/model, full processor, RAM capacity/type, and storage capacity/type. If both sides show different SKUs, reject the match.
+4. Missing required specifications or conflicting processor/RAM/storage/model means no price comparison. Each accepted fallback is marked `SPEC_MATCH` and re-verified before reading its price.
 5. Save previous verified prices in `state.json`.
 6. Send Telegram alerts when a verified price changes, a monitored page repeatedly fails, or a page recovers.
 
-The first successful run creates the baseline. Unmatched products are reported as not found/unverified; the system does not invent competitor prices.
+The first successful run sends one Telegram baseline summary even if an older `state.json` already exists. Later runs send price-change/recovery alerts rather than repeating the baseline. Unmatched products are reported as not found/unverified; the system does not invent competitor prices.
 
 ## Schedule and setup
 
