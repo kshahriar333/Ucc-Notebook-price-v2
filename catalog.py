@@ -43,7 +43,7 @@ KNOWN_URLS = {
 
 
 def clean(value):
-    return re.sub(r"\\s+", " ", str(value or "")).strip()
+    return re.sub(r"\s+", " ", str(value or "")).strip()
 
 
 def get(session, url):
@@ -149,8 +149,8 @@ def extract_identity(html, url):
 
     sku = None
     patterns = (
-        r"(?:SKU|MPN|Part\\s*(?:No\\.?|Number|#)|Product\\s*Code)\\s*[:#\\-]?\\s*([A-Z0-9][A-Z0-9._/\\-]{3,})",
-        r"\\b([A-Z]{2}\\.[A-Z0-9]{2,12}\\.[A-Z0-9]{2,12})\\b",
+        r"(?:SKU|MPN|Part\s*(?:No\.?|Number|#)|Product\s*Code)\s*[:#\-]?\s*([A-Z0-9][A-Z0-9._/\-]{3,})",
+        r"\b([A-Z]{2}\.[A-Z0-9]{2,12}\.[A-Z0-9]{2,12})\b",
     )
     for pattern in patterns:
         match = re.search(pattern, text, re.I)
