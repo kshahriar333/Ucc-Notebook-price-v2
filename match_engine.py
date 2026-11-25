@@ -14,6 +14,9 @@ def extract_cpu(text):
         r"\bCore\s+i[3579]\s*[- ]?\s*\d{4,5}[A-Z]{0,3}\b",
         r"\bCore\s+[3579]\s+\d{3,5}[A-Z]{0,3}\b",
         r"\bProcessor\s+N\d{3}\b",
+        r"\bApple\s+(M[1-5](?:\s+Pro|\s+Max|\s+Ultra)?)\b",
+        r"\b(A18\s+Pro|A18|A17\s+Pro)\b",
+        r"\b(Snapdragon\s+X\s+(?:Elite|Plus))\b",
     ]
     for pattern in patterns:
         found = re.search(pattern, str(text or ""), re.I)
@@ -24,6 +27,8 @@ def extract_cpu(text):
 
 def extract_model(text):
     patterns = [
+        r"\bMacBook\s+(?:Air|Pro|Neo)\s+\d{1,2}(?:\.\d)?\s*-?\s*inch\b",
+        r"\bMacBook\s+(?:Air|Pro|Neo)\b",
         r"\b(?:AS|AN|TL|TMP|PHN|PH|A\d{3})\s?[A-Z0-9]{1,10}(?:-[A-Z0-9]{1,10}){0,2}\b",
         r"\b([A-Z]\d[A-Z]{2,7}(?:-[A-Z0-9]{2,8})?)\b",
     ]
@@ -40,6 +45,7 @@ def extract_ram(text):
         r"\bMemory\s*[:\-]?\s*(\d{1,2})\s*GB\b",
         r"\b(\d{1,2})\s*GB\s*(?:LPDDR[345X]\s*)?(?:RAM|Memory)\b",
         r"\b(\d{1,2})\s*GB\s*(?:LPDDR[345X]|DDR[345X])\b",
+        r"\b(\d{1,2})\s*GB\s+Unified\s+Memory\b",
     ):
         found = re.search(pattern, str(text or ""), re.I)
         if found:
