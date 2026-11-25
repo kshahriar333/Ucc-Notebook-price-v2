@@ -16,9 +16,9 @@ def extract_cpu(text):
         r"\bProcessor\s+N\d{3}\b",
     ]
     for pattern in patterns:
-        match = re.search(pattern, str(text or ""), re.I)
-        if match:
-            return normalize(match.group(0))
+        found = re.search(pattern, str(text or ""), re.I)
+        if found:
+            return normalize(found.group(0))
     return None
 
 
@@ -28,9 +28,9 @@ def extract_model(text):
         r"\b([A-Z]\d[A-Z]{2,7}(?:-[A-Z0-9]{2,8})?)\b",
     ]
     for pattern in patterns:
-        match = re.search(pattern, str(text or ""), re.I)
-        if match:
-            return normalize(match.group(0))
+        found = re.search(pattern, str(text or ""), re.I)
+        if found:
+            return normalize(found.group(0))
     return None
 
 
@@ -41,9 +41,9 @@ def extract_ram(text):
         r"\b(\d{1,2})\s*GB\s*(?:LPDDR[345X]\s*)?(?:RAM|Memory)\b",
         r"\b(\d{1,2})\s*GB\s*(?:LPDDR[345X]|DDR[345X])\b",
     ):
-        match = re.search(pattern, str(text or ""), re.I)
-        if match:
-            return int(match.group(1))
+        found = re.search(pattern, str(text or ""), re.I)
+        if found:
+            return int(found.group(1))
     return None
 
 
@@ -54,10 +54,10 @@ def extract_ssd_gb(text):
         (r"\b(?:Storage(?:\s+Capacity)?|Solid-State\s+Drive)\s*[:|=-]?\s*(\d{3,4})\s*GB\b", "GB"),
     ]
     for pattern, unit in patterns:
-        match = re.search(pattern, str(text or ""), re.I)
-        if match:
-            amount = float(match.group(1))
-            detected = unit or match.group(2).upper()
+        found = re.search(pattern, str(text or ""), re.I)
+        if found:
+            amount = float(found.group(1))
+            detected = unit or found.group(2).upper()
             return int(amount * 1024) if detected == "TB" else int(amount)
     return None
 
@@ -78,9 +78,11 @@ def value(product, key):
         if key == "processor":
             return extract_cpu(raw) or normalize(raw)
         if key == "ram":
-            return extract_ram(raw) or (int(re.search(r"\d{1,2}", raw).group()) if re.search(r"\d{1,2}", raw) else None)
+            found = re.search(r"\d{1,2}", raw)
+            return extract_ram(raw) or (int(found.group(0)) if found else None)
         if key == "ssd":
-            return extract_ssd_gb(raw) or (int(re.search(r"\d{3,4}", raw).group()) if re.search(r"\d{3,4}", raw) else None)
+            found = re.search(r"\d{3,4}", raw)
+            return extract_ssd_gb(raw) or (int(found.group(0)) if found else None)
         if key == "ddr":
             found = re.search(r"(?:LPDDR[345X]|DDR[345X])", raw, re.I)
             return found.group(0).upper() if found else normalize(raw)
@@ -116,11 +118,9 @@ def compare_products(ucc, competitor):
     unknowns = [key for key, result in checks.items() if result == "UNKNOWN"]
     matched = [key for key, result in checks.items() if result == "MATCH"]
 
-    # An exact manufacturer part number/SKU is the strongest identity.
-    # Spec parsers can read noisy text (e.g. related products/FAQ); do not
-    # reject an exact SKU because of those secondary text-extraction conflicts.
+    # Exact manufacturer SKU/part number is the primary identity.
     if exact_sku:
-        price_allowed = True
+        allowed = True
         status = "EXACT SKU MATCH"
     else:
         enough_evidence = (
@@ -128,10 +128,10 @@ def compare_products(ucc, competitor):
             and checks["processor"] == "MATCH"
             and any(checks[key] == "MATCH" for key in ("ram", "ddr", "ssd"))
         )
-        price_allowed = enough_evidence and not mismatches
+        allowed = enough_evidence and not mismatches
         if mismatches:
             status = "CONFIGURATION MISMATCH"
-        elif price_allowed:
+        elif allowed:
             status = "SPECIFICATION MATCH"
         else:
             status = "UNVERIFIED - INSUFFICIENT SPECS"
@@ -140,7 +140,7 @@ def compare_products(ucc, competitor):
         "status": status,
         "sku_match": exact_sku,
         "checks": checks,
-        "price_comparison_allowed": price_allowed,
+        "price_comparison_allowed": allowed,
         "mismatches": mismatches,
         "unknowns": unknowns,
         "matched_specs": matched,
