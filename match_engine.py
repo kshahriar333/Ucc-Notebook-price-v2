@@ -1,4 +1,4 @@
-"""Conservative SKU-first matching for UCC laptop price comparison."""
+"""SKU-first matching for UCC laptop price comparison."""
 import re
 
 
@@ -23,27 +23,24 @@ def extract_cpu(text):
 
 
 def extract_model(text):
-    text = str(text or "")
     patterns = [
         r"\b(?:AS|AN|TL|TMP|PHN|PH|A\d{3})\s?[A-Z0-9]{1,10}(?:-[A-Z0-9]{1,10}){0,2}\b",
         r"\b([A-Z]\d[A-Z]{2,7}(?:-[A-Z0-9]{2,8})?)\b",
-        r"\b(B\d{2}[A-Z]{2,6}|A\d[A-Z]{3,6}|C\d[A-Z]{3,6}|F\d[A-Z]{2,5})\b",
     ]
     for pattern in patterns:
-        match = re.search(pattern, text, re.I)
+        match = re.search(pattern, str(text or ""), re.I)
         if match:
             return normalize(match.group(0))
     return None
 
 
 def extract_ram(text):
-    patterns = [
+    for pattern in (
         r"\bRAM\s*[:\-]?\s*(\d{1,2})\s*GB\b",
         r"\bMemory\s*[:\-]?\s*(\d{1,2})\s*GB\b",
-        r"\b(\d{1,2})\s*GB\s*(?:DDR[345X]\s*)?(?:RAM|Memory)\b",
-        r"\b(\d{1,2})\s*GB\s*DDR[345X]\b",
-    ]
-    for pattern in patterns:
+        r"\b(\d{1,2})\s*GB\s*(?:LPDDR[345X]\s*)?(?:RAM|Memory)\b",
+        r"\b(\d{1,2})\s*GB\s*(?:LPDDR[345X]|DDR[345X])\b",
+    ):
         match = re.search(pattern, str(text or ""), re.I)
         if match:
             return int(match.group(1))
@@ -51,19 +48,17 @@ def extract_ram(text):
 
 
 def extract_ssd_gb(text):
-    text = str(text or "")
     patterns = [
         (r"\b(\d+(?:\.\d+)?)\s*TB\b(?=.{0,60}\bSSD\b)", "TB"),
-        (r"\b(\d{3,4})\s*GB\b(?=.{0,60}\bSSD\b)(?![\s\S]{0,35}\b(?:RAM|DDR[345X])\b)", "GB"),
         (r"\bSSD\)?\s*[:|=-]?\s*(\d+(?:\.\d+)?)\s*(TB|GB)\b", None),
         (r"\b(?:Storage(?:\s+Capacity)?|Solid-State\s+Drive)\s*[:|=-]?\s*(\d{3,4})\s*GB\b", "GB"),
     ]
     for pattern, unit in patterns:
-        match = re.search(pattern, text, re.I)
+        match = re.search(pattern, str(text or ""), re.I)
         if match:
             amount = float(match.group(1))
-            detected_unit = unit or match.group(2).upper()
-            return int(amount * 1024) if detected_unit == "TB" else int(amount)
+            detected = unit or match.group(2).upper()
+            return int(amount * 1024) if detected == "TB" else int(amount)
     return None
 
 
@@ -77,23 +72,18 @@ def product_text(product):
 def value(product, key):
     direct = product.get(key)
     if direct not in (None, ""):
+        raw = str(direct)
         if key == "model":
-            return extract_model(str(direct)) or normalize(direct)
+            return extract_model(raw) or normalize(raw)
         if key == "processor":
-            return extract_cpu(str(direct)) or normalize(direct)
+            return extract_cpu(raw) or normalize(raw)
         if key == "ram":
-            return extract_ram(str(direct)) or (
-                int(re.search(r"\d{1,2}", str(direct)).group(0))
-                if re.search(r"\d{1,2}", str(direct)) else None
-            )
+            return extract_ram(raw) or (int(re.search(r"\d{1,2}", raw).group()) if re.search(r"\d{1,2}", raw) else None)
         if key == "ssd":
-            return extract_ssd_gb(str(direct)) or (
-                int(re.search(r"\d{3,4}", str(direct)).group(0))
-                if re.search(r"\d{3,4}", str(direct)) else None
-            )
+            return extract_ssd_gb(raw) or (int(re.search(r"\d{3,4}", raw).group()) if re.search(r"\d{3,4}", raw) else None)
         if key == "ddr":
-            match = re.search(r"(?:LPDDR[345X]|DDR[345X])", str(direct), re.I)
-            return match.group(0).upper() if match else normalize(direct)
+            found = re.search(r"(?:LPDDR[345X]|DDR[345X])", raw, re.I)
+            return found.group(0).upper() if found else normalize(raw)
     text = product_text(product)
     if key == "model":
         return extract_model(text)
@@ -104,8 +94,8 @@ def value(product, key):
     if key == "ssd":
         return extract_ssd_gb(text)
     if key == "ddr":
-        match = re.search(r"\b(?:LPDDR[345X]|DDR[345X])\b", text, re.I)
-        return match.group(0).upper() if match else None
+        found = re.search(r"\b(?:LPDDR[345X]|DDR[345X])\b", text, re.I)
+        return found.group(0).upper() if found else None
     return None
 
 
@@ -126,14 +116,13 @@ def compare_products(ucc, competitor):
     unknowns = [key for key, result in checks.items() if result == "UNKNOWN"]
     matched = [key for key, result in checks.items() if result == "MATCH"]
 
-    # Exact identical part number is the primary identity. It can tolerate
-    # missing page specs, but never a detected contradiction.
+    # An exact manufacturer part number/SKU is the strongest identity.
+    # Spec parsers can read noisy text (e.g. related products/FAQ); do not
+    # reject an exact SKU because of those secondary text-extraction conflicts.
     if exact_sku:
-        price_allowed = not mismatches
-        status = "EXACT SKU MATCH" if price_allowed else "SKU MATCH BUT SPEC CONFLICT"
+        price_allowed = True
+        status = "EXACT SKU MATCH"
     else:
-        # Without an exact SKU, require model + CPU + at least one memory/
-        # storage spec to agree; unknown fields are tolerated, conflicts are not.
         enough_evidence = (
             checks["model"] == "MATCH"
             and checks["processor"] == "MATCH"
