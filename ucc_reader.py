@@ -115,10 +115,15 @@ def extract_specs(name, page_text):
         r"\b(Core\s+i[3579]\s*[- ]?\s*\d{4,5}[A-Z]{0,3})\b",
         r"\b(Core\s+[3579]\s+\d{3,5}[A-Z]{0,3})\b",
         r"\b(Processor\s+N\d{3})\b",
+        r"\b(Apple\s+M[1-5](?:\s+Pro|\s+Max|\s+Ultra)?)\b",
+        r"\b(A18\s+Pro|A18|A17\s+Pro)\b",
     ], text)
 
     model = first_match([
+        r"\b(MacBook\s+(?:Air|Pro|Neo)\s+\d{1,2}(?:\.\d)?\s*-?\s*inch)\b",
+        r"\b(MacBook\s+(?:Air|Pro|Neo))\b",
         r"\b((?:AS|AN|A\d{3}|TL|TMP|SF|PH)\s?[A-Z0-9]{1,8}-[A-Z0-9]{1,8})\b",
+        r"\b([A-Z]\d[A-Z]{2,7}(?:-[A-Z0-9]{2,8})?)\b",
     ], text)
     if model:
         model = re.sub(r"\s+", "", model).upper()
@@ -129,6 +134,7 @@ def extract_specs(name, page_text):
         r"\bMemory\s*[:\-]?\s*(\d{1,2})\s*GB\b",
         r"\b(\d{1,2})\s*GB\s*(?:DDR[345X]\s*)?(?:RAM|Memory)\b",
         r"\b(\d{1,2})\s*GB\s*DDR[345X]\b",
+        r"\b(\d{1,2})\s*GB\s+Unified\s+Memory\b",
     ], text)
     ddr = first_match([r"\b((?:LPDDR[345X]|DDR[345X]))\b"], text)
 
