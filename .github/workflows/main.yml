@@ -19,8 +19,8 @@ permissions:
   contents: write
 
 concurrency:
-  group: ucc-acer-price-monitor
-  cancel-in-progress: false
+  group: ucc-laptop-price-monitor
+  cancel-in-progress: true
 
 jobs:
   price-check:
