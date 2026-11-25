@@ -46,10 +46,10 @@
     "retailers": {}
   },
   "UN34YSI024": {
-    "name": "Acer Aspire 3 A325-53-i5 (UN.34YSI.024) Intel 13th Gen Core i5-1334U 8GB DDR4 RAM 512GB Gen4 NVMe 15.6 Inch FHD IPS Display Pure Silver Laptop",
+    "name": "Business & Productivity Laptops",
     "sku": "UN.34YSI.024",
-    "url": "https://www.ucc.com.bd/acer-aspire-3-a325-53-i5-1334u-un34ysi024-laptop",
-    "ucc_base_price": 81900,
+    "url": "https://www.ucc.com.bd/business-and-productivity-laptops",
+    "ucc_base_price": 279900,
     "retailers": {}
   },
   "UN34GSI033": {
@@ -102,10 +102,10 @@
     "retailers": {}
   },
   "KATANA": {
-    "name": "MSI Katana 15 HX B14WFK Intel Core i7 14th Gen-14650HX RTX 5060 8GB Graphics 16GB DDR5 RAM 15.6 Inch QHD 165Hz Gaming Laptop",
+    "name": "MSI Katana 15 HX B14WGK Intel Core i7 14th Gen-14650HX RTX 5070 8GB Graphics 16GB DDR5 RAM 15.6 Inch QHD 165Hz Gaming Laptop",
     "sku": "KATANA",
-    "url": "https://www.ucc.com.bd/MSI-Katana-15-HX-B14WFK-Intel-Core-i7-14th-Gen-14650HX-RTX-5060-8GB-Graphics-16GB-DDR5-RAM-15.6-Inch-QHD-165Hz-Gaming-Laptop",
-    "ucc_base_price": 197900,
+    "url": "https://www.ucc.com.bd/MSI-Katana-15-HX-B14WGK-Intel-Core-i7-14th-Gen-14650HX-RTX-5070-8GB-Graphics-16GB-DDR5-RAM-15.6-Inch-QHD-165Hz-Gaming-Laptop",
+    "ucc_base_price": 233900,
     "retailers": {}
   },
   "MODERN": {
@@ -165,10 +165,10 @@
     "retailers": {}
   },
   "VECTOR": {
-    "name": "MSI Vector 16 HX AI A2XWHG Intel Core Ultra 9 275HX RTX 5070 TI 12GB Graphics 32GB(16*2) 6400MHz DDR5 RAM 1TB NVME Gen4 SSD 16 Inch QHD+ 240Hz Gaming Laptop",
+    "name": "MSI Vector 16 HX AI A2XWIG Intel Core Ultra 9 275HX RTX 5080 16GB Graphics 16GB 6400MHz DDR5 RAM 1TB NVME Gen4 SSD 16 Inch QHD+ 240Hz Gaming Laptop",
     "sku": "VECTOR",
-    "url": "https://www.ucc.com.bd/msi-vector-16-hx-ai-a2xwhg-intel-core-ultra-9-275hx-rtx-5070ti-gaming-laptop",
-    "ucc_base_price": 349900,
+    "url": "https://www.ucc.com.bd/msi-vector-16-hx-ai-a2xwig-intel-core-ultra-9-275hx-rtx-5080-gaming-laptop",
+    "ucc_base_price": 519900,
     "retailers": {}
   },
   "UN35MSI02B": {
@@ -207,6 +207,20 @@
     "sku": "UN.U7PSI.009",
     "url": "https://www.ucc.com.bd/acer-nitro-5-an516-74g1-core-i5-14450hx-rtx-5050-gaming-laptop",
     "ucc_base_price": 189900,
+    "retailers": {}
+  },
+  "URL:graphics-card": {
+    "name": "Graphics Card (GPU)",
+    "sku": null,
+    "url": "https://www.ucc.com.bd/graphics-card",
+    "ucc_base_price": 145900,
+    "retailers": {}
+  },
+  "URL:index.php": {
+    "name": "UCC is the Authorized National Distributor for globally leading Brands",
+    "sku": null,
+    "url": "https://www.ucc.com.bd/index.php",
+    "ucc_base_price": 142000,
     "retailers": {}
   }
 }
