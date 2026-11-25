@@ -393,9 +393,9 @@ def main():
             entries = new_state.get(key, {})
             rows.append(f"{product.get('name', key)} | SKU: {product.get('sku') or 'not listed'}")
             rows.append(now_lines(product.get("urls", {}), entries))
-        summary = ("📊 UCC Acer Price Monitor baseline\\n"
-                   f"Products scanned: {len(products)}\\n\\n" + "\\n\\n".join(rows)
-                   + f"\\n\\n🕒 {now.strftime('%d %b %Y, %I:%M %p')}")
+        summary = ("📊 UCC Acer Price Monitor baseline\n"
+                   f"Products scanned: {len(products)}\n\n" + "\n\n".join(rows)
+                   + f"\n\n🕒 {now.strftime('%d %b %Y, %I:%M %p')}")
         messages.insert(0, summary)
         new_state["_meta"] = {"baseline_sent": True, "baseline_date": now.isoformat()}
     else:
