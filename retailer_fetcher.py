@@ -307,7 +307,7 @@ def _load_retailer_catalogue_unlocked(retailer):
             break
         soup = BeautifulSoup(response.text, "html.parser")
         page_text = clean(soup.get_text(" ", strip=True))
-        count = re.search(r"(?:Showing\s+\d+\s+to\s+\d+\s+of\s+|(\d+)\s+Products?\s+found)", page_text, re.I)
+        count = re.search(r"Showing\s+\d+\s+to\s+\d+\s+of\s+(\d+)|(\d+)\s+Products?\s+found", page_text, re.I)
         if count:
             try:
                 expected = max(expected or 0, int(count.group(1) or count.group(2)))
