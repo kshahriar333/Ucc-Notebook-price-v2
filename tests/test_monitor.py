@@ -25,7 +25,7 @@ class MonitorTests(unittest.TestCase):
         self.urls = {"UCC":"ucc", "Ryans":"ryans", "Star Tech":"star", "Techland":"tech"}
         self.product = [{"id":SKU, "name":"Acer Aspire 15", "sku":SKU, "urls":self.urls}]
         self.now = datetime(2026,11,25,14,0)
-        self.pages = {k:page() for k in self.urls}
+        self.pages = {url:page() for url in self.urls.values()}
 
     def test_sku_and_price_parse(self):
         r = monitor.check_site("Ryans","ryans",monitor.norm(SKU),FakeSession(self.pages))
