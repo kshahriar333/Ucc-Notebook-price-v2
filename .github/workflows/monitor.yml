@@ -1,6 +1,9 @@
 name: UCC All Laptop Price Monitor
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     - cron: "0 */6 * * *"
   workflow_dispatch:
@@ -42,6 +45,7 @@ jobs:
         run: |
           python -m py_compile monitor.py catalog.py
           python tests/test_monitor.py
+          python tests/test_catalog.py
 
       - name: Discover all UCC laptops and monitor exact-SKU prices
         run: python monitor.py
