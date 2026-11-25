@@ -7,7 +7,8 @@ from urllib.parse import urljoin, urlparse, parse_qsl, urlencode, urlunparse
 import requests
 from bs4 import BeautifulSoup
 
-from monitor import HEADERS, norm, check_site
+from monitor import HEADERS, norm, check_site, visible_text
+from spec_matcher import extract_identity as extract_laptop_identity, compare_laptops
 
 UCC_CATEGORY = "https://www.ucc.com.bd/laptops"
 COMPETITOR_CATEGORIES = {
@@ -168,7 +169,8 @@ def product_records(session, urls, site):
             html = get(session, url)
             title, sku, is_acer = extract_identity(html, url)
             if is_acer:
-                records.append({"name": title, "sku": sku, "url": url})
+                identity = extract_laptop_identity(title, visible_text(html))
+                records.append({"name": title, "sku": sku, "identity": identity.to_dict(), "url": url})
         except Exception as exc:
             print(f"{site} detail skipped: {url} ({type(exc).__name__}: {str(exc)[:100]})")
         if index % 20 == 0:
@@ -177,19 +179,32 @@ def product_records(session, urls, site):
     return records
 
 
-def find_verified_url(session, site, sku, index):
-    wanted = norm(sku)
+def identity_from_dict(data):
+    from spec_matcher import LaptopIdentity
+    return LaptopIdentity(**{k: data.get(k) for k in LaptopIdentity.__dataclass_fields__})
+
+
+def find_verified_match(session, site, reference, index):
+    ref_identity = identity_from_dict(reference["identity"])
+    # Pass 1: exact SKU match always wins, regardless of category ordering.
+    ref_sku = norm(ref_identity.sku)
+    if ref_sku:
+        for record in index.get(site, []):
+            candidate = identity_from_dict(record["identity"])
+            if candidate.sku and norm(candidate.sku) == ref_sku:
+                print(f"    {site}: EXACT_SKU -> {record['url']}")
+                return record["url"], "EXACT_SKU"
+    # Pass 2: only when at least one side lacks a SKU, require the full spec
+    # fingerprint. Conflicting SKUs are explicitly excluded.
     for record in index.get(site, []):
-        if record.get("sku") and norm(record["sku"]) == wanted:
-            checked = check_site(site, record["url"], wanted, session)
-            if checked["status"] == "OK" and checked["sku_status"] in ("VERIFIED", "PRESENT"):
-                return record["url"]
-    known = KNOWN_URLS.get(wanted, {}).get(site)
-    if known:
-        checked = check_site(site, known, wanted, session)
-        if checked["status"] == "OK" and checked["sku_status"] in ("VERIFIED", "PRESENT"):
-            return known
-    return ""
+        candidate = identity_from_dict(record["identity"])
+        if ref_identity.sku and candidate.sku:
+            continue
+        decision = compare_laptops(ref_identity, candidate)
+        if decision["matched"] and decision["method"] == "SPEC_MATCH":
+            print(f"    {site}: SPEC_MATCH -> {record['url']}")
+            return record["url"], "SPEC_MATCH"
+    return "", "NO_MATCH"
 
 
 def build_catalog():
@@ -204,18 +219,15 @@ def build_catalog():
         products_by_sku = {}
         for record in ucc_records:
             sku = record.get("sku")
-            if not sku:
-                print("Acer listing skipped (no readable SKU):", record["name"])
-                continue
-            key = norm(sku)
+            key = norm(sku) if sku else "NOSKU-" + norm(record["url"])
             products_by_sku.setdefault(key, {
-                "id": key,
-                "name": record["name"],
-                "sku": sku,
+                "id": key, "name": record["name"], "sku": sku,
+                "identity": record["identity"],
                 "urls": {"UCC": record["url"], "Ryans": "", "Star Tech": "", "Techland": ""},
+                "match_methods": {"UCC": "UCC_SOURCE", "Ryans": "", "Star Tech": "", "Techland": ""},
             })
         products = list(products_by_sku.values())
-        print("UCC Acer laptops with readable SKU:", len(products))
+        print("UCC Acer products discovered:", len(products))
         if not products:
             raise RuntimeError("No Acer laptop with a readable SKU was found on UCC. Existing state was not replaced.")
 
@@ -229,14 +241,12 @@ def build_catalog():
             print(f"{site} Acer product details inspected:", len(competitor_index[site]))
 
         for number, product in enumerate(products, 1):
-            sku = product["sku"]
-            print(f"[{number}/{len(products)}] {product['name']} | SKU {sku}")
+            print(f"[{number}/{len(products)}] {product['name']} | SKU {product.get('sku') or 'not listed'}")
             for site in ("Ryans", "Star Tech", "Techland"):
-                product["urls"][site] = find_verified_url(session, site, sku, competitor_index)
-                if product["urls"][site]:
-                    print(f"  {site}: exact SKU match")
-                else:
-                    print(f"  {site}: same-SKU Acer page not found")
+                url, method = find_verified_match(session, site, product, competitor_index)
+                product["urls"][site] = url
+                product["match_methods"][site] = method
+                print(f"  {site}: {method}")
     with open("products.json", "w", encoding="utf-8") as file:
         json.dump(products, file, ensure_ascii=False, indent=2)
     print("Saved Acer-only catalogue:", len(products))
