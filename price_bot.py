@@ -1,4 +1,4 @@
-"""Full UCC laptop price comparison with historical retailer price-change alerts."""
+"""Compare every UCC laptop price against Ryans, Star Tech and Techland."""
 import json
 import os
 import re
@@ -24,15 +24,12 @@ def load_history():
         data = json.loads(HISTORY_FILE.read_text(encoding="utf-8"))
         return data if isinstance(data, dict) else {}
     except (json.JSONDecodeError, OSError):
-        print("Warning: price_history.json could not be read; starting a new baseline.")
+        print("Warning: history file unreadable; a fresh retailer baseline will be saved.")
         return {}
 
 
 def save_history(history):
-    HISTORY_FILE.write_text(
-        json.dumps(history, ensure_ascii=False, indent=2),
-        encoding="utf-8",
-    )
+    HISTORY_FILE.write_text(json.dumps(history, ensure_ascii=False, indent=2), encoding="utf-8")
 
 
 def money(value):
@@ -62,7 +59,6 @@ def send_telegram(message):
             current = f"{current}\n{line}" if current else line
     if current:
         chunks.append(current)
-
     for chunk in chunks:
         response = requests.post(
             endpoint,
@@ -83,23 +79,23 @@ def scan_one(product):
 
 
 def main():
-    print("Starting UCC-base laptop price comparison and change detection...")
+    print("Starting complete UCC-base retailer price sync...")
     products = get_all_laptops()
     if len(products) < 10:
-        raise RuntimeError(
-            f"Only {len(products)} UCC laptops parsed; refusing an incomplete scan."
-        )
+        raise RuntimeError(f"Only {len(products)} UCC laptops parsed; refusing incomplete scan.")
 
     history = load_history()
     current_history = {}
-    movements = []
-    matched_counts = {retailer: 0 for retailer in RETAILERS}
+    verified_counts = {retailer: 0 for retailer in RETAILERS}
     higher_counts = {retailer: 0 for retailer in RETAILERS}
     lower_counts = {retailer: 0 for retailer in RETAILERS}
-    unavailable_counts = {retailer: 0 for retailer in RETAILERS}
-    total_verified_changes = 0
+    equal_counts = {retailer: 0 for retailer in RETAILERS}
+    unverified_counts = {retailer: 0 for retailer in RETAILERS}
+    differences = []
+    matched_all_three = 0
+    complete_equal_products = 0
+    print(f"UCC products: {len(products)}; retailer comparisons expected: {len(products) * 3}")
 
-    print(f"Comparing {len(products)} UCC base prices against each retailer...")
     with ThreadPoolExecutor(max_workers=4) as executor:
         futures = [executor.submit(scan_one, product) for product in products]
         scan_results = [future.result() for future in as_completed(futures)]
@@ -116,114 +112,124 @@ def main():
             "retailers": {},
         }
         if scan_error:
-            print(f"Retailer scan error for {key}: {scan_error}")
+            print(f"Retailer scan error {key}: {scan_error}")
 
+        product_verified = 0
+        product_equal = 0
         for retailer in RETAILERS:
             result = retailer_results.get(retailer) or {}
             candidates = result.get("results") or []
-            candidate = next(
-                (
-                    item for item in candidates
-                    if (item.get("match") or {}).get("price_comparison_allowed") is True
-                    and item.get("price") is not None
-                    and "OUT OF STOCK" not in str(item.get("stock_status") or "").upper()
-                    and "DISCONTINUED" not in str(item.get("stock_status") or "").upper()
-                ),
-                None,
-            )
+            candidate = next((
+                item for item in candidates
+                if (item.get("match") or {}).get("price_comparison_allowed") is True
+                and item.get("price") is not None
+                and not re.search(r"OUT OF STOCK|DISCONTINUED|UNAVAILABLE",
+                                  str(item.get("stock_status") or ""), re.I)
+            ), None)
+
             if candidate is None or ucc_price is None:
-                unavailable_counts[retailer] += 1
+                unverified_counts[retailer] += 1
                 errors = result.get("errors") or []
                 print(
-                    f"{retailer} {key}: not compared | "
-                    f"{result.get('status') or 'NO RESULT'} | "
+                    f"{retailer} {key}: UNVERIFIED | {result.get('status', 'NO RESULT')} | "
                     f"{'; '.join(errors[:1])}"
                 )
                 continue
 
             retailer_price = int(candidate["price"])
-            delta_from_ucc = retailer_price - int(ucc_price)
+            base_price = int(ucc_price)
+            delta = retailer_price - base_price
+            product_verified += 1
+            verified_counts[retailer] += 1
             current["retailers"][retailer] = {
                 "price": retailer_price,
                 "url": candidate.get("url"),
                 "name": candidate.get("name"),
                 "match_status": (candidate.get("match") or {}).get("status"),
             }
-            matched_counts[retailer] += 1
-            if delta_from_ucc > 0:
-                higher_counts[retailer] += 1
-            elif delta_from_ucc < 0:
-                lower_counts[retailer] += 1
 
-            old_retailer = (old_record.get("retailers") or {}).get(retailer)
-            old_price = (
-                old_retailer.get("price")
-                if isinstance(old_retailer, dict)
-                else old_retailer
-            )
-            if old_price is not None and int(old_price) != retailer_price:
-                direction = "PRICE INCREASED" if retailer_price > int(old_price) else "PRICE DECREASED"
-                movement = (
-                    f"{direction}\n"
+            if delta > 0:
+                higher_counts[retailer] += 1
+                differences.append(
+                    f"PRICE HIGHER: {retailer}\n"
                     f"Product: {product.get('name')}\n"
                     f"SKU: {product.get('sku') or key}\n"
-                    f"Retailer: {retailer}\n"
-                    f"Previous: {money(old_price)}\n"
-                    f"Current: {money(retailer_price)}\n"
-                    f"Change: {money(abs(retailer_price - int(old_price)))}\n"
-                    f"UCC current price: {money(ucc_price)}\n"
-                    f"Competitor link: {candidate.get('url')}"
+                    f"UCC base: {money(base_price)} | {retailer}: {money(retailer_price)}\n"
+                    f"Difference: +{money(delta)}\n"
+                    f"Link: {candidate.get('url')}"
                 )
-                movements.append(movement)
-                total_verified_changes += 1
+            elif delta < 0:
+                lower_counts[retailer] += 1
+                differences.append(
+                    f"PRICE LOWER: {retailer}\n"
+                    f"Product: {product.get('name')}\n"
+                    f"SKU: {product.get('sku') or key}\n"
+                    f"UCC base: {money(base_price)} | {retailer}: {money(retailer_price)}\n"
+                    f"Difference: -{money(abs(delta))}\n"
+                    f"Link: {candidate.get('url')}"
+                )
+            else:
+                equal_counts[retailer] += 1
+                product_equal += 1
 
-        # Keep the old verified price if a retailer was temporarily inaccessible.
-        old_retailers = old_record.get("retailers") or {}
-        for retailer in RETAILERS:
-            if retailer not in current["retailers"] and retailer in old_retailers:
-                current["retailers"][retailer] = old_retailers[retailer]
+        if product_verified == 3:
+            matched_all_three += 1
+            if product_equal == 3:
+                complete_equal_products += 1
         current_history[key] = current
 
-    merged_history = dict(history)
-    merged_history.update(current_history)
-    save_history(merged_history)
+    # Keep previous verified prices when a retailer temporarily fails, but do not
+    # count a stale value as a current verified comparison.
+    merged = dict(history)
+    for key, record in current_history.items():
+        old = merged.get(key, {})
+        old_retailers = old.get("retailers") or {}
+        new_retailers = record.get("retailers") or {}
+        for retailer in RETAILERS:
+            if retailer not in new_retailers and retailer in old_retailers:
+                record["retailers"][retailer] = old_retailers[retailer]
+        merged[key] = record
+    save_history(merged)
 
-    total_comparisons = sum(matched_counts.values())
-    total_possible = len(products) * len(RETAILERS)
-    summary = [
-        "UCC LAPTOP PRICE MONITOR",
-        "========================",
-        f"UCC products scanned: {len(products)}",
-        f"Verified retailer comparisons this scan: {total_comparisons}/{total_possible}",
+    verified_total = sum(verified_counts.values())
+    expected_total = len(products) * len(RETAILERS)
+    all_comparisons_verified = verified_total == expected_total
+    all_prices_equal = all_comparisons_verified and not differences
+    report = [
+        "UCC LAPTOP PRICE SYNC REPORT",
+        "============================",
+        f"UCC laptops scanned: {len(products)}",
+        f"Verified retailer comparisons: {verified_total}/{expected_total}",
+        f"Products matched on all 3 retailers: {matched_all_three}/{len(products)}",
         "",
     ]
     for retailer in RETAILERS:
-        summary.append(
-            f"{retailer}: verified {matched_counts[retailer]}/{len(products)} | "
-            f"above UCC {higher_counts[retailer]} | below UCC {lower_counts[retailer]} | "
-            f"not verified {unavailable_counts[retailer]}"
+        report.append(
+            f"{retailer}: verified {verified_counts[retailer]}/{len(products)} | "
+            f"higher {higher_counts[retailer]} | lower {lower_counts[retailer]} | "
+            f"equal {equal_counts[retailer]} | unverified {unverified_counts[retailer]}"
         )
+    report += [
+        "",
+        f"All retailer prices equal UCC: {'YES' if all_prices_equal else 'NO'}",
+    ]
 
-    if movements:
-        message = (
-            "\n".join(summary)
-            + f"\n\nVERIFIED PRICE MOVEMENTS: {total_verified_changes}\n\n"
-            + "\n\n".join(movements)
-        )
-        send_telegram(message)
-        print(f"Sent {total_verified_changes} verified price movement alert(s).")
-    elif not history:
-        message = (
-            "\n".join(summary)
-            + "\n\nINITIAL BASELINE SAVED. Future verified retailer price increases "
-            "or decreases will be sent to Telegram."
-        )
-        send_telegram(message)
-        print("Sent initial baseline report.")
+    if differences:
+        report += ["", f"PRICE DIFFERENCES AGAINST UCC BASE: {len(differences)}", ""]
+        report.extend(differences)
+    elif all_prices_equal:
+        report += ["", "ALL OK: every verified retailer price equals the UCC base price."]
     else:
-        print("No verified retailer price movement. No Telegram alert sent.")
+        report += [
+            "",
+            "PARTIAL REPORT: no verified price differences found, but some products "
+            "could not be matched. This is NOT an all-match result."
+        ]
 
-    print("Price scan completed.")
+    send_telegram("\n".join(report))
+    print("\n".join(report[:20]))
+    print("Telegram UCC-base price sync report sent successfully.")
+    print("UCC price movements are not tracked; UCC current price is the comparison baseline.")
 
 
 if __name__ == "__main__":
