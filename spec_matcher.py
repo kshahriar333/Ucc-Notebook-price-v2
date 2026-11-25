@@ -42,6 +42,9 @@ def extract_identity(title, page_text):
       r"\b(CORE\s+ULTRA\s+[3579]\s+\d{3,5}[A-Z]{0,2})\b",
       r"\b(INTEL\s+CORE\s+i[3579][ -]?\d{3,5}[A-Z]{0,2})\b",
       r"\b(CORE\s+i[3579][ -]?\d{3,5}[A-Z]{0,2})\b",
+      r"\b(INTEL\s+CORE\s+[3579]\s+\d{3,5}[A-Z]{0,2})\b",
+      r"\b(CORE\s+[3579]\s+\d{3,5}[A-Z]{0,2})\b",
+      r"\b(INTEL\s+PROCESSOR\s+N\d{2,3})\b",
       r"\b(AMD\s+RYZEN\s+[3579]\s+\d{4,5}[A-Z]{0,2})\b",
       r"\b(RYZEN\s+[3579]\s+\d{4,5}[A-Z]{0,2})\b"],u)
     if cpu: cpu=re.sub(r"\s+"," ",cpu).replace("INTEL ","").replace("AMD ","")
