@@ -1,4 +1,4 @@
-"""Read Acer laptop listings and specifications from UCC public pages."""
+"""Read UCC laptop listings and specifications from UCC public pages."""
 import json
 import re
 from urllib.parse import urljoin, urlparse
@@ -6,7 +6,7 @@ from urllib.parse import urljoin, urlparse
 import requests
 from bs4 import BeautifulSoup
 
-CATEGORY_URL = "https://www.ucc.com.bd/acer-brand-laptops"
+CATEGORY_URL = "https://www.ucc.com.bd/laptops"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36",
     "Accept-Language": "en-US,en;q=0.9",
