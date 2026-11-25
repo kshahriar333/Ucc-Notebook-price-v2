@@ -335,7 +335,9 @@ def _load_retailer_catalogue_unlocked(retailer):
             for card in cards:
                 anchors.extend(card.select("a[href]"))
         else:
-            anchors = soup.select("main a[href], #content a[href], .products a[href]")
+            # Retailer themes change their card wrappers frequently. Search the
+            # complete document for same-domain product-detail links as fallback.
+            anchors = soup.select("a[href]")
 
         added = 0
         for anchor in anchors:
@@ -344,14 +346,27 @@ def _load_retailer_catalogue_unlocked(retailer):
                 continue
             card = anchor.find_parent(class_=re.compile(r"product|item|card", re.I))
             if card is None:
-                card = anchor.parent
+                # Walk a few ancestors so image-only links inherit the product
+                # card title/specification/price text rather than a tiny <a>.
+                card = anchor
+                for _ in range(5):
+                    if card.parent is None:
+                        break
+                    card = card.parent
+                    if len(clean(card.get_text(" ", strip=True))) >= 30:
+                        break
             context = clean(card.get_text(" ", strip=True))
-            title = clean(anchor.get_text(" ", strip=True) or anchor.get("title", ""))
+            image = anchor.find("img")
+            image_label = ""
+            if image:
+                image_label = clean(image.get("alt", "") or image.get("title", ""))
+            title = clean(
+                anchor.get_text(" ", strip=True)
+                or anchor.get("title", "")
+                or image_label
+            )
             if len(title) < 8:
-                title = clean(anchor.get("title", "") or card.get("title", ""))
-            if not title:
-                # use the most informative text fragment, not generic Buy Now labels
-                title = context[:240]
+                title = clean(image_label or card.get("title", "") or context[:240])
             price = extract_price(context)
             stock = "OUT OF STOCK" if re.search(r"out\s+of\s+stock|unavailable", context, re.I) else "NOT CONFIRMED"
             item = {"retailer": retailer, "name": title, "page_text": context,
@@ -361,7 +376,11 @@ def _load_retailer_catalogue_unlocked(retailer):
             if old is None or len(item["page_text"]) > len(old["page_text"]):
                 records[item["url"]] = item
                 added += 1
-        print(f"{retailer} catalogue page {page}: {added} product cards; unique {len(records)}")
+        print(
+            f"{retailer} catalogue page {page}: {added} product cards; "
+            f"unique {len(records)}; HTTP {response.status_code}; "
+            f"HTML bytes {len(response.content)}; anchors inspected {len(anchors)}"
+        )
         if added == 0 and page > 1:
             break
         # Stop when pagination says the whole catalogue has been collected.
