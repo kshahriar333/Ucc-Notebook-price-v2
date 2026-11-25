@@ -4,6 +4,8 @@ import re
 from urllib.parse import urljoin, urlparse
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 from bs4 import BeautifulSoup
 
 CATEGORY_URL = "https://www.ucc.com.bd/laptops"
@@ -11,7 +13,7 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36",
     "Accept-Language": "en-US,en;q=0.9",
 }
-TIMEOUT = (10, 25)
+TIMEOUT = (15, 45)
 
 
 def clean(value):
@@ -20,6 +22,16 @@ def clean(value):
 
 def get_soup(url, session=None):
     client = session or requests.Session()
+    if session is None:
+        retry = Retry(
+            total=4, connect=4, read=4, status=4, backoff_factor=1.2,
+            status_forcelist=(429, 500, 502, 503, 504),
+            allowed_methods=frozenset(("GET",)),
+            respect_retry_after_header=True,
+        )
+        adapter = HTTPAdapter(max_retries=retry, pool_connections=4, pool_maxsize=4)
+        client.mount("https://", adapter)
+        client.mount("http://", adapter)
     response = client.get(url, headers=HEADERS, timeout=TIMEOUT)
     response.raise_for_status()
     return BeautifulSoup(response.text, "html.parser")
