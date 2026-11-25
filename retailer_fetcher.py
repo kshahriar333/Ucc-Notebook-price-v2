@@ -1,5 +1,6 @@
 """Retailer search and product-page parser for UCC laptop price comparison."""
 import re
+import threading
 from urllib.parse import urlparse, urljoin
 
 import requests
@@ -24,6 +25,7 @@ CATALOGUE_URLS = {
     "Techland": "https://www.techlandbd.com/shop-laptop-computer/",
 }
 _CATALOGUE_CACHE = {}
+_CATALOGUE_LOCKS = {name: threading.Lock() for name in RETAILER_DOMAINS}
 DIRECT_PRODUCT_URLS = {
     "UN.35MSI.02B": {
         "Ryans": "https://www.ryans.com/acer-aspire-15-as15-42-amd-ryzen-5-7430u-15.6-inch-fhd-laptop",
@@ -287,7 +289,7 @@ def _catalogue_page_url(retailer, page):
     return f"{base}{separator}page={page}"
 
 
-def _load_retailer_catalogue(retailer):
+def _load_retailer_catalogue_unlocked(retailer):
     if retailer in _CATALOGUE_CACHE:
         return _CATALOGUE_CACHE[retailer]
     session = _catalogue_session()
@@ -366,6 +368,13 @@ def _load_retailer_catalogue(retailer):
         print(f"{retailer} catalogue appears partial: expected {expected}, extracted {len(records)}")
     _CATALOGUE_CACHE[retailer] = list(records.values())
     return _CATALOGUE_CACHE[retailer]
+
+
+def _load_retailer_catalogue(retailer):
+    # Only one worker downloads a retailer's listing pages; the other workers
+    # wait and reuse the same catalogue snapshot.
+    with _CATALOGUE_LOCKS[retailer]:
+        return _load_retailer_catalogue_unlocked(retailer)
 
 
 def _candidate_score(ucc_product, candidate):
