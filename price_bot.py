@@ -59,7 +59,7 @@ def send_telegram(message):
                 chunks.append(current)
             current = line
         else:
-            current = f"{current}\\n{line}" if current else line
+            current = f"{current}\n{line}" if current else line
     if current:
         chunks.append(current)
 
@@ -206,16 +206,16 @@ def main():
 
     if movements:
         message = (
-            "\\n".join(summary)
-            + f"\\n\\nVERIFIED PRICE MOVEMENTS: {total_verified_changes}\\n\\n"
-            + "\\n\\n".join(movements)
+            "\n".join(summary)
+            + f"\n\nVERIFIED PRICE MOVEMENTS: {total_verified_changes}\n\n"
+            + "\n\n".join(movements)
         )
         send_telegram(message)
         print(f"Sent {total_verified_changes} verified price movement alert(s).")
     elif not history:
         message = (
-            "\\n".join(summary)
-            + "\\n\\nINITIAL BASELINE SAVED. Future verified retailer price increases "
+            "\n".join(summary)
+            + "\n\nINITIAL BASELINE SAVED. Future verified retailer price increases "
             "or decreases will be sent to Telegram."
         )
         send_telegram(message)
