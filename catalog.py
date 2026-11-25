@@ -7,7 +7,7 @@ from urllib.parse import urljoin, urlparse, parse_qsl, urlencode, urlunparse
 import requests
 from bs4 import BeautifulSoup
 
-from monitor import HEADERS, norm, check_site, visible_text\nfrom spec_matcher import extract_identity, compare_laptops
+from monitor import HEADERS, norm, check_site, visible_text\nfrom spec_matcher import extract_identity as extract_laptop_identity, compare_laptops
 
 UCC_CATEGORY = "https://www.ucc.com.bd/laptops"
 COMPETITOR_CATEGORIES = {
@@ -168,7 +168,7 @@ def product_records(session, urls, site):
             html = get(session, url)
             title, sku, is_acer = extract_identity(html, url)
             if is_acer:
-                identity = extract_identity(title, visible_text(html))
+                identity = extract_laptop_identity(title, visible_text(html))
                 records.append({"name": title, "sku": sku, "identity": identity.to_dict(), "url": url})
         except Exception as exc:
             print(f"{site} detail skipped: {url} ({type(exc).__name__}: {str(exc)[:100]})")
