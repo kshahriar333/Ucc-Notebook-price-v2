@@ -2,19 +2,19 @@
   "A71579G": {
     "Ryans": {
       "alerted": true,
-      "fails": 4,
+      "fails": 5,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 4,
+      "fails": 5,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
     "Techland": {
       "alerted": true,
-      "fails": 4,
+      "fails": 5,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -36,7 +36,7 @@
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 4,
+      "fails": 5,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -58,14 +58,14 @@
   "UN34GSI033": {
     "Ryans": {
       "alerted": false,
-      "fails": 0,
+      "fails": 1,
       "price": 88000,
-      "sku_status": "VERIFIED",
-      "status": "OK"
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 4,
+      "fails": 5,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -87,14 +87,14 @@
   "UN34RSI01X": {
     "Ryans": {
       "alerted": false,
-      "fails": 0,
+      "fails": 1,
       "price": 67900,
-      "sku_status": "VERIFIED",
-      "status": "OK"
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 4,
+      "fails": 5,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -116,20 +116,20 @@
   "UN34YSI024": {
     "Ryans": {
       "alerted": false,
-      "fails": 0,
+      "fails": 1,
       "price": 81900,
-      "sku_status": "VERIFIED",
-      "status": "OK"
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 4,
+      "fails": 5,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
     "Techland": {
       "alerted": true,
-      "fails": 4,
+      "fails": 5,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -151,7 +151,7 @@
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 4,
+      "fails": 5,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -173,14 +173,14 @@
   "UN35MSI026": {
     "Ryans": {
       "alerted": false,
-      "fails": 0,
+      "fails": 1,
       "price": 85000,
-      "sku_status": "VERIFIED",
-      "status": "OK"
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 4,
+      "fails": 5,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -202,14 +202,14 @@
   "UN35MSI027": {
     "Ryans": {
       "alerted": false,
-      "fails": 0,
+      "fails": 1,
       "price": 64500,
-      "sku_status": "VERIFIED",
-      "status": "OK"
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 4,
+      "fails": 5,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -231,14 +231,14 @@
   "UN35MSI02B": {
     "Ryans": {
       "alerted": false,
-      "fails": 0,
+      "fails": 1,
       "price": 77500,
-      "sku_status": "VERIFIED",
-      "status": "OK"
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 3,
+      "fails": 4,
       "price": 77500,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
@@ -261,14 +261,14 @@
   "UN37GSI007": {
     "Ryans": {
       "alerted": false,
-      "fails": 0,
+      "fails": 1,
       "price": 59000,
-      "sku_status": "VERIFIED",
-      "status": "OK"
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 4,
+      "fails": 5,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
