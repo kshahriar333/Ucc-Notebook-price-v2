@@ -2,19 +2,19 @@
   "A71579G": {
     "Ryans": {
       "alerted": true,
-      "fails": 6,
+      "fails": 7,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 6,
+      "fails": 7,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
     "Techland": {
       "alerted": true,
-      "fails": 6,
+      "fails": 7,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -36,7 +36,7 @@
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 6,
+      "fails": 7,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -65,7 +65,7 @@
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 6,
+      "fails": 7,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -94,7 +94,7 @@
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 6,
+      "fails": 7,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -124,13 +124,13 @@
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 6,
+      "fails": 7,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
     "Techland": {
       "alerted": true,
-      "fails": 6,
+      "fails": 7,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -152,7 +152,7 @@
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 6,
+      "fails": 7,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -182,7 +182,7 @@
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 6,
+      "fails": 7,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -211,7 +211,7 @@
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 6,
+      "fails": 7,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },
@@ -233,14 +233,14 @@
   "UN35MSI02B": {
     "Ryans": {
       "alerted": false,
-      "fails": 0,
+      "fails": 1,
       "price": 77500,
-      "sku_status": "VERIFIED",
-      "status": "OK"
+      "sku_status": "UNVERIFIED",
+      "status": "NO_MATCH"
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 5,
+      "fails": 6,
       "price": 77500,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
@@ -270,7 +270,7 @@
     },
     "Star Tech": {
       "alerted": true,
-      "fails": 6,
+      "fails": 7,
       "sku_status": "UNVERIFIED",
       "status": "NO_MATCH"
     },

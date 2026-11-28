@@ -100,13 +100,13 @@
     },
     "urls": {
       "UCC": "https://www.ucc.com.bd/acer-aspire-15-as15-42-r5-ryzen-5-7430u-16gb-82-ddr4-3200mhz-512gb-nvme-ssd-156-inch-fhd-ips-backlit-55whr-pure-silver",
-      "Ryans": "https://www.ryans.com/acer-aspire-15-as15-42-amd-ryzen-5-7430u-15.6-inch-fhd-laptop",
+      "Ryans": "",
       "Star Tech": "",
       "Techland": "https://www.techlandbd.com/acer-aspire-15-as15-42-ryzen-5-7430u-156-inch-fhd-ips-laptop"
     },
     "match_methods": {
       "UCC": "UCC_SOURCE",
-      "Ryans": "EXACT_SKU",
+      "Ryans": "NO_MATCH",
       "Star Tech": "NO_MATCH",
       "Techland": "EXACT_SKU"
     }
